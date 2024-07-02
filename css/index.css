@@ -1,0 +1,64 @@
+.btn-danger{    
+    height: 80px !important;   
+}
+
+.login button{
+    width: 60%;
+}
+
+.login-footer button{
+    background-color: var(--brand-bg-color);
+    width: 100%;
+}
+
+.login-footer button:hover{
+    background-color: var(--brand-bg-light-color);
+}
+
+.login-footer button:after {
+    background-color: var(--brand-bg-light-color);
+}
+
+.login-footer button:active:after {
+    background-color: var(--brand-bg-light-color);
+}
+
+.login-footer button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .login-footer button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .login-footer button:hover span {
+    padding-right: 25px;
+  }
+  
+  .login-footer button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+ .mainBrandText h1{
+    color:var(--brand-warning-text) !important;
+    font-size: 6vw !important;
+    font-family: "Poppins";
+}
+
+.mainBrandText h3,.mainBrandText h5, .navbar-collapse h5 {
+    color:var(--brand-warning-text) !important;   
+    font-family: "Poppins";
+}
+
+.nav-link {
+    font-family: "Poppins" !important;   
+}

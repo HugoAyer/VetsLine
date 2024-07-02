@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vetsaly</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../css/vet.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/calendar.css" rel="stylesheet">
+    <link href="../css/Modals.css" rel="stylesheet">
+    <link href="../css/Scheduler.css" rel="stylesheet">
+    <link href="../css/NextAppointments.css" rel="stylesheet">
+    <link href="../css/step_wizard.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="../js/bootbox.min.js"></script>
+    <script src="../js/vet.js" type="module"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+</head>
+<style type="text/css">
+    @font-face {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 700;
+      src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/poppins/700.woff2) format('woff2');
+    }
+  
+
+    @font-face {
+      font-family: "Fredoka One";
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/fredokaone/regular.woff2) format('woff2');
+    }
+  
+
+    @font-face {
+      font-family: "PT Serif";
+      font-style: normal;
+      font-weight: 700;
+      src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/ptserif/700.woff2) format('woff2');
+    }
+  
+
+    @font-face {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 600;
+      src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/poppins/600.woff2) format('woff2');
+    }
+  
+
+    @font-face {
+      font-family: "PT Serif";
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/ptserif/regular.woff2) format('woff2');
+    }
+  
+
+    @font-face {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/poppins/regular.woff2) format('woff2');
+    }
+  </style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-bgbrand">
+        <div class="container-fluid">
+            <h1><a class="navbar-brand mb-0" href="#"><img id="image-34afac11" src="https://d1yei2z3i6k35z.cloudfront.net/8163742/666773c3018e1_vetsaly_logo.svg" width="180" loading="lazy" class="sc-jrIrqw kXjIrw"></a></h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-house"></i>
+                            Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#MiAgenda"><i class="fa-solid fa-book"></i> Mi agenda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="nav-asistant" class="nav-link" href="#">                            
+                                <i class="fa-solid fa-gear"></i> 
+                                <span class="position-relative nav-asistant-regis"> Asistente de configuración
+                                    <span class="position-absolute start-100 translate-end p-2 bg-danger border border-light rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                    </span>
+                                </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><i class="fa-solid fa-blog"></i> Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><i class="fa-solid fa-clipboard-question"></i> Q&A</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><i class="fa-solid fa-users-line"></i> Acerca de nosotros</a>
+                    </li>
+                </ul>
+                <ul class="px-4 navbar-nav me-auto mb-2 mb-lg-0 gap-5">
+                    <li>
+                        <h5 class="px-4">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false" id="LoggedUserName">
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <h5 id="UserSpan"></h5>
+                                            <h5 id="EmailSpan"></h5>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Ver mi perfil</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </h5>
+                    </li>
+                    <li class="nav-item">
+                        <h5><a class="nav-link" onclick="prompt_register()">Cerrar sesión</a></h5>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="wrapper w-100">
+        <div class="row w-100">
+            <div class="col-3 pet-file-info grid row-gap-3">
+                <div class="row d-flex align-items-center p-2">
+                    <div class="col-auto">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                            class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                    </div>
+                    <div class="col-auto">
+                        <div class="d-block">
+                            <span class="pet-file-data">Med. Vet. Orlando Ramirez</span>
+                        </div>
+                        <div class="d-block">
+                            <span class="pet-file-value">Médico Veterinario</span>
+                        </div>
+                        <div class="d-block">
+                            <span class="pet-file-value">Monterrey, Nuevo León</span>
+                        </div>
+                        <div class="d-block">
+                            <span class="pet-file-value">Ranking actual: 4.7 </span>
+                        </div>
+                        <div class="d-block">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="d-block">
+                            <a href="#" class="text-primary">47 opiniones</a>
+                        </div>
+                    </div>
+                </div>
+                <ul if="menuPrincipal" class="row nav flex-column p-2" role="tablist">
+                    <li class="nav-item d-flex pet-file-li justify-content-start align-items-center"
+                        role="presentation">
+                        <a id="item_info" class="pet-file-menu-item" href="#TabGeneral"><i
+                                class="fa-solid fa-house-user"></i> Información general</a>
+                        <div id="item_info_btn" class="pet-file-li-btn tab-noselection"></div>
+                    </li>
+                    <li class="nav-item d-flex pet-file-li justify-content-start align-items-center"
+                        role="presentation">
+                        <a id="item_speciality" class="pet-file-menu-item" href="#TabSpecialties"><i
+                                class="fa-solid fa-graduation-cap"></i> Especialidades</a>
+                        <div id="item_speciality_btn" class="pet-file-li-btn tab-noselection"></div>
+                    </li>
+                    <li class="nav-item d-flex pet-file-li justify-content-start align-items-center"
+                        role="presentation">
+                        <a id="item_address" class="pet-file-menu-item" href="#TabDomicilio"><i
+                                class="fa-solid fa-map-location"></i> Domicilios</a>
+                        <div id="item_address_btn" class="pet-file-li-btn tab-noselection"></div>
+                    </li>
+                    <li class="nav-item pet-file-li" role="presentation">
+                        <a id="item_appointments" class="pet-file-menu-item" href="#TabAppoinments"><i
+                                class="fa-regular fa-calendar-days"></i> Citas</a>
+                        <div id="item_appointments_btn" class="pet-file-li-btn tab-noselection"></div>
+                    </li>
+                    <li class="nav-item pet-file-li" role="presentation">
+                        <a id="item_experience" class="pet-file-menu-item"><i class="fa-solid fa-graduation-cap"></i>
+                            Experiencia profesional</a>
+                        <div id="item_experience_btn" class="pet-file-li-btn tab-noselection"></div>
+                    </li>
+                    <li class="nav-item pet-file-li" role="presentation">
+                        <a id="item_opinions" class="pet-file-menu-item"><i class="fa-solid fa-comment"></i>
+                            Opiniones</a>
+                        <div id="item_opinions_btn" class="pet-file-li-btn tab-noselection"></div>
+                    </li>
+                    <li class="nav-item pet-file-li" role="presentation">
+                        <a id="item_questions" class="pet-file-menu-item"><i class="fa-solid fa-clipboard-question"></i>
+                            Preguntas contestadas</a>
+                        <div id="item_questions_btn" class="pet-file-li-btn tab-noselection"></div>
+                    </li>
+                    <li class="nav-item pet-file-li" role="presentation">
+                        <a id="item_blog" class="pet-file-menu-item"><i class="fa-solid fa-blog"></i> Publicaciones</a>
+                        <div id="item_blog_btn" class="pet-file-li-btn tab-noselection"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-9 pet-file-card-section">
+                <div id="Info" class="container">
+                    <div id="TabGeneral" class="tab-pane fade show active" role="tabpanel"
+                        aria-labelledby="tab-link-general">
+                        <h3>
+                            Información general
+                        </h3>
+                        <div id="ListGeneral">
+                        </div>
+                    </div>
+                    <div id="TabSpecialties" class="tab-pane fade show active" role="tabpanel"
+                        aria-labelledby="tab-link-especialidades">
+                        <h3>
+                            Especialidades
+                        </h3>
+                        <div id="ListSpecialties">
+                        </div>
+                    </div>
+                    <div id="TabDomicilio" class="tab-pane fade show active" role="tabpanel"
+                        aria-labelledby="tab-link-food">
+                        <h3>
+                            Domicilios
+                        </h3>
+                        <div id="ListDomicilio">
+                        </div>
+                    </div>
+                    <div id="TabAppoinments" class="tab-pane fade show active" role="tabpanel"
+                        aria-labelledby="tab-link-vaccines">
+                        <h3>
+                            Citas
+                        </h3>
+                        <div id="Appointments" class="container accordion">
+                        </div>
+                    </div>
+                    <div id="TabExperience" class="tab-pane show active fade" role="tabpanel"
+                        aria-labelledby="tab-link-experience">
+                        <h3>
+                            Experiencia profesional
+                        </h3>
+                        <div id="ListExperience" class="container accordion">
+                        </div>
+                    </div>
+                    <div id="TabOpinions" class="tab-pane show active fade" role="tabpanel"
+                        aria-labelledby="tab-link-opinions">
+                        <h3>
+                            Opiniones
+                        </h3>
+                        <div id="ListOpinions" class="container accordion">
+                        </div>
+                    </div>
+                    <div id="TabQuestions" class="tab-pane show active fade" role="tabpanel"
+                        aria-labelledby="tab-link-questions">
+                        <h3>
+                            Preguntas
+                        </h3>
+                        <div id="ListQuestions" class="container accordion">
+                        </div>
+                    </div>
+                    <div id="TabBlog" class="tab-pane show active fade" role="tabpanel" aria-labelledby="tab-link-blog">
+                        <h3>
+                            Publicaciones
+                        </h3>
+                        <div id="ListBlog" class="container accordion">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="MiAgenda" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="MiAgendaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="MiAgendaModalLabel">Mi agenda</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex">
+                        <div id="side-menu" class="pet-file-info grid side-menu-show">
+                            <ul class="row nav flex-column" role="tablist">
+                                <li class="nav-item d-flex pet-file-li justify-content-start align-items-center"
+                                    role="presentation">
+                                    <a id="item_next_appointments" class="pet-file-menu-item d-flex align-items-center"><i
+                                            class="fa-solid fa-calendar-days"></i> <span class="menu-label">&nbsp;Próximas citas</span></a>
+                                    <div id="item_next_appointments_btn" class="pet-file-li-btn tab-noselection"></div>
+                                </li>
+                                <li class="nav-item d-flex pet-file-li justify-content-start align-items-center"
+                                    role="presentation">
+                                    <a id="item_availability" class="pet-file-menu-item d-flex align-items-center"><i
+                                            class="fa-solid fa-clock"></i> <span class="menu-label">&nbsp;Disponibilidad</span></a>
+                                    <div id="item_availability_btn" class="pet-file-li-btn tab-noselection"></div>
+                                </li>
+                                <li class="nav-item d-flex pet-file-li justify-content-start align-items-center"
+                                    role="presentation">
+                                    <a id="item_prices" class="pet-file-menu-item d-flex align-items-center"><i
+                                            class="fa-solid fa-money-check-dollar"></i> <span class="menu-label">&nbsp;Tarifas y precios</span></a>
+                                    <div id="item_prices_btn" class="pet-file-li-btn tab-noselection"></div>
+                                </li>
+                            </ul>
+                            <button id="menu_expand_btn" class="btn btn-warning collapse-menu"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                        <div class="body-content pet-file-card-section">
+                            <div id="NextAppointments">
+                                <div id="TabNextAppointments" class="fade show active" role="tabpanel"
+                                    aria-labelledby="tab-link-nextAppointments">
+                                    <h3>
+                                        Próximos 7 días
+                                    </h3>
+                                    <div id="NextAppointments">                                        
+                                            <div class="row">                                                
+                                                    <table class="TAgenda">
+                                                        <thead>
+                                                            <tr class="THead">
+                                                                <th class="appointments-hour-block"></th>
+                                                                <th class="appointments-title text-center" id="NextAppointments_next_1"></th>
+                                                                <th class="appointments-title text-center" id="NextAppointments_next_2"></th>
+                                                                <th class="appointments-title text-center" id="NextAppointments_next_3"></th>
+                                                                <th class="appointments-title text-center" id="NextAppointments_next_4"></th>
+                                                                <th class="appointments-title text-center" id="NextAppointments_next_5"></th>
+                                                                <th class="appointments-title text-center" id="NextAppointments_next_6"></th>
+                                                                <th class="appointments-title text-center" id="NextAppointments_next_7"></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="NextAppointments_body">
+
+                                                        </tbody>
+                                                    </table>                                                                                            
+                                            </div>                                        
+                                    </div>
+                                    <div id="appointments-tooltip">
+                                    </div>                                   
+                                </div>
+                                <div id="TabAvailability" class="fade" role="tabpanel"
+                                    aria-labelledby="tab-link-availability">
+                                    <h3>
+                                        Disponibilidad
+                                    </h3>
+                                    <div id="ListAvailabilities">
+                                        <h5>
+                                            Horas a la semana
+                                        </h5>
+                                        <br />
+                                        <div class="container">
+                                            <div id="scheduler_rows" class="row"> 
+                                                <div id="scheduler_sunday"></div><hr/>
+                                                <div id="scheduler_monday"></div><hr/>
+                                                <div id="scheduler_tuesday"></div><hr/>
+                                                <div id="scheduler_wednesday"></div><hr/>
+                                                <div id="scheduler_thursday"></div><hr/>
+                                                <div id="scheduler_friday"></div><hr/>
+                                                <div id="scheduler_saturday"></div>
+                                            </div>                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="TabPriceRates" class="fade" role="tabpanel"
+                                    aria-labelledby="tab-link-priceRates">
+                                    <h3>
+                                        Precios y tarifas
+                                    </h3>
+                                    <br/>
+                                    <div id="ListPrices">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                    <div id="toast_agenda" class="toast hide " role="alert" aria-live="assertive" aria-atomic="true">
+                      <div class="toast-header bg-success">
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        <small>Operación exitosa</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                      </div>
+                      <div class="toast-body">
+                        <span class="text-success">Se han guardado los cambios</span>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="verAgenda">
+        <button class="btnVerAgenda btn btn-warning" title="Ver mi agenda" data-bs-toggle="modal"
+            data-bs-target="#MiAgenda"><i class="fa-solid fa-calendar-day"></i></button>
+    </div>
+    <div class="modal fade" id="AsistantModal" tabindex="-1"
+        aria-labelledby="AsistantModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-header">
+                <h5 class="modal-title" id="RegistrationModalLabel">
+                    <span id="title_AsistantModal"> Asistente de registro - Generales</span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-content">
+                <div class="container">
+                    <h5 class="modal-title">
+                        <a id="AsistantModal_carousel_prev" type="button" data-bs-target="#Registration_carousel" data-bs-slide="prev"><i class="fa-solid fa-arrow-left"></i></a>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="content">
+                    <section id="registration_steps" class="step-wizard container" style="display: block;">
+                        <ul class="step-wizard-list">
+                            <li id="registration_step_1" class="step-wizard-item current-item">
+                                <h5 class="progress-count"><small class="progress-number">1</small></h5>
+                                <span class="progress-label">Generales</span>
+                            </li>
+                            <li id="registration_step_2" class="step-wizard-item">
+                                <h5 class="progress-count"><small class="progress-number">2</small></h5>
+                                <span class="progress-label">Especialidades</span>
+                            </li>
+                            <li id="registration_step_3" class="step-wizard-item">
+                                <h5 class="progress-count"><small class="progress-number">3</small></h5>
+                                <span class="progress-label">Domicilio</span>
+                            </li>
+                            <li id="registration_step_4" class="step-wizard-item">
+                                <h5 class="progress-count"><small class="progress-number">4</small></h5>
+                                <span class="progress-label">Experiencia profesional</span>
+                            </li>
+                            <li id="registration_step_5" class="step-wizard-item">
+                                <h5 class="progress-count"><small class="progress-number">5</small></h5>
+                                <span class="progress-label">Cuéntanos sobre tí</span>
+                            </li>
+                        </ul>
+                    </section>
+                    <div id="Registration_carousel" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div id="Registration_Generales" step="0" class="carousel-item active">
+                                <div class="container">
+                                    <div class="mb-3 py-4">
+                                        <label for="registration_fullName" class="form-label">Nombre completo</label>
+                                        <input placeholder="Nombre completo" id="registration_fullName" class="form-control" type="text">
+                                    </div>
+                                    <div class="mb-3 py-4">
+                                        <label for="registration_proTitle" class="form-label">Título profesional</label>
+                                        <input placeholder="Título profesional" id="registration_proTitle" class="form-control" type="text">
+                                    </div>
+                                    <div class="mb-3 py-4">
+                                        <label for="registration_fedRegistration" class="form-label">Cédula profesional</label>
+                                        <input placeholder="Cédula profesional" id="registration_fedRegistration" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Registration_Especialidades" step="1" class="carousel-item">
+                                <div class="container">
+                                    <div class="mb-3 py-4">
+                                        <label for="registration_speciality" class="form-label">Especialidad</label>
+                                        <input placeholder="Especialidad" id="registration_speciality" class="form-control" type="text">
+                                    </div>
+                                    <div class="mb-3 py-4">
+                                        <label for="registration_speciality_years" class="form-label">Experiencia en años</label>
+                                        <input placeholder="Experiencia en años" id="registration_speciality_years" class="form-control" type="text">
+                                    </div>
+                                    <div class="mb-3 py-4">
+                                        <label for="registration_school_speciality" class="form-label">Institución educativa</label>
+                                        <input placeholder="Institución educativa" id="registration_school_speciality" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Registration_Domicilio" step="2" class="carousel-item">
+                                <div class="container">
+                                    <div class="mb-3 py-2">
+                                        <label for="registration_address_state" class="form-label">Estado</label>
+                                        <input placeholder="Estado" id="registration_address_state" class="form-control" type="text">
+                                    </div>
+                                    <div class="mb-3 py-2">
+                                        <label for="registration_address_city" class="form-label">Ciudad</label>
+                                        <input placeholder="Ciudad" id="registration_address_state" class="form-control" type="text">
+                                    </div>
+                                    <div class="mb-3 py-2">
+                                        <label for="registration_address_municipality" class="form-label">Municipio</label>
+                                        <input placeholder="Municipio" id="registration_address_municipality" class="form-control" type="text">
+                                    </div>
+                                    <div class="mb-3 py-2">
+                                        <label for="registration_address_block" class="form-label">Colonia</label>
+                                        <input placeholder="Colonia" id="registration_address_block" class="form-control" type="text">
+                                    </div>
+                                    <div class="mb-3 py-2">
+                                        <label for="registration_address_street" class="form-label">Calle y número</label>
+                                        <input placeholder="Calle y número" id="registration_address_street" class="form-control" type="text">
+                                    </div>
+                                    <div class="mb-3 py-2">
+                                        <label for="registration_address_maps" class="form-label">Google Maps</label>
+                                        <input placeholder="Coordenadas Google Maps" id="registration_address_maps" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Registration_Experiencia" step="3" class="carousel-item">
+                                <div class="container">
+                                    <div class="mb-3 py-2">
+                                        <label for="registration_experience_place" class="form-label">Lugar</label>
+                                        <input placeholder="Institución" id="registration_experience_place" class="form-control" type="text">
+                                    </div>
+                                    <div class="mb-3 py-2">
+                                        <label for="registration_experience_position" class="form-label">Puesto</label>
+                                        <input placeholder="Puesto" id="registration_experience_position" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Registration_Domicilio" step="4" class="carousel-item">
+                                <div class="container">
+                                    <h3>Cuéntanos sobre tí</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button id="registration-next" type="button" class="btn btn-primary">Siguiente</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>

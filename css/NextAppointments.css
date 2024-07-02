@@ -1,0 +1,70 @@
+.appointments-half-hour {    
+    border-top: 0px ;               
+    min-height: 10px !important; 
+    max-height: 10px !important; 
+}
+
+.appointments-hour {
+    border-top: 1px solid black;        
+    font-size: small;    
+    min-height: 10px !important; 
+    max-height: 10px !important; 
+}
+
+.appointments-title{
+    width: 13.5% !important;
+    min-width: 13.5% !important;
+    border-left: 1px solid lightgray;    
+    height: 26px !important;
+}
+
+.appointments-td {
+    width: 13.5% !important;
+    min-width: 13.5% !important;    
+    border-left: 1px solid lightgray;
+    height: 25px !important;
+    max-height: 25px !important;
+    overflow: hidden !important;    
+}
+
+.next-appointment {
+    width: 100% !important;
+    border: 0px;    
+    background-color: var(--bs-info-bg-subtle);    
+}
+
+.appoinments {
+    width: 180px !important;        
+    color: black !important;
+    font-size: small !important;    
+    overflow: visible;    
+    z-index: 100;    
+}
+.TAgenda THead{
+    width: 100% !important;
+}
+.TAgenda tr{
+    width: 100% !important;
+    border-right: 1px solid lightgray;
+}
+#NextAppointments{
+    overflow: hidden;
+}
+#NextAppointments_body {
+    overflow: hidden;
+}
+.TAgenda tbody {
+    display: block;
+    overflow: auto;        
+    border-right: 1px solid black;        
+}
+.appointments-hour-block{
+    width: 80px !important;
+    max-width: 80px !important;
+    min-width: 80px !important;
+    position: relative;
+    overflow: hidden;
+}
+.TAgenda{
+    display: block;       
+}

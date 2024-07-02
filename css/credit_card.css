@@ -1,0 +1,82 @@
+@keyframes credit-card-background {
+    to {background: var(--brand-bg-color);}
+    from {background: var(--bg-color);}
+}
+@keyframes credit-card-plan-background {
+    to {background: var(--brand-warning);}
+    from {background: var(--bg-color);}
+}
+@keyframes credit-card-add-background {
+    to {background: var(--bg-color);}
+    from {background: var(--brand-secondary);}
+}
+
+.credit-card{
+    width: 100%;
+    border: 2px solid var(--brand-bg-color);
+    border-radius: .25rem;    
+    margin: 1rem;
+}
+.credit-card-plan{
+    width: 100%;
+    border: 2px solid var(--brand-warning);
+    border-radius: .25rem;    
+    margin: 1rem;
+}
+.credit-card-add{
+    background: var(--brand-secondary);
+    width: 100%;
+    border: 2px solid var(--brand-secondary);    
+    border-radius: .25rem;    
+    margin: 1rem;
+}
+.credit-card-link {        
+    width: 100%;   
+    height: 100%; 
+}
+.credit-card-plan i {        
+    color: var(--brand-warning);
+}
+.credit-card-add i {        
+    color: var(--bg-color);
+}
+.credit-card:hover{        
+    background: var(--brand-bg-color);
+    animation: credit-card-background .5s;
+}
+.credit-card-plan:hover{        
+    background: var(--brand-warning);
+    animation: credit-card-plan-background .5s;
+}
+.credit-card-add:hover{        
+    background: var(--bg-color);
+    animation: credit-card-add-background .5s;
+    color: var(--brand-secondary);
+}
+.credit-card-plan:hover i{
+    color: var(--bg-color);
+}
+.credit-card-add:hover h3, .credit-card-add:hover i{
+    color: var(--brand-secondary);
+}
+.credit-card .credit-card-title, .credit-card .credit-card-description {
+    background-color: transparent;
+    color: var(--brand-warning-text);
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 100%;
+}
+.credit-card-plan .credit-card-title, .credit-card-plan .credit-card-description {
+    background-color: transparent;
+    color: var(--brand-warning-text);
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 100%;
+}
+.credit-card-add .credit-card-title, .credit-card-description {
+    background-color: transparent;
+    color: var(--bg-color);
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 100%;
+}

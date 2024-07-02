@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vetsaly</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../css/user.css" />
+    <link rel="stylesheet" type="text/css" href="../css/step_wizard.css" />
+    <link rel="stylesheet" type="text/css" href="../css/credit_card.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/calendar.css" rel="stylesheet">
+    <link href="../css/Modals.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="../js/bootbox.min.js"></script>
+    <script src="../js/user.js" type="module"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" type="text/css">
+</head>
+<style type="text/css">
+    @font-face {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 700;
+        src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/poppins/700.woff2) format('woff2');
+    }
+
+
+    @font-face {
+        font-family: "Fredoka One";
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/fredokaone/regular.woff2) format('woff2');
+    }
+
+
+    @font-face {
+        font-family: "PT Serif";
+        font-style: normal;
+        font-weight: 700;
+        src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/ptserif/700.woff2) format('woff2');
+    }
+
+
+    @font-face {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 600;
+        src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/poppins/600.woff2) format('woff2');
+    }
+
+
+    @font-face {
+        font-family: "PT Serif";
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/ptserif/regular.woff2) format('woff2');
+    }
+
+
+    @font-face {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://d3syewzhvzylbl.cloudfront.net/fonts/google-fonts/poppins/regular.woff2) format('woff2');
+    }
+</style>
+
+<body>
+    <div id="ModalPet" class="modal right fade" role="dialog" data-bs-backdrop="static">
+        <div class="modal-dialog modal-lg" rol="content">
+            <div class="modal-content">
+                <div id="ModalHeader" class="modal-header">
+                    <h1>
+                        <span id="modal_title">Lucke</span>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal_pets_content">
+                        <div class="candidate-list-box card mt-4">
+                            <div class="p-4 card-body">
+                                <div class="align-items-center row">
+                                    <div class="col-auto">
+                                        <div class="candidate-list-images">
+                                            <a href="#">
+                                                <h3 class="display-4">17</h3>
+                                                <h4>MAY</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="candidate-list-content mt-3 mt-lg-0">
+                                            <h5 class="fs-19 mb-0"> <a class="primary-link" href="#">Revisión de
+                                                    rutina</a></h5>
+                                            <p class="text-muted mb-2"><i class="fa-solid fa-clock"></i> Viernes 12:30
+                                                PM - 2:00 PM</p>
+                                            <ul class="list-inline mb-0 text-muted">
+                                                <li class="list-inline-item"><i class="fa-solid fa-stethoscope"></i>
+                                                    Doctor Orlando</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
+                                            <span class="badge bg-soft-secondary fs-14 mt-1">Revisión</span>
+                                            <span class="badge bg-soft-secondary fs-14 mt-1">MédicoGeneral</span><span
+                                                class="badge bg-soft-secondary fs-14 mt-1">Monterrey</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="favorite-icon"> <a href="#"><i class="mdi mdi-heart fs-18"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="candidate-list-box card mt-4">
+                            <div class="p-4 card-body">
+                                <div class="align-items-center row">
+                                    <div class="col-auto">
+                                        <div class="candidate-list-images">
+                                            <a href="#">
+                                                <h3 class="display-4">20</h3>
+                                                <h4>MAY</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="candidate-list-content mt-3 mt-lg-0">
+                                            <h5 class="fs-19 mb-0"> <a class="primary-link" href="#">Revisión de
+                                                    peso</a></h5>
+                                            <p class="text-muted mb-2"><i class="fa-solid fa-clock"></i> Lunes 10:00 AM
+                                                - 11:00 AM</p>
+                                            <ul class="list-inline mb-0 text-muted">
+                                                <li class="list-inline-item"><i class="fa-solid fa-stethoscope"></i>
+                                                    Doctor Orlando</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1"> <span
+                                                class="badge bg-soft-secondary fs-14 mt-1">Revisión</span><span
+                                                class="badge bg-soft-secondary fs-14 mt-1">MédicoGeneral</span><span
+                                                class="badge bg-soft-secondary fs-14 mt-1">Monterrey</span></div>
+                                    </div>
+                                </div>
+                                <div class="favorite-icon"> <a href="#"><i class="mdi mdi-heart fs-18"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="PetsFileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="PetsFileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="PetsFileModalLabel">Lucke's file</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-3 pet-file-info">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-auto">
+                                    <img src="../img/lucke.jpg"
+                                        class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-block">
+                                        <span class="pet-file-data">Lucke</span>
+                                    </div>
+                                    <div class="d-block">
+                                        <span class="pet-file-value">8 años</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="nav flex-column" role="tablist">
+                                <li class="nav-item pet-file-li" role="presentation">
+                                    <a id="tab-link-general" class="pet-file-menu-item" data-bs-toggle="tab"
+                                        data-bs-target="#TabGeneral" role="tab" aria-controls="TabGeneral"
+                                        aria-selected="true"><i class="fa-solid fa-house-user"></i> Información
+                                        general</a>
+                                </li>
+                                <li class="nav-item pet-file-li" role="presentation">
+                                    <a id="tab-link-general" class="pet-file-menu-item" data-bs-toggle="tab"
+                                        data-bs-target="#TabGeneral" role="tab" aria-controls="TabGeneral"
+                                        aria-selected="true"><i class="fa-solid fa-syringe"></i> Exámenes médicos</a>
+                                </li>
+                                <li class="nav-item pet-file-li" role="presentation">
+                                    <a id="tab-link-food" class="pet-file-menu-item" data-bs-toggle="tab"
+                                        data-bs-target="#TabAlimentacion" role="tab" aria-controls="TabAlimentacion"
+                                        aria-selected="false"><i class="fa-solid fa-bowl-food"></i> Alimentación</a>
+                                </li>
+                                <li class="nav-item pet-file-li" role="presentation">
+                                    <a id="tab-link-vaccines" class="pet-file-menu-item" data-bs-toggle="tab"
+                                        data-bs-target="#TabVaccines" role="tab" aria-controls="TabVaccines"
+                                        aria-selected="false"><i class="fa-solid fa-shield-virus"></i> Vacunas</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-9 pet-file-card-section">
+                            <div class="tab-content">
+                                <div id="TabGeneral" class="tab-pane fade show active" role="tabpanel"
+                                    aria-labelledby="tab-link-general">
+                                    <h1>
+                                        Información general
+                                    </h1>
+                                    <div id="pet-file-general" class="overflow-auto">
+                                        <div class="candidate-list-box card mt-4">
+                                            <div class="p-4 card-body">
+                                                <div class="align-items-center mt-2 row">
+                                                    <div class="col-4">
+                                                        <img src="../img/lucke.jpg"
+                                                            class="img-fluid rounded-circle mb-3 img-thumbnail-bigger shadow-sm">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <span class="pet-file-value">Esta foto aparecerá siempre junto
+                                                            al nombre de tu mascota</span>
+                                                        <br />
+                                                        <button class="btn btn-outline-primary">Cambiar foto</button>
+                                                    </div>
+                                                    <div class="col-lg-auto">
+                                                        <a href="#"></a>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div class="align-items-center mt-2 row">
+                                                    <div class="col-5">
+                                                        <span class="pet-file-data">Nombre:</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <span class="pet-file-value">Lucke</span>
+                                                    </div>
+                                                    <div class="col-lg-1">
+                                                        <a href="#">></a>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div class="align-items-center mt-2 row">
+                                                    <div class="col-5">
+                                                        <span class="pet-file-data">Fecha de
+                                                            nacimiento(Cumpleaños):</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <span class="pet-file-value">11 abril 1986</span>
+                                                    </div>
+                                                    <div class="col-lg-1">
+                                                        <a href="#">></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="candidate-list-box card mt-4">
+                                            <div class="p-4 card-body">
+                                                <div class="align-items-center mt-2 row">
+                                                    <div class="col-5">
+                                                        <span class="pet-file-data">Especie:</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <span class="pet-file-value">Perro</span>
+                                                    </div>
+                                                    <div class="col-lg-1">
+                                                        <a href="#">></a>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div class="align-items-center mt-2 row">
+                                                    <div class="col-5">
+                                                        <span class="pet-file-data">Raza:</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <span class="pet-file-value">Jack Rusell</span>
+                                                    </div>
+                                                    <div class="col-lg-1">
+                                                        <a href="#">></a>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div class="align-items-center mt-2 row">
+                                                    <div class="col-5">
+                                                        <span class="pet-file-data">Tipo:</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <span class="pet-file-value">Rat Terrier</span>
+                                                    </div>
+                                                    <div class="col-lg-1">
+                                                        <a href="#">></a>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div class="align-items-center mt-1 row">
+                                                    <div class="col-5">
+                                                        <span class="pet-file-data">Edad:</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <span class="pet-file-value">8 años</span>
+                                                    </div>
+                                                    <div class="col-lg-1">
+                                                        <a href="#">></a>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div class="align-items-center mt-1 row">
+                                                    <div class="col-5">
+                                                        <span class="pet-file-data">Peso:</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <span class="pet-file-value">5 kgs</span>
+                                                    </div>
+                                                    <div class="col-lg-1">
+                                                        <a href="#">></a>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div class="align-items-center mt-1 row">
+                                                    <div class="col-5">
+                                                        <span class="pet-file-data">Sexo:</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <span class="pet-file-value">Macho</span>
+                                                    </div>
+                                                    <div class="col-lg-1">
+                                                        <a href="#">></a>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div class="align-items-center mt-1 row">
+                                                    <div class="col-5">
+                                                        <span class="pet-file-data">Caracter:</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <span class="pet-file-value">Nervioso/Agresivo</span>
+                                                    </div>
+                                                    <div class="col-lg-1">
+                                                        <a href="#">></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="TabAlimentacion" class="tab-pane fade" role="tabpanel"
+                                    aria-labelledby="tab-link-food">
+                                    <h1>
+                                        Alimentación
+                                    </h1>
+                                    <div class="candidate-list-box card mt-4">
+                                        <div class="p-4 card-body">
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Dieta base:</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">Croquetas de salmón marca Cosco</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Horario de primer comida:</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">7:30 am</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Horario de segunda comida:</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">9:00 PM</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Horario de tercera comida:</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value"></span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Horario de cuarta comida:</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value"></span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Horario de quinta comida:</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value"></span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="TabVaccines" class="tab-pane fade" role="tabpanel"
+                                    aria-labelledby="tab-link-vaccines">
+                                    <h1>
+                                        Vacunas
+                                    </h1>
+                                    <div class="candidate-list-box card mt-4">
+                                        <div class="p-4 card-body">
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Poli/Traquea/Rabia (Refuerzo
+                                                        anual)</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">&#10004; 10 marzo 2024</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Antirrábica (20 a 24 semanas):</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">&#10004; 02 marzo 2024</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Traqueobronquitis (20 a 24
+                                                        semanas):</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">&#10004; 02 marzo 2024</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Traqueobronquitis (16 a 18
+                                                        semanas):</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">&#10004; 02 marzo 2024</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Polivalente canina (12 a 14
+                                                        semanas):</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">&#10004; 02 marzo 2024</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Polivalente canina (8 a 10
+                                                        semanas):</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">&#10004; 02 marzo 2024</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Polivalente canina (6 a 8
+                                                        semanas):</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">&#10004; 02 marzo 2024</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="AppointmentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="AppointmentLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="AppointmentLabel">Revisión de rutina</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-3 pet-file-info">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-auto d-flex">
+                                    <div class="cal">
+                                        <div class="month">Mayo</div>
+                                        <div class="date">17</div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="d-block">
+                                        <span class="pet-file-data"> De: 12:30 PM</span>
+                                    </div>
+                                    <div class="d-block">
+                                        <span class="pet-file-data">a: 2:00 PM</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <ul class="nav flex-column" role="tablist">
+                                <li class="nav-item pet-file-li" role="presentation">
+                                    <a id="tab-link-generalcita" class="pet-file-menu-item" data-bs-toggle="tab"
+                                        data-bs-target="#TabGeneralCita" role="tab" aria-controls="TabGeneralCita"
+                                        aria-selected="true"><i class="fa-solid fa-house-user"></i> Información general
+                                        de la cita</a>
+                                </li>
+                                <li class="nav-item pet-file-li" role="presentation">
+                                    <a id="tab-link-notes" class="pet-file-menu-item" data-bs-toggle="tab"
+                                        data-bs-target="#TabNotes" role="tab" aria-controls="TabNotes"
+                                        aria-selected="false"><i class="fa-solid fa-notes-medical"></i>
+                                        Observaciones</a>
+                                </li>
+                                <li class="nav-item pet-file-li" role="presentation">
+                                    <a id="tab-link-recipe" class="pet-file-menu-item" data-bs-toggle="tab"
+                                        data-bs-target="#TabRecipe" role="tab" aria-controls="TabRecipe"
+                                        aria-selected="false"><i class="fa-solid fa-list"></i> Receta</a>
+                                </li>
+                                <li class="nav-item pet-file-li" role="presentation">
+                                    <a id="tab-link-studies" class="pet-file-menu-item" data-bs-toggle="tab"
+                                        data-bs-target="#TabStudies" role="tab" aria-controls="TabStudies"
+                                        aria-selected="false"><i class="fa-solid fa-vials"></i> Estudios</a>
+                                </li>
+                                <li class="nav-item pet-file-li" role="presentation">
+                                    <a id="tab-link-attachments" class="pet-file-menu-item" data-bs-toggle="tab"
+                                        data-bs-target="#TabAttachments" role="tab" aria-controls="TabAttachments"
+                                        aria-selected="false"><i class="fa-solid fa-images"></i> Archivos adjuntos</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-9 pet-file-card-section">
+                            <div class="tab-content">
+                                <div id="TabGeneralCita" class="tab-pane fade show active" role="tabpanel"
+                                    aria-labelledby="tab-link-generalcita">
+                                    <h1>
+                                        Información general
+                                    </h1>
+                                    <div class="candidate-list-box card mt-4">
+                                        <div class="p-4 card-body">
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-3">
+                                                    <img src="../img/lucke.jpg"
+                                                        class="img-fluid rounded-circle mb-3 img-thumbnail-bigger shadow-sm">
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="d-block">
+                                                        <span class="pet-file-data">Lucke</span>
+                                                    </div>
+                                                    <div class="d-block">
+                                                        <span class="pet-file-value">8 años</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-auto">
+                                                    <a href="#" pet-id="1" data-bs-toggle="modal"
+                                                        data-bs-target="#PetsFileModal" class="text-primary"
+                                                        title="Expediente">Ver expediente</a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Motivo de la cita:</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">Revisión de rutina</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Tipo de cita:</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value"><i class="fa-solid fa-video"></i>
+                                                        Videollamada</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="candidate-list-box card mt-4">
+                                        <div class="p-4 card-body">
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-3">
+                                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                        class="img-fluid rounded-circle mb-3 img-thumbnail-bigger shadow-sm">
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="d-block">
+                                                        <span class="pet-file-data">Med. Vet. Orlando Ramirez</span>
+                                                    </div>
+                                                    <div class="d-block">
+                                                        <span class="pet-file-value">Med.Vet</span>
+                                                    </div>
+                                                    <div class="d-block">
+                                                        <span class="pet-file-value">Ranking actual: 4.7 </span>
+                                                    </div>
+                                                    <div class="d-block">
+                                                        <i class="fa-solid fa-star"></i><i
+                                                            class="fa-solid fa-star"></i><i
+                                                            class="fa-solid fa-star"></i><i
+                                                            class="fa-solid fa-star"></i><i
+                                                            class="fa-regular fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-auto">
+                                                    <a href="#" pet-id="1" data-bs-toggle="modal"
+                                                        data-bs-target="#VetFileModal" class="text-primary"
+                                                        title="Expediente">Ver expediente</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="TabNotes" class="tab-pane fade" role="tabpanel"
+                                    aria-labelledby="tab-link-food">
+                                    <h1>
+                                        Observaciones
+                                    </h1>
+                                    <div class="candidate-list-box card mt-4">
+                                        <div class="p-4 card-body">
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Observaciones del dueño:</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value">Normalmente es un perro muy activo,
+                                                        pero últimamente ha estado aletargado, durmiendo mucho durante
+                                                        el día y ya no juega tanto como antes. A la hora de comer sí
+                                                        tiene el mismo ánimo de siempre, pero luego de eso se dedica a
+                                                        dormir.</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="candidate-list-box card mt-4">
+                                        <div class="p-4 card-body">
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-5">
+                                                    <span class="pet-file-data">Diagnóstico:</span>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <span class="pet-file-value"></span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="TabRecipe" class="tab-pane fade" role="tabpanel"
+                                    aria-labelledby="tab-link-recipe">
+                                    <h1>
+                                        Receta
+                                    </h1>
+                                    <div class="candidate-list-box card mt-4">
+                                        <div class="p-4 card-body">
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-3">
+                                                    <span class="pet-file-data">Meloxicam(100 mgs)</span>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <span class="pet-file-value">1 pastilla</span>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <span class="pet-file-value">Cada 12 horas (con cada comida)</span>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <span class="pet-file-value">Por 5 días</span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="TabStudies" class="tab-pane fade" role="tabpanel"
+                                    aria-labelledby="tab-link-studies">
+                                    <h1>
+                                        Estudios
+                                    </h1>
+                                    <div class="candidate-list-box card mt-4">
+                                        <div class="p-4 card-body">
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-3">
+                                                    <span class="pet-file-data">Análisis sanguíneo</span>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <span class="pet-file-value"></span>
+                                                </div>
+                                                <div class="col-lg-1">
+                                                    <a href="#">></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="TabAttachments" class="tab-pane fade" role="tabpanel"
+                                    aria-labelledby="tab-link-attachments">
+                                    <h1>
+                                        Archivos adjuntos
+                                    </h1>
+                                    <div class="candidate-list-box card mt-4">
+                                        <div class="p-4 card-body">
+                                            <div class="align-items-center mt-2 row">
+                                                <div class="col-auto">
+                                                    <a href="#"><i class="fa-regular fa-file-pdf"></i> Análisis
+                                                        sanguíneo</a>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#"><i class="fa-regular fa-image"></i> Lucke 1</a>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#"><i class="fa-regular fa-image"></i> Lucke 2</a>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#"><i class="fa-regular fa-image"></i> Lucke 3</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="VetFileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="VetFileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <a id="VetModal_carousel_prev" type="button" data-bs-target="#VetModal_carousel" data-bs-slide="prev"><i class="fa-solid fa-arrow-left"></i></a>
+                        <span id="VetFileModalLabel">Med. Vet. Orlando Ramirez</span>
+                        
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <section id="booking_steps" class="step-wizard container" style="display: none;">
+                            <ul class="step-wizard-list">
+                                <li id="booking_step_1" class="step-wizard-item">
+                                    <h5 class="progress-count"><small class="progress-number">1</small></h5>
+                                    <span class="progress-label">Mascota</span>
+                                </li>
+                                <li id="booking_step_2" class="step-wizard-item">
+                                    <h5 class="progress-count"><small class="progress-number">2</small></h5>
+                                    <span class="progress-label">Motivo</span>
+                                </li>
+                                <li id="booking_step_3" class="step-wizard-item">
+                                    <h5 class="progress-count"><small class="progress-number">3</small></h5>
+                                    <span class="progress-label">Descripción</span>
+                                </li>
+                                <li id="booking_step_4" class="step-wizard-item">
+                                    <h5 class="progress-count"><small class="progress-number">4</small></h5>
+                                    <span class="progress-label">Confirma</span>
+                                </li>
+                                <li id="booking_step_5" class="step-wizard-item">
+                                    <h5 class="progress-count"><small class="progress-number">5</small></h5>
+                                    <span class="progress-label">Ir a pago</span>
+                                </li>
+                            </ul>
+                    </section>
+                    <div id="VetModal_carousel" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div id="carousel_main" step="0" class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-auto pet-file-info grid gap- row-gap-3">
+                                        <div class="row d-flex align-items-center p-2">
+                                            <div class="col-auto">
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                    class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="d-block">
+                                                    <span class="pet-file-data">Med. Vet. Orlando Ramirez</span>
+                                                </div>
+                                                <div class="d-block">
+                                                    <span class="pet-file-value">Médico Veterinario</span>
+                                                </div>
+                                                <div class="d-block">
+                                                    <span class="pet-file-value">Monterrey, Nuevo León</span>
+                                                </div>
+                                                <div class="d-block">
+                                                    <span class="pet-file-value">Ranking actual: 4.7 </span>
+                                                </div>
+                                                <div class="d-block">
+                                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                                        class="fa-regular fa-star"></i>
+                                                </div>
+                                                <div class="d-block">
+                                                    <a href="#" class="text-primary">47 opiniones</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="row nav flex-column p-2" role="tablist">
+                                            <li class="nav-item pet-file-li" role="presentation">
+                                                <a id="tab-link-general" class="pet-file-menu-item" data-bs-toggle="tab"
+                                                    data-bs-target="#TabGeneral" role="tab" aria-controls="TabGeneral"
+                                                    aria-selected="true"><i class="fa-solid fa-house-user"></i>
+                                                    Información general</a>
+                                            </li>
+                                            <li class="nav-item pet-file-li" role="presentation">
+                                                <a id="tab-link-general" class="pet-file-menu-item" data-bs-toggle="tab"
+                                                    data-bs-target="#TabGeneral" role="tab" aria-controls="TabGeneral"
+                                                    aria-selected="true"><i class="fa-solid fa-map-location"></i>
+                                                    Domicilio</a>
+                                            </li>
+                                            <li class="nav-item pet-file-li" role="presentation">
+                                                <a id="tab-link-food" class="pet-file-menu-item" data-bs-toggle="tab"
+                                                    data-bs-target="#TabAlimentacion" role="tab"
+                                                    aria-controls="TabAlimentacion" aria-selected="false"><i
+                                                        class="fa-solid fa-graduation-cap"></i> Experiencia
+                                                    profesional</a>
+                                            </li>
+                                            <li class="nav-item pet-file-li" role="presentation">
+                                                <a id="tab-link-vaccines" class="pet-file-menu-item"
+                                                    data-bs-toggle="tab" data-bs-target="#TabVaccines" role="tab"
+                                                    aria-controls="TabVaccines" aria-selected="false"><i
+                                                        class="fa-solid fa-comment"></i> Opiniones</a>
+                                            </li>
+                                            <li class="nav-item pet-file-li" role="presentation">
+                                                <a id="tab-link-vaccines" class="pet-file-menu-item"
+                                                    data-bs-toggle="tab" data-bs-target="#TabVaccines" role="tab"
+                                                    aria-controls="TabVaccines" aria-selected="false"><i
+                                                        class="fa-solid fa-clipboard-question"></i> Preguntas
+                                                    contestadas</a>
+                                            </li>
+                                            <li class="nav-item pet-file-li" role="presentation">
+                                                <a id="tab-link-vaccines" class="pet-file-menu-item"
+                                                    data-bs-toggle="tab" data-bs-target="#TabVaccines" role="tab"
+                                                    aria-controls="TabVaccines" aria-selected="false"><i
+                                                        class="fa-solid fa-blog"></i> Publicaciones</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-6 pet-file-card-section">
+                                        <div class="tab-content">
+                                            <div id="TabGeneral" class="tab-pane fade show active" role="tabpanel"
+                                                aria-labelledby="tab-link-general">
+                                                <h1>
+                                                    Información general
+                                                </h1>
+                                                <div id="pet-file-general" class="overflow-auto">
+                                                    <div class="candidate-list-box card mt-4">
+                                                        <div class="p-4 card-body">
+                                                            <div class="align-items-center mt-2 row">
+                                                                <div class="col-4">
+                                                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                                        class="img-fluid rounded-circle mb-3 img-thumbnail-bigger shadow-sm">
+
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <span class="pet-file-value">Esta foto aparecerá
+                                                                        para para identificarlo</span>
+                                                                    <br />
+                                                                    <button class="btn btn-outline-primary">Cambiar
+                                                                        foto</button>
+                                                                </div>
+                                                                <div class="col-lg-auto">
+                                                                    <a href="#"></a>
+                                                                </div>
+                                                            </div>
+                                                            <hr />
+                                                            <div class="align-items-center mt-2 row">
+                                                                <div class="col-5">
+                                                                    <span class="pet-file-data">Nombre:</span>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <span class="pet-file-value">Med. Vet. Orlando
+                                                                        Ramirez</span>
+                                                                </div>
+                                                                <div class="col-lg-1">
+                                                                    <a href="#">></a>
+                                                                </div>
+                                                            </div>
+                                                            <hr />
+                                                            <div class="align-items-center mt-2 row">
+                                                                <div class="col-5">
+                                                                    <span class="pet-file-data">No. de cédula
+                                                                        profesional:</span>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <span class="pet-file-value">123654abc</span>
+                                                                </div>
+                                                                <div class="col-lg-1">
+                                                                    <a href="#">></a>
+                                                                </div>
+                                                            </div>
+                                                            <hr />
+                                                            <div class="align-items-center mt-2 row">
+                                                                <div class="col-5">
+                                                                    <span class="pet-file-data">Título:</span>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <span class="pet-file-value">Médico veterinario
+                                                                        zootecnista</span>
+                                                                </div>
+                                                                <div class="col-lg-1">
+                                                                    <a href="#">></a>
+                                                                </div>
+                                                            </div>
+                                                            <hr />
+                                                            <div class="align-items-center mt-2 row">
+                                                                <div class="col-5">
+                                                                    <span class="pet-file-data">Especialidad:</span>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <span class="pet-file-value">Especialista en
+                                                                        animales de compañía domésticos</span>
+                                                                </div>
+                                                                <div class="col-lg-1">
+                                                                    <a href="#">></a>
+                                                                </div>
+                                                            </div>
+                                                            <hr />
+                                                            <div class="align-items-center mt-2 row">
+                                                                <div class="col-5">
+                                                                    <span class="pet-file-data">Experiencia:</span>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <span class="pet-file-value">16 años</span>
+                                                                </div>
+                                                                <div class="col-lg-1">
+                                                                    <a href="#">></a>
+                                                                </div>
+                                                            </div>
+                                                            <hr />
+                                                            <div class="align-items-center mt-2 row">
+                                                                <div class="col-5">
+                                                                    <span class="pet-file-data">Ubicación:</span>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <span class="pet-file-value">Monterrey, Nuevo
+                                                                        León</span>
+                                                                </div>
+                                                                <div class="col-lg-1">
+                                                                    <a href="#">></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="TabAlimentacion" class="tab-pane fade" role="tabpanel"
+                                                aria-labelledby="tab-link-food">
+                                                <h1>
+                                                    Alimentación
+                                                </h1>
+                                                <div class="candidate-list-box card mt-4">
+                                                    <div class="p-4 card-body">
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Dieta base:</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value">Croquetas de salmón marca
+                                                                    Cosco</span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Horario de primer
+                                                                    comida:</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value">7:30 am</span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Horario de segunda
+                                                                    comida:</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value">9:00 PM</span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Horario de tercera
+                                                                    comida:</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value"></span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Horario de cuarta
+                                                                    comida:</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value"></span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Horario de quinta
+                                                                    comida:</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value"></span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="TabVaccines" class="tab-pane fade" role="tabpanel"
+                                                aria-labelledby="tab-link-vaccines">
+                                                <h1>
+                                                    Vacunas
+                                                </h1>
+                                                <div class="candidate-list-box card mt-4">
+                                                    <div class="p-4 card-body">
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Poli/Traquea/Rabia (Refuerzo
+                                                                    anual)</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value">&#10004; 10 marzo
+                                                                    2024</span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Antirrábica (20 a 24
+                                                                    semanas):</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value">&#10004; 02 marzo
+                                                                    2024</span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Traqueobronquitis (20 a 24
+                                                                    semanas):</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value">&#10004; 02 marzo
+                                                                    2024</span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Traqueobronquitis (16 a 18
+                                                                    semanas):</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value">&#10004; 02 marzo
+                                                                    2024</span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Polivalente canina (12 a 14
+                                                                    semanas):</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value">&#10004; 02 marzo
+                                                                    2024</span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Polivalente canina (8 a 10
+                                                                    semanas):</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value">&#10004; 02 marzo
+                                                                    2024</span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="align-items-center mt-2 row">
+                                                            <div class="col-5">
+                                                                <span class="pet-file-data">Polivalente canina (6 a 8
+                                                                    semanas):</span>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <span class="pet-file-value">&#10004; 02 marzo
+                                                                    2024</span>
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <a href="#">></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="book_appointment_pet" step="1" class="carousel-item">                                                                
+                                <div id="book_appointment_pet_row" class="row d-flex justify-content-center">                                   
+                                </div>
+                            </div>
+                            <div id="book_appointment_synthoms" class="carousel-item synthoms-item" step="2">                                
+                            </div>
+                            <div id="book_appointment_description" step="3" class="carousel-item">
+                                <div class="container">
+                                    <div class="row book-appointment-control mb-3 book-appointment d-flex align-items-center justify-content-center">
+                                        <div class="row d-block py-5">
+                                            <div class="input-group d-flex justify-content-center">
+                                                <input placeholder="Breve descripción" id="book_appointment_subject" class="form-control" type="text">
+                                            </div>
+                                        </div>                                        
+                                        <div class="row d-block py-5">
+                                            <div class="input-group d-flex justify-content-center">
+                                                <textarea id="book_appointment_comments" class="form-control" placeholder="Observaciones adicionales"
+                                                    aria-label="With textarea"></textarea>
+                                            </div>
+                                        </div>                                        
+                                        <div class="row d-block py-5">
+                                            <div class="input-group d-flex justify-content-center">
+                                                <h1>
+                                                    <button id="book_appointment_to_confirm" class="btn btn-primary btn-lg mb-3">Confirma tu
+                                                        cita</button>
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="book_appointment_confirmation" step="4" class="carousel-item">
+                                <div class="container">                                    
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-5 text-end">
+                                                <h1 id="book_appointment_type_selected_ico">                                                    
+                                                </h1>
+                                            </div>
+                                            <div class="col-7">
+                                                <h3 class="appointment-confirm-data">
+                                                    <a class="appointment-confirm-button">
+                                                        <span id="book_appointment_date_selected"></span><span id="book_appointment_time_selected" class="text-danger"></span>
+                                                    </a>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-5 text-end">
+                                                <h1>
+                                                    <i id="book_appointment_pet_selected_ico" class="fa-solid"></i>
+                                                </h1>
+                                            </div>
+                                            <div class="col-7">
+                                                <div id="book_appointment_pet_selected">
+
+                                                </div>             
+                                            </div>                          
+                                        </div>
+                                        <hr/>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-5 text-end">
+                                                <h1>
+                                                    <i id="book_appointment_synthom_selected_ico" class="fa-solid"></i>
+                                                </h1>
+                                            </div>
+                                            <div class="col-7">
+                                                <h3 id="book_appointment_motive_confirm" class="appointment-confirm-data d-flex align-items-center">
+                                                </h3>
+                                            </div>
+                                        </div>    
+                                        <hr/>
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-5 text-end">
+                                                <h1>
+                                                    <i class="fa-solid fa-user-doctor"></i>
+                                                </h1>
+                                            </div>
+                                            <div class="col-7">
+                                                <h3 id="book_appointment_doctor_confirm" class="appointment-confirm-data d-flex align-items-center">
+                                                </h3>
+                                            </div>
+                                        </div>   
+                                        <hr/> 
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col-5 text-end">
+                                                <h1>
+                                                    <i class="fa-solid fa-note-sticky"></i>
+                                                </h1>
+                                            </div>
+                                            <div class="col-7">
+                                                <h3 id="book_appointment_subject_confirm" class="appointment-confirm-data d-flex align-items-center">
+                                                </h3>
+                                            </div>
+                                        </div>    
+                                        <hr/>                                                                 
+                                        <div class="row d-block">
+                                                <h1 class="d-flex justify-content-center">
+                                                    <button id="book_appointment_to_step4" class="btn btn-primary btn-lg mb-3">Ir al pago</button>
+                                                </h1>
+                                        </div>                                             
+                                </div>
+                            </div>
+                            <div id="book_appointment_payment" step="5" class="carousel-item">
+                                <div class="container grid">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <div id="booking_appointment_payment_methods" class="row">                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-7 d-flex justify-content-center align-items-center">
+                                            <div id="payment_details" class="payment_details content">                                                   
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="available_card" class="card">
+                        <div class="card-header header-appointment">
+                            Agenda tu cita
+                        </div>
+                        <div class="card-body">
+                            <div class="align-items-center mt-2 row">
+                                <ul class="nav nav-tabs w-100">
+                                    <li class="nav-item w-50 d-flex justify-content-center">
+                                      <a id="booking_appointment_type_videocall" class="nav-link active w-100 text-center" aria-current="page" href="#"><i class="fa-solid fa-video"></i> Videollamada</a>
+                                    </li>
+                                    <li class="nav-item w-50 d-flex justify-content-center">
+                                        <a id="booking_appointment_type_present" class="nav-link w-100 text-center" aria-current="page" href="#"><i class="fa-solid fa-house"></i> Presencial</a>
+                                    </li>                                    
+                                  </ul>
+                            </div>
+                            <div class="align-items-center mt-2 row">
+                                <span class="pet-file-data">Selecciona un horario disponible</span>
+                                <div class="container">
+                                    <div id="carouselDates" class="carousel slide">
+                                        <div class="row">
+                                            <div class="col-auto w-100 d-flex align-items-center">
+                                                <div id="carousel_agenda" class="carousel-inner">
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <button id="carousel_prev" class="carousel-control-prev text-primary"
+                                                    type="button" data-bs-target="#carouselDates" data-bs-slide="prev">
+                                                    <i class="fa-solid fa-arrow-left"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-auto">
+                                                <button id="carousel_next" class="carousel-control-next text-primary"
+                                                    type="button" data-bs-target="#carouselDates" data-bs-slide="next">
+                                                    <i class="fa-solid fa-arrow-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-100">
+                                        <!-- Aquí se crearán los botones para las citas disponibles -->
+                                        <div id="AvailableSlots w-100">
+                                            <div id="availability_slots">
+                                                <div id="videocall-layer" class="row p-2 active"></div>
+                                                <div id="present-layer" class="row p-2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                        <div id="toast_appointments_modal" class="toast hide " role="alert" aria-live="assertive" aria-atomic="true">
+                          <div class="toast-header bg-success">
+                            <i class="fa-regular fa-thumbs-up"></i>
+                            <small>Operación exitosa</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                          </div>
+                          <div class="toast-body">
+                            <span class="text-success">Se creó la cita</span>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-bgbrand">
+        <div class="container-fluid">
+            <h1><a class="navbar-brand mb-0" href="#"><img id="image-34afac11"
+                        src="https://d1yei2z3i6k35z.cloudfront.net/8163742/666773c3018e1_vetsaly_logo.svg" width="180"
+                        loading="lazy" class="sc-jrIrqw kXjIrw"></a></h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-house"></i>
+                            Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa-solid fa-book"></i> Directorio de Vets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa-solid fa-book"></i> Directorio de clínicas Vets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><i class="fa-solid fa-blog"></i> Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><i class="fa-solid fa-clipboard-question"></i> Q&A</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"><i class="fa-solid fa-users-line"></i> Acerca de nosotros</a>
+                    </li>
+                </ul>
+                <ul class="px-4 navbar-nav me-auto mb-2 mb-lg-0 gap-5">
+                    <li>
+                        <h5 class="px-4">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false" id="LoggedUserName">
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <h5 id="UserSpan"></h5>
+                                            <h5 id="EmailSpan"></h5>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Ver mi perfil</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </h5>
+                    </li>
+                    <li class="nav-item">
+                        <h5><a class="nav-link" onclick="prompt_register()">Cerrar sesión</a></h5>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="mainBrandText">
+        <h1>Mis mascotas</h1>
+        <h3>
+            Lugar aquí para mis mascotas
+        </h3>
+        <div class="container py-5">
+            <div class="row text-center" id="pets_div">
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="mainBrandText">
+        <h1>Mis consultas</h1>
+        <h3>
+            Lugar aquí para mis consultas pendientes y pasadas
+        </h3>
+        <div id="Appointments" class="container accordion">
+        </div>
+    </section>
+    <hr>
+</body>
+
+</html>

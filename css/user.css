@@ -1,0 +1,429 @@
+@keyframes fadein {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+@keyframes fadeout {
+    0% {opacity: 1}
+    100% {opacity: 0}
+}
+@keyframes fadein_5 {
+    0% {opacity: 0.5}
+    100% {opacity: 1}
+}
+@keyframes fadeout_5 {
+    0% {opacity: 1}
+    100% {opacity: 0.5}
+}
+
+
+.btn-danger{    
+    height: 80px !important;   
+}
+
+.login button{
+    width: 60%;
+}
+
+.login-footer button{
+    background-color: var(--brand-bg-color);
+    width: 100%;
+}
+
+.login-footer button:hover{
+    background-color: var(--brand-bg-light-color);
+}
+
+.login-footer button:after {
+    background-color: var(--brand-bg-light-color);
+}
+
+.login-footer button:active:after {
+    background-color: var(--brand-bg-light-color);
+}
+
+.login-footer button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .login-footer button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .login-footer button:hover span {
+    padding-right: 25px;
+  }
+  
+  .login-footer button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+ .mainBrandText h1{
+    color:var(--brand-bg-text-oposite-color) !important;
+    font-size: 6vw !important;
+    font-family: "Poppins";
+}
+
+.mainBrandText h3,.mainBrandText h5, .navbar-collapse h5 {
+    color:var(--brand-bg-text-oposite-color) !important;   
+}
+
+.pet img{    
+        border-radius: 50%;          
+        border: 1px solid gray;    
+        padding: .25rem;
+}
+
+.img-thumbnail {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: 100px !important;    
+    width: 100px !important;    
+}
+
+.img-thumbnail-bigger {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 150%;
+    height: 150px !important;    
+    width: 150px !important;    
+}
+
+.img-thumbnail-smaller {
+    padding: .25rem;
+    background-color: #fff;
+    border: .2px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: 60px !important;    
+    width: 60px !important;    
+}
+
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.row-striped:nth-of-type(odd){
+    background-color: #efefef;
+    border-left: 4px #000000 solid;
+  }
+  
+  .row-striped:nth-of-type(even){
+    background-color: #ffffff;
+    border-left: 4px #efefef solid;
+  }
+  
+  .row-striped {
+      padding: 15px 0;
+}
+
+.display-4{
+    color:var(--brand-bg-text-oposite-color) !important;
+  }
+
+
+.card {
+    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+
+.avatar-md {
+    height: 5rem;
+    width: 5rem;
+}
+
+.fs-19 {
+    font-size: 19px;
+}
+
+.primary-link {
+    color: var(--brand-bg-dark-color) !important;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.bookmark-post .favorite-icon a, .job-box.bookmark-post .favorite-icon a {
+    background-color: #da3746;
+    color: #fff;
+    border-color: danger;
+}
+.favorite-icon a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #eff0f2;
+    border-radius: 6px;
+    color: rgba(173,181,189,.55);
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+
+.candidate-list-box .favorite-icon {
+    position: absolute;
+    right: 22px;
+    top: 22px;
+}
+.fs-14 {
+    font-size: 14px;
+}
+.bg-soft-secondary {
+    background-color: rgba(116,120,141,.15)!important;
+    color: #74788d!important;
+}
+
+.mt-1 {
+    margin-top: 0.25rem!important;
+}
+
+.pet-file-info {
+    background-color: var(-brand-bg-color);
+}
+
+.pet-file-menu-item {
+    color:var(--gray-color) !important;
+    margin-top: 20px !important;    
+}
+
+.pet-file-card-section h1{
+    color: var(--brand-bg-dark-color) !important;
+}
+
+.pet-file-image {
+    margin-top: 13px !important;
+    margin-bottom: 13px !important;
+    width: 10vw!important;
+    height: 25vh!important;
+}
+
+.pet-file-data{    
+    color:var(--brand-warning-text) !important;
+    font-size: .8vw !important;
+    font-family: "Poppins";    
+}
+
+.pet-file-value{
+    color:var(--brand-bg-dark-color) !important;    
+    font-size: .8vw !important;
+    font-family: "Poppins";
+}
+
+.pet-file-li{
+    margin-bottom: 20px !important;
+}
+
+
+a:link, a:visited {
+    text-decoration: none !important;
+}
+
+a:visited {
+    text-decoration: none !important;
+}
+
+a{    
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.accordion-item{
+    border: none !important;
+}
+
+.d-block {
+    margin-left: 10px !important;
+}
+
+.modal-content {
+    border-radius: 10px !important;
+  }
+
+.header-appointment{
+    background-color: var(--brand-warning) !important;    
+    color: var(--brand-warning-text) !important;        
+}
+
+.dropdown-menu{
+    width: 100%;
+    background-color: var(--brand-bg-text-color) !important;
+}
+
+/* .dropdown-item {
+    background-color: inherit !important;
+} */
+
+.fa-star {
+    color: var(--gold-color);
+}
+
+.g-col-1{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+small {
+    font-size: smaller !important;
+}
+
+.date-button-empty {
+    border-radius: 2px;
+    border: 0px;
+    width: 100%;
+    background-color: inherit !important;
+    color: var(--brand-bg-color) !important;
+    margin-bottom: 10px;
+}
+
+.date-button-value {
+    border-radius: 2px;
+    border: 0px;
+    width: 100%;
+    background-color: var(--bg-color) !important;
+    color: var(--brand-bg-color) !important;
+    margin-bottom: 10px;
+}
+
+.d-block-hidden {
+    margin-left: 10px !important;
+    display: none !important;
+}
+
+.d-block-vissible {
+    margin-left: 10px !important;
+    display: block !important;
+}
+
+.carousel-control-next-icon{
+    color: blue;
+}
+
+.slot{    
+    padding-right: 20px !important;
+    padding-left: 20px !important;    
+}
+
+.availability-fade-out {
+    opacity: 0;
+    animation: fadeout .5s;
+}
+
+
+.AvailableSlots {
+    width: 100% !important;
+}
+
+.available-slot {
+    box-shadow: 0 5px 5px 0 rgb(0 0 0 / 15%);   
+}
+
+.slot {
+    opacity: 1;
+    animation: fadein .5s;
+}
+
+.book-appointment{
+    margin-right: 50px;
+}
+.book-appointment label{    
+    font-size: 2rem;
+}
+.book-appointment input{    
+    font-size: 2rem;
+}
+.book-appointment textarea{    
+    font-size: 2rem;
+}
+
+
+#available_card {
+    position: absolute;
+    right: 2px !important;
+    top: 0px !important;
+    width: 25%;
+}
+
+.book-appointment-pet-card{
+    height: 25vh !important;
+    width: 12vw;
+    display:grid !important;   
+}
+.book-appointment-pet-card-mini{    
+    width: 100% !important;
+    display:grid !important;   
+}
+
+.synthoms {
+    height: 100% !important;
+}
+.synthoms-item {
+    height: 100% !important;
+}
+.card .card-footer {
+    background-color: transparent;
+}
+
+.appointment-confirm-data {
+    margin: 2rem;
+}
+.appointment-confirm-title {
+    color: var(--brand-warning-text);
+}
+.appointment-confirm-button{
+    border-style: solid;    
+    border: 10px;
+    border-color: var(--bs-danger);
+    color: var(--brand-warning-text);
+}
+
+.available_slot_button{
+    background-color: var(--brand-warning);
+    border: 1px solid var(--brand-warning);
+    border-radius: .25rem;
+}
+
+.available-row .selected{
+    background-color: var(--bg-color) !important;
+    border: 1px solid var(--brand-warning);
+    color: var(--brand-warning);
+    border-radius: .25rem;
+}
+
+.payment_details{
+    margin: 1rem;
+}
+
+#videocall-layer {
+    display: none;
+}
+
+#present-layer {
+    display:none;
+}
+
+#availability_slots .active {
+    display: flex !important;
+}

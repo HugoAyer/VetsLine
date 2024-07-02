@@ -1,0 +1,111 @@
+:root {
+    --brand-bg-color: #2cc7e1;
+    --brand-bg-green:#44BEC0;
+    --brand-text-color:  white;
+    --brand-bg-light-color: rgb(163, 105, 163);
+    --brand-bg-dark-color: darkblue;
+    --brand-bg-text-color: #2cc7e1;
+    --empty-bg-color: gray;
+    --brand-bg-text-oposite-color: #8b8b8b;
+    --bg-color: white;
+    --gray-color: gray;
+    --gold-color: #ffd700;
+    --brand-primary: #2cc7e1;
+    --brand-warning: rgb(246, 192, 104);
+    --brand-warning-text: rgb(55, 76, 79);
+    --brand-success: rgb(53, 178, 163);
+    --brand-secondary: #6c757d;
+    --height-round-buttons: 50px;
+    --height-div-input: 86px;
+    --bone-color: #F2EBE3;
+}
+
+.navbar-bgbrand{
+    background-color: var(--bg-color) !important;   
+}
+
+.navbar-brand {
+    color:var(--brand-text-color) !important;   
+    font-size: 30px !important;
+}
+
+.nav-link{
+    color:var(--brand-bg-text-color) !important;
+}
+
+/* .dropdown-menu, .nav-item li{
+    background-color: var(--brand-bg-dark-color) !important;
+}
+*/
+/* .dropdown-item a{    
+    color:var(--brand-bg-text-color) !important;
+}  */
+
+.btn-direct-access .btn-info{
+    color: var(--brand-bg-text-color) !important;  
+    background-color: var(--brand-bg-dark-color) !important;       
+    border-color: var(--brand-bg-dark-color) !important;    
+    height: 80px !important;   
+}
+
+.modal-header {
+    background-color: var(--bg-color);
+    color: var(--brand-bg-text-color) !important;  
+}
+
+.form-login label{
+    width: 33%;
+}
+
+.btn-primary {
+    background-color: var(--brand-primary) !important ;
+    border-color: var(--brand-primary) !important ;
+}
+.btn-warning{
+    background-color:var(--brand-warning) !important;
+    border-color:var(--brand-warning) !important;
+}
+*{
+    -webkit-font-smoothing: antialiased;
+    font-family: "Poppins";   
+}
+
+.btn-outline-primary {    
+    border-color: var(--brand-primary) !important ;   
+    color: var(--brand-primary) !important ;   
+}
+
+.btn-success {
+    background-color: var(--brand-success) !important;
+    border-color: var(--brand-success) !important;
+}.btn-outline-warning{
+    border-color:var(--brand-warning) !important;   
+    background-color: transparent !important ;
+}
+
+/* .modal-content {
+    background-image: url(https://d1yei2z3i6k35z.cloudfront.net/8163742/66677173535ca_vetsaly_background-website.png) !important;
+    background-size: cover;
+} */
+
+.modal-title {
+    color: var(--brand-bg-color);
+}
+
+.form-div-input {
+    height: var(--height-div-input);
+}
+
+.bootbox .modal-header{
+    background-color: var(--brand-warning);    
+}
+.bootbox .modal-footer{
+    background-color: var(--brand-warning);    
+}
+
+.bootbox .modal-title{
+    color: var(--brand-warning-text);
+}
+.bootbox .modal-body{
+    background-color: var(--bone-color);
+}

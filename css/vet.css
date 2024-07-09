@@ -1,3 +1,22 @@
+@keyframes w100 {
+    from { width: 0%;}
+    to {width: 90%;}
+}
+@keyframes w0 {
+    from { width: 90%;}
+    to {width: 0%;}
+    
+}
+@keyframes w1 {
+    0% { width: auto; opacity:1}
+    100% {width: 0%; opacity: 0;}
+}
+@keyframes fadeout {
+    0% {opacity: 1}
+    100% {opacity: 0}
+
+}
+
 body{
     background-color: var(--bg-color) !important;
 }
@@ -255,16 +274,7 @@ small {
     z-index: -100;
 }
 
-@keyframes w100 {
-    from { width: 0%;}
-    to {width: 90%;}
-}
-@keyframes w0 {
-    from { width: 90%;}
-    to {width: 0%;}
-}
-
-.nav-item {
+.nav-item {    
     margin-left: 5px;
 }
 
@@ -272,9 +282,9 @@ small {
     margin-top: 5vh !important;
 } */
 
-.tab-pane {
+/* .tab-pane {
     margin-top: 5vh !important;
-}
+} */
 
 #Info {
     height: 85vh;
@@ -406,13 +416,14 @@ small {
 }
 
 .side-menu-show {
-    width: 280px !important;
-    min-width: 280px !important;
-    transition: width 1s;
+    width: 280px !important;    
+    transition: width .5s;
+    margin-right: 1rem;
 }
 .side-menu-hidden{
     width: 100px !important;
-    transition: width 1s;
+    transition: width .5s;
+    margin-right: 1rem;
 }
 .body-content {
     width: 100%;
@@ -500,4 +511,62 @@ small {
 
 .form-control, .form-select{
     height: 50px !important;
+}
+
+#NextAppointments .row{
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+}
+
+.registration-label {
+    display: flex;
+    width: 170px !important;
+    min-width: 170px !important;
+    justify-content: left;
+    align-items: center;
+}
+#registration-saveAndExit{
+    margin-right: 100px;
+}
+.specialties-badge {    
+    margin: 1rem;    
+}
+.Specialties-own-badges button {
+    position: relative;
+    margin-left: 1rem;
+    top: 6px;
+}
+.Specialties-own-badges {
+    display: block;
+    content: "";
+    border: 1px solid lightgray;
+    width: 100%;        
+    padding-bottom: 15px;
+    height: fit-content !important;
+    block-size: fit-content;
+    min-height: var(--height-round-buttons);
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0,0,0,.20);    
+}
+.Specialties-own-badges button{
+    margin: 10px;
+}
+.Specialties-badges-selected {    
+    width: 0%;    
+    overflow: hidden;
+    max-height: var(--height-round-buttons);
+    opacity: 0;    
+    /* animation: fadeout ease 1s; */
+    animation: w1 .5s ease;    
+}
+/* .specialties-badge-added {
+
+} */
+.registration-step-link{
+    justify-items: center;
+}
+.form-line{
+    margin: 1rem;
 }

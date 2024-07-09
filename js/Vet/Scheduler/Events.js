@@ -356,3 +356,31 @@ const event_copy_click_replace = (source,day) => {
     Vets.clear_availability()
     Vets.fillAvailabilityDays(Availabilities)
 }
+
+//Añadir tiempo entre citas
+export const event_add_extra_time_onclick = (timeQty) => {
+    bootbox.confirm(`¿Desea agregar ${timeQty} minutos entre citas?`,
+        function (result) {
+            if (result) {                
+                event_add_extra_time_helper(timeQty)                   
+            }
+        }
+    );
+}
+
+const event_add_extra_time_helper = (timeQty) => {
+    let Availabilities = LocalStorage.Get('Availability') //Obtengo las disponibilidades
+    dayOfWeekEN.forEach(dayOfWeek => { //Por cada día de la semana
+        let lastEndTime = 0
+        Availabilities[dayOfWeek].forEach(availability => { //Por cada espacio dentro de cada día
+            if(lastEndTime != 0 && (availability.start - lastEndTime) < timeQty ){ //Sí la hora de inicio - la hora de fin de la cita anterior es menor al espacio de tiempo...
+                availability.start = availability.start + timeQty //Agrega el espacio de tiempo entre las citas
+            }
+            lastEndTime = availability.end
+        })
+    })
+    LocalStorage.Save('Availability',Availabilities)
+    Save.save_vet_availability(Availabilities)
+    Vets.clear_availability()
+    Vets.fillAvailabilityDays(Availabilities)
+}

@@ -3,10 +3,13 @@ import * as LocalStorage from '../../LocalStorage.js'
 import * as Events from './Events.js'
 
 const ListPrices = document.getElementById("ListPrices")
+var PriceTypes
 
 //Constructor
 export const Init = () => {
     const PriceRates = LocalStorage.Get('PriceRates')
+    const _PriceTypes = LocalStorage.Get('PriceTypes')    
+    PriceTypes = _PriceTypes
 
     PriceRates.forEach((rate) => { //Carga los precios definidos por el Vet
         ListPrices.append(prices_row(rate).elemento())
@@ -68,22 +71,15 @@ function create_col_select(rate){
     col_timeInputs_div_input_start_label.addAttributes([{"for": `price_type_${rate.idPrice}`}])
     let col_select_control = crearElemento("select",`price_type_${rate.idPrice}`,["form-select"])
     let paramsArray = [rate.idPrice,`price_type_${rate.idPrice}`]
-    col_select_control.addEvent('change',Events.event_type_onChange,paramsArray)
+    col_select_control.addEvent('change',Events.event_type_onChange,paramsArray)        
 
-    let col_select_control_option_1 = crearElemento("option","",[],"Seleccione un tipo de consulta","","","","0")
-    if(rate.type == null) col_select_control_option_1.addAttributes([{"selected":null}])
-    let col_select_control_option_2 = crearElemento("option","",[],"Videollamada","","","","1")    
-    if(rate.type == 1) col_select_control_option_2.addAttributes([{"selected":null}])
-    let col_select_control_option_3 = crearElemento("option","",[],"Cita presencial","","","","2")    
-    if(rate.type == 2) col_select_control_option_3.addAttributes([{"selected":null}])
-    // let col_select_control_option_4 = crearElemento("option","",[],"Cita a domicilio","","","","3")
-    // if(rate.type == 3) col_select_control_option_4.addAttributes([{"selected":null}])    
-    
     col_priceInputs_div.addBelow(col_timeInputs_div_input_start_label.elemento())
-    col_select_control.addBelow(col_select_control_option_1.elemento())
-    col_select_control.addBelow(col_select_control_option_2.elemento())
-    col_select_control.addBelow(col_select_control_option_3.elemento())
-    // col_select_control.addBelow(col_select_control_option_4.elemento())
+    
+    PriceTypes.forEach(PriceType => {
+        let col_select_control_option = crearElemento("option","",[],PriceType.name,"","","",PriceType.type)
+        if(rate.type == PriceType.type) col_select_control_option.addAttributes([{"selected":null}])            
+        col_select_control.addBelow(col_select_control_option.elemento())
+    })
 
     col_priceInputs_div.addBelow(col_select_control.elemento())    
     col_select.addBelow(col_priceInputs_div.elemento())

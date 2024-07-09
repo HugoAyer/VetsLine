@@ -3,28 +3,46 @@
     min-height: 10px !important; 
     max-height: 10px !important; 
 }
-
+.appointments-hour-block{    
+    display: inline-table;    
+    width: 5.5% !important;    
+    min-width: 5.5% !important;
+    max-width: 5.5% !important;
+    /* position: relative;     */
+}
+.appointments-td {
+    display: inline-table;
+    width: 13.5% !important;
+    min-width: 13.5% !important;
+    max-width: 13.5% !important;
+    border-left: 1px solid lightgray;
+    height: 25px !important;
+    max-height: 25px !important;
+    /* overflow: hidden !important;     */
+    table-layout: fixed;
+}
 .appointments-hour {
+    display: inline-table;    
+    width: 100% !important; /*Revisar proque causa problemas */
     border-top: 1px solid black;        
     font-size: small;    
     min-height: 10px !important; 
     max-height: 10px !important; 
+    table-layout: fixed;
+}
+.TAgenda tr{
+    width: 100% !important;
+    table-layout: fixed;    
 }
 
 .appointments-title{
+    display: inline-table;    
     width: 13.5% !important;
     min-width: 13.5% !important;
+    max-width: 13.5% !important;
     border-left: 1px solid lightgray;    
     height: 26px !important;
-}
-
-.appointments-td {
-    width: 13.5% !important;
-    min-width: 13.5% !important;    
-    border-left: 1px solid lightgray;
-    height: 25px !important;
-    max-height: 25px !important;
-    overflow: hidden !important;    
+    table-layout: fixed;
 }
 
 .next-appointment {
@@ -41,12 +59,14 @@
     z-index: 100;    
 }
 .TAgenda THead{
-    width: 100% !important;
+    display: flex;
+    width: 100% !important;    
 }
-.TAgenda tr{
-    width: 100% !important;
-    border-right: 1px solid lightgray;
+.THead-tr {
+    width: 100%;
+    display: inline-table;
 }
+
 #NextAppointments{
     overflow: hidden;
 }
@@ -58,13 +78,23 @@
     overflow: auto;        
     border-right: 1px solid black;        
 }
-.appointments-hour-block{
-    width: 80px !important;
-    max-width: 80px !important;
-    min-width: 80px !important;
-    position: relative;
-    overflow: hidden;
-}
 .TAgenda{
     display: block;       
+}
+.AddTimeBreaker {    
+    position: absolute;
+    right: 10px;    
+    width: 300px;
+}
+.BtnAddTimeBreaker {
+    width: 100%;
+    font-size: medium;
+    background-color: transparent;
+    border: 0;
+    color: var(brand-warning-text);
+}
+.time-breaker-options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;    
 }

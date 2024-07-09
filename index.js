@@ -1,4 +1,5 @@
 import * as LocalStorage from './js/LocalStorage.js'
+import {url,service} from './js/functions.js'
 
 $(document).ready(function () {
     const Login_user = document.getElementById("Login_user")
@@ -224,7 +225,7 @@ function PostShowUser(response,params){
          document.cookie = 'LoggedUserMail = ' + user.email;
          document.cookie = 'LoggedUserId = ' + user.id;
          LocalStorage.Save('LoggedUser',user)
-            window.location.href = 'http://192.168.1.11:5500/pages/user.html';
+            window.location.href = `${url}/pages/user.html`;
         }
         else bootbox.alert('La contraseña no coincide');
 
@@ -241,7 +242,7 @@ function PostShowVet(response,params){
          document.cookie = 'LoggedVetMail = ' + vet.email;
          document.cookie = 'LoggedVetId = ' + vet.idVet;
          LocalStorage.Save(`VetData_${vet.idVet}`,vet)
-            window.location.href = 'http://192.168.1.11:5500/pages/vet.html';            
+            window.location.href = `${url}/pages/vet.html`;
         }
         else bootbox.alert('La contraseña no coincide');
 
@@ -255,7 +256,7 @@ function request(endpoint,params,extraParams,callBack,OnError){
         cache: "default"
     }
 
-    fetch('http://192.168.1.11:7195/'+ endpoint +'/' + params,options)
+    fetch(`${service}/${endpoint}/${params}`,options)
     .then(response => response.json())
     .then(response => callBack(response,extraParams))
     .catch(error => {if(OnError != null) OnError(error, error)});

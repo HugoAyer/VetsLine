@@ -49,7 +49,8 @@ export function crearElemento(tipo, id, clases, innerHTML, type, role, tittle,va
             element.setAttribute("tittle",text)
         },
         addEvent: function(action,callBack,paramsArray) {
-            element.addEventListener(action,function() {                     
+            element.addEventListener(action,function(event) {
+                event.preventDefault()
                 callBack(paramsArray)
             })
         }

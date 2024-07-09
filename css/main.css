@@ -91,6 +91,9 @@
 .modal-title {
     color: var(--brand-bg-color);
 }
+.modal-dialog{
+    overflow: hidden;
+}
 
 .form-div-input {
     height: var(--height-div-input);
@@ -108,4 +111,9 @@
 }
 .bootbox .modal-body{
     background-color: var(--bone-color);
+}
+.navbar-nav{
+    display: flex !important;    
+    width: 100% !important;
+    justify-content: space-between;
 }

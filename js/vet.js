@@ -1,4 +1,4 @@
-import {request,getCookie,convert_time_string_fromInt} from './functions.js';
+import {request,getCookie,convert_time_string_fromInt,requestPromise,uuidv4} from './functions.js';
 import {createSmallCardAppointment} from './appointments.js';
 import { crearElemento } from './factory.js';
 import * as Scheduler from './Vet/Scheduler/Constructor.js';
@@ -18,6 +18,18 @@ const side_menu = document.getElementById("side-menu")
 const menu_expand_btn = document.getElementById("menu_expand_btn")
 const nav_asistant = document.getElementById('nav-asistant') 
 const registration_next = document.getElementById('registration-next')
+const btnTimeBreaker_5 = document.getElementById("btnTimeBreaker_5")
+const btnTimeBreaker_10 = document.getElementById("btnTimeBreaker_10")
+const btnTimeBreaker_15 = document.getElementById("btnTimeBreaker_15")
+const AsistantModal_carousel_prev = document.getElementById("AsistantModal_carousel_prev")
+const registration_proTitle = document.getElementById("registration_proTitle")
+const registration_step_1 = document.getElementById("registration_step_1")
+const registration_step_2 = document.getElementById("registration_step_2")
+const registration_step_3 = document.getElementById("registration_step_3")
+const registration_step_4 = document.getElementById("registration_step_4")
+const registration_step_5 = document.getElementById("registration_step_5")
+const registration_certificate_name = document.getElementById('registration_certificate_name')
+const btn_registration_certificate_add = document.getElementById("btn_registration_certificate_add")
 
 
 const days = [{"day":"sunday", "dia":"Domingo"}, {"day":"monday", "dia": "Lunes"}, {"day":"tuesday","dia":"Martes"}, {"day":"wednesday","dia":"Miércoles"},{"day":"thursday","dia":"Jueves"},{"day":"friday","dia":"Viernes"},{"day":"saturday","dia":"Sábado"}]
@@ -43,21 +55,17 @@ $(document).ready(function () {
     let EmailSpan = document.getElementById('EmailSpan');
     LoggedUserNameControl.innerHTML = `Bienvenido: ${LoggedUserName}`;
     UserSpan.innerHTML = LoggedUserName;
-    EmailSpan.innerHTML = LoggedUserMail;        
+    EmailSpan.innerHTML = LoggedUserMail;     
     
-    control_events()
-   
-    request('getVetById',LoggedVetId,LoggedVetId,PostGetVetData,PostErrorRequest); //Obtiene la información completa del vet    
-
-    request('getAppointmentsByVet',LoggedVetId,LoggedVetId,PostGetAppointments,PostErrorRequest); //Obtiene las citas del vet
-
-    request('getVetAvailabilityById',LoggedVetId,LoggedVetId,PostGetAvailability,PostErrorRequest); //Obtiene la disponibilidad del vet
-    
-    NextAppointments.Init()
-
-    request_get_appointments(LoggedVetId) //Carga las citas en la sección de citas
+    let dialog = bootbox.dialog({
+        message: '<p class="text-center mb-0"><i class="fas fa-spin fa-cog"></i> Cargando información. Espere unos segundos...</p>',
+        closeButton: false
+        });
+        setTimeout(() => {
+            load(dialog,LoggedVetId)    
+        }, 600);
         
-    PriceRates.Init()
+    control_events()       
 
     menu_expand_btn.addEventListener('click',() => {
         if(side_menu.classList.contains('side-menu-show')){        
@@ -87,6 +95,51 @@ $(document).ready(function () {
 
 });
 
+function load(dialog,LoggedVetId){
+    const promiseGetVetById = getVetById(LoggedVetId) //Creo la promesa del request 
+    const promisegetAppointmentsByVet = getAppointmentsByVet(LoggedVetId)//Creo la promesa del request
+    const promisegetVetAvailabilityById = getVetAvailabilityById(LoggedVetId)//Creo la promesa del request
+    const promisegetPriceTypes = getPriceTypes()
+    const promisegetProfesionalTitles = getProfesionalTitles()
+    const promisegetSpecialties = getSpecialties()
+
+    Promise.all([promiseGetVetById,promisegetAppointmentsByVet,promisegetVetAvailabilityById,promisegetPriceTypes,promisegetProfesionalTitles,promisegetSpecialties]) //Ejecuto las 4 promesas al mismo tiempo
+    .then(([GetVetByIdData,AppointmentsByVetData,VetAvailabilityData,PriceTypesData,ProfesionalTitlesData,SpecialtiesData]) => { //Obtengo los resultados de los 4 request, Uno en cada variable
+        console.log('Información cargada')
+        PostGetVetData(GetVetByIdData) //Carga la información del Vet en pantalla y guarda los datos en LocalStorage
+        PostGetAppointments(AppointmentsByVetData) //Carga las citas y guarda los datos en LocalStorage
+        PostGetAvailability(VetAvailabilityData) //Carga las disponibilidades y guarda en LocalStorage
+        PostGetPriceTypes(PriceTypesData)//Carga los tipos de precios y guarda en LocalStorage
+        PostGetProfesionalTitles(ProfesionalTitlesData)
+        PostGetSpecialties(SpecialtiesData)
+        NextAppointments.Init() //Carga la información en "Próximas citas"
+        PriceRates.Init() //Carga la información en "Tarifas y precios"
+        dialog.modal('hide')
+    })
+    .catch((error) => {
+        console.log('Alguno de los requests falló')
+        console.log(error)
+    })
+}
+
+async function getVetById(LoggedVetId){
+    return await requestPromise('getVetById',LoggedVetId)
+}
+async function getAppointmentsByVet(LoggedVetId){
+    return await requestPromise('getAppointmentsByVet',LoggedVetId)
+}
+async function getVetAvailabilityById(LoggedVetId){
+    return await requestPromise('getVetAvailabilityById',LoggedVetId)
+}
+async function getPriceTypes(){
+    return await requestPromise('getPriceTypes','')
+}
+async function getProfesionalTitles(){
+    return await requestPromise('getProfesionalTitles','')
+}
+async function getSpecialties(){
+    return await requestPromise('getSpecialties','')
+}
 //CallBacks
 function PostGetVetData(response,params){    
     let ListGeneral = document.getElementById("ListGeneral")
@@ -114,8 +167,13 @@ function PostGetVetData(response,params){
 
 }
 function PostGetAppointments(response,params){
-    let data = response
-    LocalStorage.Save('Appointments',data) //Guarda la disponibilidad en Local Storage
+    let appointments = response
+    LocalStorage.Save('Appointments',appointments) //Guarda la disponibilidad en Local Storage    
+    let div_app = document.getElementById("Appointments");        
+    appointments.forEach((appointment) => {                   
+    let row = createSmallCardAppointment(appointment,true);                  
+    div_app.append(row);        
+    })
 }
 function PostErrorRequest(response,params){    
     console.log(params)
@@ -127,6 +185,33 @@ const PostGetAvailability = (response,params) => {
     let vet = LocalStorage.Get(`VetData_${LoggedVetId}`)
     vet.availability = data
     LocalStorage.Save(`VetData_${LoggedVetId}`,vet)
+}
+const PostGetPriceTypes = (response,params) => {
+    let data = response
+    LocalStorage.Save('PriceTypes',data) //Guarda la disponibilidad en Local Storage
+}
+const PostGetProfesionalTitles = (response,params) => {
+    let data = response
+    LocalStorage.Save('ProfesionalTitles',data)
+    data.forEach(ProfesionalTitle => {
+        let option = crearElemento("option","",[],ProfesionalTitle.name)
+        option.addAttributes([{"value":ProfesionalTitle.id}])
+        registration_proTitle.append(option.elemento())
+    })
+}
+const PostGetSpecialties = (response,params) => {
+    let data = response
+    LocalStorage.Save('Specialties',data)
+    LocalStorage.Save('CurrentSpecialties',[])
+    let specialties_badges = document.querySelector('.specialties-badges')
+    data.forEach(specialty => { //Crear los badges de especialidades
+        let uid = uuidv4()
+        let specialty_control = crearElemento("button",uid,["btn","btn-secondary","specialties-badge"],specialty.name)   
+        specialty_control.addAttributes([{"sp_id":specialty.id}])
+        let parametersArray = [uid]
+        specialty_control.addEvent('click',RegistrationEvents.event_specialty_selected_onclick,parametersArray)
+        specialties_badges.append(specialty_control.elemento())
+    })
 }
 
 //Element construction
@@ -269,7 +354,6 @@ function request_get_appointments(vetId){
     let OnErrorCallBack = function(response,data){};
     request("getAppointmentsByVet",vetId,null,callBack,OnErrorCallBack);
 }
-
 //events
 function control_events(){
 
@@ -329,6 +413,41 @@ function control_events(){
     registration_next.addEventListener('click',() => {
         RegistrationEvents.registration_next_onclick()        
     })
+
+    btnTimeBreaker_5.addEventListener('click',() => {
+        Events.event_add_extra_time_onclick(5)
+    })
+    btnTimeBreaker_10.addEventListener('click',() => {
+        Events.event_add_extra_time_onclick(10)
+    })
+    btnTimeBreaker_15.addEventListener('click',() => {
+        Events.event_add_extra_time_onclick(15)
+    })
+    AsistantModal_carousel_prev.addEventListener('click',() => {
+        RegistrationEvents.event_AsistantModal_carousel_prev_onclick()
+    })
+    registration_step_1.addEventListener('click',() => {
+        RegistrationEvents.event_registration_step_onclick(0)
+    })
+    registration_step_2.addEventListener('click',() => {
+        RegistrationEvents.event_registration_step_onclick(1)
+    })
+    registration_step_3.addEventListener('click',() => {
+        RegistrationEvents.event_registration_step_onclick(2)
+    })
+    registration_step_4.addEventListener('click',() => {
+        RegistrationEvents.event_registration_step_onclick(3)
+    })
+    registration_step_5.addEventListener('click',() => {
+        RegistrationEvents.event_registration_step_onclick(4)
+    })
+    registration_certificate_name.addEventListener('input',() => {
+        RegistrationEvents.event_registration_certificate_name_oninput(1,'registration_certificate_name')
+    })
+    btn_registration_certificate_add.addEventListener('click',() => {
+        RegistrationEvents.event_registration_certificate_add()
+    })
+    
 }
 function nav_item_selection(selected_item){    
     

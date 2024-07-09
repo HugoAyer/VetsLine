@@ -31,6 +31,7 @@ export const event_name_onChange = (parametersArray) => {
 }
 export const event_type_onChange = (parametersArray) => {    
     let idPrice = parametersArray[0]
+    console.log(idPrice)
     let name = parametersArray[1]
     const PriceRates = LocalStorage.Get('PriceRates')
 

@@ -1,10 +1,12 @@
 import {crearElemento} from './factory.js';
 
-const url = 'http://192.168.1.11:7195'
+export const service = 'http://192.168.1.10:7195'
+export const url = 'http://192.168.1.10:5500'
 
 export const monthName = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
 export const dayOfWeek = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"]
 export const dayOfWeekEN = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"]
+
 
 //Requests
 export function request(endpoint,params,extraParams,callBack,OnError){
@@ -14,7 +16,7 @@ export function request(endpoint,params,extraParams,callBack,OnError){
         cache: "default"
     }
 
-    fetch(url + '/'+ endpoint +'/' + params,options)
+    fetch(`${service}/${endpoint}/${params}`,options)
     .then(response => response.json())
     .then(response => callBack(response,extraParams))
     .catch(error => OnError("Error !", error));
@@ -26,7 +28,7 @@ export async function async_request(endpoint,params,extraParams,callBack,OnError
         cache: "default"
     }
 
-    fetch(url + '/'+ endpoint +'/' + params,options)
+    fetch(`${service}/${endpoint}/${params}`,options)
     .then(response => response.json())
     .then(response => callBack(response,extraParams))
     .catch(error => OnError("Error !", error));
@@ -42,12 +44,12 @@ export async function async_request_put(endpoint,params,extraParams,callBack,OnE
         cache: "default"
     }
 
-    fetch(url +'/'+ endpoint +'/' + params,options)
+    fetch(`${service}/${endpoint}/${params}`,options)
     //.then(response => response.json())
     .then(response => callBack(response,extraParams))
     .catch(error => OnError("Error !", error));
 }
-export function requestPromise(endpoint,params){
+export async function requestPromise(endpoint,params){
     return new Promise(function(resolve,reject) {
         var options = {
             method: "GET",
@@ -55,7 +57,7 @@ export function requestPromise(endpoint,params){
             cache: "default"
         }
 
-        fetch(url + '/'+ endpoint +'/' + params,options)
+        fetch(`${service}/${endpoint}/${params}`,options)
         .then(response => response.json())
         .then(data => resolve(data))
         .catch(error => reject("Error !", error));

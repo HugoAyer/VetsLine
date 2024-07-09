@@ -132,8 +132,7 @@ function create_col_type(weekDay, row_number, type, display, checked,daySettings
     accordion_header.addBelow(col_check_div_input.elemento())
 
     div_accordion_item.addBelow(accordion_header.elemento())
-            
-    
+                
     div_accordion_item.addBelow(create_select_price(name,weekDay,type,checked,row_number,daySettings).elemento())
     col_check_div.addBelow(div_accordion_item.elemento())
     col_check.addBelow(col_check_div.elemento())
@@ -148,8 +147,12 @@ function create_select_price(name,weekDay, type, checked,row_number,daySettings)
     let accordion_body = crearElemento("div","",["accordion-body","align-items-center","d-flex","cs-form"])
     
     let hidden_price_content = crearElemento("select",`select_control_${name}_${type}`,["form-select","cs-form"])
-    let PriceRates = LocalStorage.Get('PriceRates')
-    PriceRates.forEach((priceRate) => {
+    let PriceRates = LocalStorage.Get('PriceRates') //Obtengo los precios configurados desde el LocalStorage
+    let typeNum = (type == 'videocall') ? 1 : 2 //Sólo 2 tipos de precios son admitidos aquí: Videollamadas y citas presenciales
+    
+    let PriceRatesFiltered = PriceRates.filter(PriceRate => PriceRate.type == typeNum) //Filtro para que sólo aparezcan los precios de acuerdo al tipo de cita
+    
+    PriceRatesFiltered.forEach((priceRate) => {        
         let option = crearElemento("option","",[],priceRate.name)
         option.setValue(priceRate.idPrice)
         hidden_price_content.addBelow(option.elemento())

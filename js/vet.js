@@ -1,4 +1,4 @@
-import {request,getCookie,convert_time_string_fromInt,requestPromise,uuidv4} from './functions.js';
+import {request,getCookie,convert_time_string_fromInt,requestPromise,uuidv4,states} from './functions.js';
 import {createSmallCardAppointment} from './appointments.js';
 import { crearElemento } from './factory.js';
 import * as Scheduler from './Vet/Scheduler/Constructor.js';
@@ -7,6 +7,7 @@ import * as LocalStorage from './LocalStorage.js'
 import * as NextAppointments from './Vet/NextAppoinments/Constructor.js'
 import * as PriceRates from './Vet/PricesRates/Constructor.js'
 import * as RegistrationEvents from './VetsRegistration/Events.js'
+import * as GeneralEvents from './Vet/GeneralEvents.js'
 
 const Info_items = document.getElementById("Info")
 const menuPrincipal = document.getElementById("menuPrincipal")
@@ -14,6 +15,7 @@ const TabNextAppointments = document.getElementById("TabNextAppointments")
 const TabAvailability = document.getElementById("TabAvailability")
 const TabPriceRates = document.getElementById("TabPriceRates")
 const toast_agenda = document.getElementById("toast_agenda")
+const toast_newAppointment = document.getElementById("toast_newAppointment")
 const side_menu = document.getElementById("side-menu")
 const menu_expand_btn = document.getElementById("menu_expand_btn")
 const nav_asistant = document.getElementById('nav-asistant') 
@@ -28,9 +30,12 @@ const registration_step_2 = document.getElementById("registration_step_2")
 const registration_step_3 = document.getElementById("registration_step_3")
 const registration_step_4 = document.getElementById("registration_step_4")
 const registration_step_5 = document.getElementById("registration_step_5")
-const registration_certificate_name = document.getElementById('registration_certificate_name')
+const registration_address_state_1 = document.getElementById("registration_address_state_1")
+const registration_address_state_2 = document.getElementById("registration_address_state_2")
+const registration_certificate_name = document.getElementById('registration_certificate_name_1')
 const btn_registration_certificate_add = document.getElementById("btn_registration_certificate_add")
-
+const registration_saveAndExit = document.getElementById("registration-saveAndExit")
+const registration_menu_item = document.getElementById("registration_menu_item")
 
 const days = [{"day":"sunday", "dia":"Domingo"}, {"day":"monday", "dia": "Lunes"}, {"day":"tuesday","dia":"Martes"}, {"day":"wednesday","dia":"Miércoles"},{"day":"thursday","dia":"Jueves"},{"day":"friday","dia":"Viernes"},{"day":"saturday","dia":"Sábado"}]
 const nav_items_selection = [
@@ -46,6 +51,14 @@ const nav_items_selection = [
 
 const LoggedVetId = getCookie('LoggedVetId');
 
+setInterval(function(){ 
+    let check_new_appointments_num = check_new_appointments()
+    if(check_new_appointments_num) {
+        var obj_toast_newAppointment = new bootstrap.Toast(toast_newAppointment)
+        obj_toast_newAppointment.show()
+    }    
+}, 10000); //Función para revisar cada 10 segundos si hay nuevas citas
+
 //Load DOM
 $(document).ready(function () {    
     let LoggedUserName = getCookie('LoggedVetName');
@@ -56,6 +69,16 @@ $(document).ready(function () {
     LoggedUserNameControl.innerHTML = `Bienvenido: ${LoggedUserName}`;
     UserSpan.innerHTML = LoggedUserName;
     EmailSpan.innerHTML = LoggedUserMail;     
+    
+    states.forEach(state => {
+        let keys = Object.keys(state)        
+        let option = crearElemento("option","",["form-select"],state[keys])
+        option.addAttributes([{"value":keys[0]}])
+        let option_1 = option.elemento().cloneNode(true)
+        registration_address_state_1.append(option.elemento())
+        registration_address_state_2.append(option_1)
+    })
+    
     
     let dialog = bootbox.dialog({
         message: '<p class="text-center mb-0"><i class="fas fa-spin fa-cog"></i> Cargando información. Espere unos segundos...</p>',
@@ -91,7 +114,7 @@ $(document).ready(function () {
             }, 500);
             
         }
-    })
+    })    
 
 });
 
@@ -104,14 +127,13 @@ function load(dialog,LoggedVetId){
     const promisegetSpecialties = getSpecialties()
 
     Promise.all([promiseGetVetById,promisegetAppointmentsByVet,promisegetVetAvailabilityById,promisegetPriceTypes,promisegetProfesionalTitles,promisegetSpecialties]) //Ejecuto las 4 promesas al mismo tiempo
-    .then(([GetVetByIdData,AppointmentsByVetData,VetAvailabilityData,PriceTypesData,ProfesionalTitlesData,SpecialtiesData]) => { //Obtengo los resultados de los 4 request, Uno en cada variable
-        console.log('Información cargada')
-        PostGetVetData(GetVetByIdData) //Carga la información del Vet en pantalla y guarda los datos en LocalStorage
+    .then(([GetVetByIdData,AppointmentsByVetData,VetAvailabilityData,PriceTypesData,ProfesionalTitlesData,SpecialtiesData]) => { //Obtengo los resultados de los 4 request, Uno en cada variable                
         PostGetAppointments(AppointmentsByVetData) //Carga las citas y guarda los datos en LocalStorage
         PostGetAvailability(VetAvailabilityData) //Carga las disponibilidades y guarda en LocalStorage
         PostGetPriceTypes(PriceTypesData)//Carga los tipos de precios y guarda en LocalStorage
         PostGetProfesionalTitles(ProfesionalTitlesData)
         PostGetSpecialties(SpecialtiesData)
+        PostGetVetData(GetVetByIdData) //Carga la información del Vet en pantalla y guarda los datos en LocalStorage
         NextAppointments.Init() //Carga la información en "Próximas citas"
         PriceRates.Init() //Carga la información en "Tarifas y precios"
         dialog.modal('hide')
@@ -146,7 +168,7 @@ function PostGetVetData(response,params){
     let data = response[0]            
 
     let card_general_div = card_general(data)
-    ListGeneral.append(card_general_div.elemento())
+    ListGeneral.append(card_general_div.elemento())    
 
     let ListSpecialties = document.getElementById("ListSpecialties")    
     data.specialties.forEach((specialty) => {
@@ -160,11 +182,15 @@ function PostGetVetData(response,params){
         ListDomicilio.append(card.elemento())
     })
 
+    main_card_fill(data)
+
+    fillRegistationForm(data)
+
     LocalStorage.Save('Availability',data.availability) //Guarda la disponibilidad en Local Storage
     LocalStorage.Save('PriceRates',data.price_rates) //Guarda la disponibilidad en Local Storage
-
-    fillAvailabilityDays(data.availability) //Aquí se llena la diponibilidad
-
+    if(data.registryComplete == "N") $('#AsistantModal').modal('show')
+    if(data.registryComplete == "Y") registration_menu_item.classList.add('no-show')
+    fillAvailabilityDays(data.availability) //Aquí se llena la diponibilidad        
 }
 function PostGetAppointments(response,params){
     let appointments = response
@@ -196,7 +222,7 @@ const PostGetProfesionalTitles = (response,params) => {
     data.forEach(ProfesionalTitle => {
         let option = crearElemento("option","",[],ProfesionalTitle.name)
         option.addAttributes([{"value":ProfesionalTitle.id}])
-        registration_proTitle.append(option.elemento())
+        registration_proTitle.append(option.elemento())        
     })
 }
 const PostGetSpecialties = (response,params) => {
@@ -214,6 +240,13 @@ const PostGetSpecialties = (response,params) => {
     })
 }
 
+//Main-card
+const main_card_fill = (data) => {
+    $("#main-card-name").html(data.name)    
+    $("#main-card-title").html(data.titleDesc)
+    $("#main-card-city").html(`${data.city}, ${data.state_desc}`)    
+}
+
 //Element construction
 function card_general(data){
     let pet_file_general = crearElemento("div","pet_file_general",["overflow-auto"],"","","","")
@@ -223,7 +256,7 @@ function card_general(data){
     let card_general_img = card_img('Esta foto aparecerá para identificarlo',data.img_src)
     let hr = crearElemento("hr","",[],"","","","")
     let name_card_row = card_row('Nombre:',data.name)
-    let cedula_card_row = card_row('No. de cédula profesional:',data.federalProfessionNumber)
+    let cedula_card_row = card_row('No. de cédula profesional:',data.federalProffessionNumber)
 
     card_body.addBelow(card_general_img.elemento())
     card_body.addBelow(hr.elemento())
@@ -244,7 +277,7 @@ function card_address(address){
         
     let hr = crearElemento("hr","",[],"","","","")
     let name_card_row = card_row('Nombre:',address.name)    
-    let street_card_row = card_row('Calle y número:',`${address.street} y ${address.streetNo}`)
+    let street_card_row = card_row('Calle y número:',`${address.street}`)
     let zipcode_card_row = card_row('Código postal:',address.zipCode)
     let country_card_row = card_row('País:',address.country_desc)
     let state_card_row = card_row('Estado/Provincia/Región:',address.state_desc)
@@ -283,15 +316,26 @@ function card_img(label,img_src){
     let col_6 = crearElemento("div","",["col-lg-6"],"","","","")
     let col_6_span = crearElemento("span","",["pet-file-value"],label,"","","")
     let br_col_6 = crearElemento("br","",[],"","","","")
-    let btn_col_6 = crearElemento("button","",["btn","btn-ouline-primary"],"Cambiar foto","","","")
+    let upload_form = crearElemento("form","form_submit_pic",[])
+    upload_form.addAttributes([{"action":"/api"},{"method":"post"},{"enctype":"multipart/form-data"}])
+    let parametersArray = []
+    upload_form.addEvent('submit',GeneralEvents.event_submit_pic,parametersArray)
+    let upload_input = crearElemento("input","vet-pic-input",[],"","file")        
+    let upload_button = crearElemento("button","",["btn","btn-ouline-primary"],"Cambiar foto","","","")
     
+    upload_form.addBelow(upload_input.elemento())
+    upload_form.addBelow(upload_button.elemento())
+    
+
     let col_auto = crearElemento("div","",["col-lg-auto"],"","","","") 
     let a_col_auto = crearElemento("a","",[],"","","","")
 
     col_4_img.addBelow(img.elemento())
     col_6.addBelow(col_6_span.elemento())
     col_6.addBelow(br_col_6.elemento())
-    col_6.addBelow(btn_col_6.elemento())
+
+    col_6.addBelow(upload_form.elemento())
+    
     col_auto.addBelow(a_col_auto.elemento())
     img_div.addBelow(col_4_img.elemento())
     img_div.addBelow(col_6.elemento())
@@ -442,10 +486,14 @@ function control_events(){
         RegistrationEvents.event_registration_step_onclick(4)
     })
     registration_certificate_name.addEventListener('input',() => {
-        RegistrationEvents.event_registration_certificate_name_oninput(1,'registration_certificate_name')
+        RegistrationEvents.event_registration_certificate_name_oninput(1,'registration_certificate_name_1')
     })
     btn_registration_certificate_add.addEventListener('click',() => {
         RegistrationEvents.event_registration_certificate_add()
+    })
+
+    registration_saveAndExit.addEventListener('click',() => {
+        RegistrationEvents.registration_saveAndExit_onClick()
     })
     
 }
@@ -483,7 +531,6 @@ const checkIsVisible = (element,link_item) => {
 }
 
 //Fill
-
 export const fillAvailabilityDays = (availability) => {    
     
     days.forEach((weekDay) => {        //Recorre el array de días para ir poblando uno por uno        
@@ -553,10 +600,71 @@ const fillAvailabilityDays_additional_hours = (dayArray, weekDay, row) => {
     let row_sub = Scheduler.scheduler_row_sub_details(weekDay, row, convert_time_string_fromInt(dayArray.start), convert_time_string_fromInt(dayArray.end),dayArray)
     day_div.append(row_sub.elemento())
 }
+const fillRegistationForm = (vet) => {
+    //console.log(vet)
+    $("#registration_Name").val(vet.names)
+    $("#registration_LastName_1").val(vet.lastName1)
+    $("#registration_LastName_2").val(vet.lastName2)    
+    $("#registration_proTitle").val(vet.title)
+    $("#registration_fedRegistration").val(vet.federalProffessionNumber)
+    let specialties_badges = document.querySelectorAll('.specialties-badge')    
+    let specialties_badges_list = []
+    specialties_badges.forEach(control => {
+        specialties_badges_list.push({"id": control.id,"sp_id" : control.getAttribute('sp_id')})
+    })    
+    vet.specialties.forEach(specialty => {        
+        let control = specialties_badges_list.filter(element => element.sp_id == specialty.id)        
+        RegistrationEvents.event_specialty_selected_onclick(control[0].id)
+    })
+    let address_index = 1
+    vet.address.forEach(adress => {        
+        $(`#registration_address_city_${address_index}`).val(adress.city)
+        $(`#registration_address_block_${address_index}`).val(adress.block)        
+        $(`#registration_address_zipcode_${address_index}`).val(adress.zipcode)
+        $(`#registration_address_state_${address_index}`).val(adress.state)
+        $(`#registration_address_street_${address_index}`).val(adress.street)
+        address_index++
+    })
+
+    let education_index = 1
+    vet.education.forEach(certificate => {
+        if(education_index > 1) RegistrationEvents.event_registration_certificate_add()
+        $(`#registration_certificate_id_${education_index}`).text(certificate.name)
+        $(`#registration_certificate_name_${education_index}`).val(certificate.name)
+        $(`#registration_certificate_emiter_${education_index}`).val(certificate.emiter)
+        $(`#registration_certificate_expeditionDate_${education_index}`).val(certificate.expeditionDate)
+        $(`#registration_certificate_dueDate_${education_index}`).val(certificate.dueDate)
+        $(`#registration_certificate_url_${education_index}`).val(certificate.url)
+        education_index++
+    })
+
+    $("#registration_aboutYou").val(vet.aboutYou)
+
+    RegistrationEvents.registration_validate_status_steps()
+}
 
 //Limpiar Availability
 export const clear_availability = () => {
     days.forEach(day => {
         document.getElementById(`scheduler_${day.day}`).innerHTML=''
     })
+}
+
+//Check for new Appointments
+function check_new_appointments(){
+    let appointments = LocalStorage.Get('Appointments')
+    if(appointments.length == 0) {
+        return false
+    }
+    let appointments_pending = appointments.filter(appointment => appointment.status == 'N')
+
+    if(appointments_pending.length > 0) {
+        appointments.forEach(appointment => {
+            appointment.status = 'P'
+        })
+        LocalStorage.Save('Appointments',appointments)
+        return true
+    }
+
+    return false
 }

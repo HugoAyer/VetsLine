@@ -1,0 +1,12 @@
+.form-control {
+    margin: .25rem;
+}
+.form-area {
+    height: 10rem !important;
+}
+.form-control, .form-select{
+    height: 50px;
+}
+.form-line{
+    margin: 1rem;
+}

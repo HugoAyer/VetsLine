@@ -1,4 +1,4 @@
-import {getCookie,get_date_as_string_short,convert_time_string_fromInt,uuidv4,formatter,monthName,dayOfWeek} from '../functions.js';
+import {getCookie,get_date_as_string_short,convert_time_string_fromInt,uuidv4,formatter,monthName,dayOfWeek,requestPromise} from '../functions.js';
 import * as LocalStorage from '../LocalStorage.js'
 import { crearElemento } from '../factory.js';
 import * as Events from './Events.js'
@@ -17,6 +17,12 @@ const carousel_agenda = document.getElementById("carousel_agenda")
 const VetModal_carousel_prev = document.getElementById('VetModal_carousel_prev')
 const payment_details = document.getElementById('payment_details')
 const booking_appointment_payment_methods = document.getElementById('booking_appointment_payment_methods')
+const book_appointment_pet_row = document.getElementById('book_appointment_pet_row')
+const book_appointment_to_step4 = document.getElementById("book_appointment_to_step4")
+const carousel_prev = document.getElementById("carousel_prev")
+const carousel_next = document.getElementById("carousel_next")
+
+const LoggedUserId = getCookie('LoggedUserId');
 
 export const Init = () => {        
     fill_carrousel()
@@ -34,8 +40,34 @@ export const Init = () => {
     })
 
     book_appointment_to_confirm.addEventListener('click',function() {
-        Events.event_book_appointment_to_confirmation()  
+        Events.event_book_appointment_to_confirmation()        
     })
+
+    let promiseGetPetsById = getPetsById(LoggedUserId) //Obtengo las mascotas del usuario
+    promiseGetPetsById.then(data => {
+        data.forEach(pet => {
+            let book_appointment_pet_item = create_book_appointment_pet(pet)        
+            book_appointment_pet_row.append(book_appointment_pet_item.elemento()) //Creo las cards de las mascotas a seleccionar en las citas        
+        })
+    })
+
+    book_appointment_to_step4.addEventListener('click',function() {
+        Events.event_book_appointment_toPayment()
+    })
+
+    carousel_prev.addEventListener('click',() => {    //Evento cuando se presiona el botón de "previo" en el carrusel de disponibilidad del Vet
+        Events.event_load_available_slots()
+    })
+    carousel_next.addEventListener('click',() => {    //Evento cuando se presiona el botón de "previo" en el carrusel
+        Events.event_load_available_slots()
+    })
+
+//     carousel_miniAgenda_next.addEventListener('click',function(){
+//         Events.event_carousel_miniAgenda_change()
+//     })
+//     carousel_miniAgenda_prev.addEventListener('click',function(){
+//         Events.event_carousel_miniAgenda_change()
+//     })
 }
 
 export const get_carousel_current_date = () => {
@@ -91,7 +123,7 @@ const create_available_slot_helper_price = (type,slot) => {
             return slot.price_onSite
     }
 }
-const create_carousel_date = (date) => {
+const create_carousel_date = (date) => {    
     let div = crearElemento("div","",["carousel-item","carousel-dates",date.active])
     let span = crearElemento("span","",["pet-file-value","d-block","text-center"],date.weekDay)
     let small = crearElemento("small","",["d-block","text-center"],date.day)
@@ -102,6 +134,36 @@ const create_carousel_date = (date) => {
     div.addAttributes([{'date': date.date}])
 
     return div
+}
+
+//Se crean los botones de las mascotas
+export const create_book_appointment_pet = (pet) => {    
+    let col_auto = crearElemento("div","",["col-auto","mb-5"]) 
+    let uuid = uuidv4()
+    let col_auto_a = crearElemento("a",uuid,["btn","btn-light","booking-pet-selection"])
+    let parametersArray = [pet,uuid]
+    col_auto_a.addEvent('click',Events.event_book_appointment_pet_selected,parametersArray)
+
+    let col_auto_a_div = crearElemento("div","",["bg-white","rounded","shadow-sm","py-5","px-4","book-appointment-pet-card","justify-content-center"])
+    let col_auto_a_div_img = crearElemento("img","",["img-fluid","rounded-circle","mb-3","img-thumbnail","shadow-sm"])
+    col_auto_a_div_img.addAttributes([{"src":pet.image}])
+    let col_auto_a_div_h5 = crearElemento("h5","",["mb-0","d-flex","justify-content-center","align-items-center"])    
+    let col_auto_a_div_h5_i = crearElemento("i","",["fa-solid",pet.species.icon,"d-block"])
+    col_auto_a_div_h5.addBelow(col_auto_a_div_h5_i.elemento())    
+    
+    let col_auto_a_div_h5_name = crearElemento("h5","",["mb-0","d-flex","justify-content-center","align-items-center"])
+    let col_auto_a_div_h5_name_span = crearElemento("span","",["d-block"],pet.name)
+    col_auto_a_div_h5_name.addBelow(col_auto_a_div_h5_name_span.elemento())
+
+    col_auto_a_div.addBelow(col_auto_a_div_img.elemento())
+    col_auto_a_div.addBelow(col_auto_a_div_h5.elemento())
+    col_auto_a_div.addBelow(col_auto_a_div_h5_name.elemento())
+    
+    col_auto_a.addBelow(col_auto_a_div.elemento())
+    col_auto.addBelow(col_auto_a.elemento())
+
+    return col_auto
+
 }
 
 //Se crean los botones de síntomas
@@ -170,30 +232,35 @@ const fill_carrousel = () => {
     }
     
 }
+
 export const load_available_slots = (date) => {    
 
     let availableSlots = LocalStorage.Get('VetAvailableSlots') //Obtengo el array de slots del loca storage    
-    if(availableSlots != undefined && availableSlots != null){                  
+    if(availableSlots != undefined && availableSlots != null){    
+        console.log()              
         let daySlots = availableSlots.find(item => item.date == date) //Filtro para obtener los horarios del día del carrusel                        
+        console.log(date)
         //Aquí se debe poner el ciclo para recorrer todos los slots e ir creando los botones de las citas
         videocall_layer.innerHTML = ''
         let col_number = 0
         let col_1 = crearElemento("div","",["col","slot"])
         let col_2 = crearElemento("div","",["col","slot"])
-        daySlots.data.forEach((slot) =>{
-            if(col_number == 0){
-                let row = crearElemento("div","",["row","available-row"])
-                row.addBelow(create_available_slot('videocall',slot).elemento())
-                col_1.addBelow(row.elemento())
-                col_number = 1
-            }            
-            else {
-                let row = crearElemento("div","",["row"])
-                row.addBelow(create_available_slot('videocall',slot).elemento())
-                col_2.addBelow(row.elemento())
-                col_number = 0
-            }
-        })
+        if(daySlots != undefined){
+            daySlots.data.forEach((slot) =>{
+                if(col_number == 0){
+                    let row = crearElemento("div","",["row","available-row"])
+                    row.addBelow(create_available_slot('videocall',slot).elemento())
+                    col_1.addBelow(row.elemento())
+                    col_number = 1
+                }            
+                else {
+                    let row = crearElemento("div","",["row"])
+                    row.addBelow(create_available_slot('videocall',slot).elemento())
+                    col_2.addBelow(row.elemento())
+                    col_number = 0
+                }
+            })
+        }
 
         videocall_layer.append(col_1.elemento())
         videocall_layer.append(col_2.elemento())
@@ -301,4 +368,9 @@ export const create_booking_payment_card_display = (card) => {
 
     return row
 
+}
+
+//Async functions
+async function getPetsById(ownerId){
+    return await requestPromise('getPetsById',ownerId)
 }

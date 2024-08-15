@@ -126,6 +126,7 @@ width: 150px !important;
     color:var(--brand-warning-text) !important;    
     padding-left: .5rem;
 }
+
 .menu-label {
     font-size: 1.25rem;
 }
@@ -179,15 +180,6 @@ a{
     border: none !important;
 }
 
-.modal-content {
-    border-radius: 10px !important;        
-    /* overflow: hidden;     */
-  }
-/* .modal-body {
-    overflow: hidden;    
-  } */
-
-
 .header-appointment{
     background-color: var(--brand-bg-color) !important;
     color: var(--brand-bg-text-color) !important;
@@ -234,13 +226,10 @@ small {
     margin-left: 10px !important;
     display: block !important;
 }
-/* 
-.row {
-    width: 100% !important;
-} */
 
 .tab-pane {
     box-shadow: 0px 5px 5px lightgray;
+    margin-top: 1rem;
 }
 
 .tab-selected {
@@ -273,18 +262,6 @@ small {
     border-style: none;    
     z-index: -100;
 }
-
-.nav-item {    
-    margin-left: 5px;
-}
-
-/* .pet-file-info {
-    margin-top: 5vh !important;
-} */
-
-/* .tab-pane {
-    margin-top: 5vh !important;
-} */
 
 #Info {
     height: 85vh;
@@ -366,12 +343,6 @@ small {
     box-shadow: 5px 5px 5px 0 rgb(0 0 0 / 25%);
 }
 
-.cs-form{
-    height: 100% !important;
-}
-.form-control {
-    margin: .25rem;
-}
 .opacity-fade-animation {    
     opacity: 1;
 }
@@ -390,9 +361,7 @@ small {
     to {height: 0%;}
 }
 
-
-.slot-available {
-    /* background-color: var(--bs-info); */
+.slot-available {    
     width: 100%;    
     background-color: rgb(68, 190, 192,.35);    
     max-height: 25px !important;
@@ -454,70 +423,11 @@ small {
 }
 
 
-.appointment-tooltip {
-    display: flex;
-    position: absolute;        
-    top: 100%;
-    left: 0;
-    content:"";          
-    height: max-content;        
-    background: var(--bg-color);    
-    border-radius: 10px;
-    box-shadow: 5px 5px 20px rgba(0,0,0,.20);    
-    width: max-content;
-    max-width: 300px;
-    padding: .5rem;
-    opacity: 0;
-    transition: .3s ease opacity;
-    z-index: 1000;
-}
-
-.appointment-tooltip::after {
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-}
-
-.appointment-tooltip img{
-    width: 80px;
-    height: 80px;
-    padding: .5rem;
-}
 
 .tooltip-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.appointment-tooltip.activo {
-    opacity: 1;
-}
-
-.appointment-tooltip button {
-    justify-self: center;
-    border: none;
-    border-radius: 10px;
-    font-size: small;
-    background-color: var(--brand-warning);
-    color: var(--brand-warning-text);
-}
-
-.nav-asistant-regis{
-    border: none;
-    background: transparent;
-    color: var(--brand-bg-color);
-    width: fit-content;    
-}
-
-.form-control, .form-select{
-    height: 50px !important;
-}
-
-#NextAppointments .row{
-    width: 100% !important;
-    max-width: 100% !important;
-    left: 0 !important;
-    margin-left: 0 !important;
 }
 
 .registration-label {
@@ -567,6 +477,7 @@ small {
 .registration-step-link{
     justify-items: center;
 }
-.form-line{
-    margin: 1rem;
+
+.dropdown-menu {
+    width: 100%;
 }

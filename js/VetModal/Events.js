@@ -98,12 +98,13 @@ export const event_book_appointment_synthom_selected = (parametersArray) => {
     event_appointment_step_change()
 }
 
-export const event_book_appointment_to_confirmation = () => {    
+export const event_book_appointment_to_confirmation = () => {           
     let NewAppointment = LocalStorage.Get('NewAppointment')
     NewAppointment.subject = book_appointment_subject.value
     LocalStorage.Save('NewAppointment',NewAppointment)
     $('#VetModal_carousel').carousel('next')        
     event_appointment_step_change()
+    event_book_appointment_confirm()
     Constructor.create_booking_payment_methods()
 }
 
@@ -142,18 +143,20 @@ const event_booking_payment_card_apply_helper_chargeTotal = (NewAppointment) => 
 }
 
 //Se muestran los datos de la cita para confirmar
-export const event_book_appointment_confirm = () => {
+export const event_book_appointment_confirm = () => {        
     let NewAppointment = LocalStorage.Get('NewAppointment')
     let CurrentVet = LocalStorage.Get('CurrentVet')
     LocalStorage.Save('NewAppointment',NewAppointment)
-    let fullDate = new Date(NewAppointment.fullDate)
+    
+    let fullDate = new Date(NewAppointment.fullDate.slice(0,19))
+    console.log(fullDate)
 
     NewAppointment.subject = book_appointment_subject.value
     NewAppointment.description = book_appointment_comments.value
         
     book_appointment_type_selected_ico.innerHTML = ''    
     book_appointment_type_selected_ico.append(i_type_appointment(NewAppointment.type).elemento())
-
+    
     book_appointment_date_selected.innerHTML = get_date_as_description(fullDate)
     book_appointment_time_selected.innerHTML = ` de ${NewAppointment.strStartTime} ${get_am_pm(NewAppointment.startTime)} a ${NewAppointment.strEndTime} ${get_am_pm(NewAppointment.startTime)}`
 
@@ -253,4 +256,23 @@ const get_typeInt_fromType = (type) => {
         case 'onSite':
             return 3
     }
+}
+
+//Carousel Mini Agenda
+export const event_carousel_miniAgenda_change = () => {
+    setTimeout(() => {
+        console.log(Constructor.get_carousel_current_date())        
+    }, 800);
+    
+}
+
+//Availability
+export const event_load_available_slots = () => {
+    videocall_layer.classList.add("availability-fade-out")
+    setTimeout(() => {
+        videocall_layer.innerHTML = ''
+        videocall_layer.classList.remove("availability-fade-out")
+        let date = Constructor.get_carousel_current_date()        
+        Constructor.load_available_slots(date)
+    }, 800); //Es importante no bajar de 800 ya que el carrusel tarda esto en cambiar y, si bajo el tiempo, obtendrá la misma fecha antes de cambiarse
 }

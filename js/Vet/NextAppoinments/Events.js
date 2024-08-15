@@ -1,4 +1,6 @@
-export const appointments_onmouseenter = (parametersArray) => {    
+import * as Save  from './Save.js'
+
+export const appointments_onmouseenter = (parametersArray) => {    //Cuando se posiciona el mouse dentro de la cita en la agenda
     let controlId = parametersArray[0]        
     appointments_onmouseenter_helper(controlId)
 }
@@ -31,4 +33,10 @@ const appointments_onmouseenter_helper = (controlId) => {
     
     appointment_tooltip.style.setProperty("left",`${left}px`)
     appointment_tooltip.style.setProperty("top",`${top}px`)    
+}
+
+//Aceptar una cita
+export const appointments_acceptance = (parametersArray) => {
+    console.log(`appointments_acceptance: ${parametersArray[0]}`)
+    Save.save_acceptance(parametersArray[0])
 }

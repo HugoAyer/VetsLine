@@ -76,3 +76,8 @@
     background-color: inherit;
     z-index: 1055;
 }
+
+.modal-content {
+    border-radius: 10px !important;        
+    /* overflow: hidden;     */
+}

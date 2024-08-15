@@ -12,8 +12,10 @@
     <link href="../css/calendar.css" rel="stylesheet">
     <link href="../css/Modals.css" rel="stylesheet">
     <link href="../css/Scheduler.css" rel="stylesheet">
+    <link href="../css/form.css" rel="stylesheet">
     <link href="../css/NextAppointments.css" rel="stylesheet">
     <link href="../css/step_wizard.css" rel="stylesheet">
+    <link href="../css/navbar.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -93,14 +95,14 @@
                         <a id="nav-asistant" class="nav-link" href="#">                            
                                 <i class="fa-solid fa-gear"></i> 
                                 <span class="position-relative nav-asistant-regis"> Registro
-                                    <span class="position-absolute start-100 translate-end p-2 bg-danger border border-light rounded-circle">
+                                    <span id="registration_menu_item" class="position-absolute start-100 translate-end p-2 bg-danger border border-light rounded-circle">
                                         <span class="visually-hidden">New alerts</span>
                                     </span>
                                 </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"><i class="fa-solid fa-blog"></i> Blogs</a>
+                        <a class="nav-link"><i class="fa-solid fa-bell"></i> Notificaciones</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"><i class="fa-solid fa-clipboard-question"></i> Q&A</a>
@@ -116,23 +118,33 @@
                                         aria-expanded="false" id="LoggedUserName">
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <h5 id="UserSpan"></h5>
-                                            <h5 id="EmailSpan"></h5>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Ver mi perfil</a></li>
+                                        <li class="profile-popup-item">
+                                            <div class="content mb-2">
+                                                <div class="row">
+                                                    <div class="col-5">
+                                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                            class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <div class="row profile-popup-row"><h5 href="#" id="UserSpan"></h5></div>
+                                                        <div class="row profile-popup-row"><a href="#" id="EmailSpan"></a></div>
+                                                        <div class="row profile-popup-row"><a href="#">Ver mi perfil</a></div>
+                                                        <div class="row profile-popup-row"><a href="#">Configuraciones</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>                                     
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
-                                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                        <li class="profile-popup-row">
+                                            <a class="dropdown-item" href="#">Cerrar sesión</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
                         </h5>
-                    </li>
-                    <li class="nav-item">
-                        <h5><a class="nav-link" onclick="prompt_register()">Cerrar sesión</a></h5>
-                    </li>
+                    </li>                    
                 </ul>               
             </div>
         </div>
@@ -147,24 +159,24 @@
                     </div>
                     <div class="col-auto">
                         <div class="d-block">
-                            <span class="pet-file-data">Med. Vet. Orlando Ramirez</span>
+                            <span id="main-card-name" class="pet-file-data"></span>
                         </div>
                         <div class="d-block">
-                            <span class="pet-file-value">Médico Veterinario</span>
+                            <span id="main-card-title" class="pet-file-value"></span>
                         </div>
                         <div class="d-block">
-                            <span class="pet-file-value">Monterrey, Nuevo León</span>
+                            <span id="main-card-city" class="pet-file-value"></span>
                         </div>
                         <div class="d-block">
-                            <span class="pet-file-value">Ranking actual: 4.7 </span>
+                            <span id="main-card-ranking" class="pet-file-value">Ranking actual: 4.7 </span>
                         </div>
-                        <div class="d-block">
+                        <div id="main-card-ranking-stars" class="d-block">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                 class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                 class="fa-regular fa-star"></i>
                         </div>
                         <div class="d-block">
-                            <a href="#" class="text-primary">47 opiniones</a>
+                            <a id="main-card-opinions" href="#" class="text-primary">47 opiniones</a>
                         </div>
                     </div>
                 </div>
@@ -404,16 +416,16 @@
             <div class="modal-footer">
                 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
                     <div id="toast_agenda" class="toast hide " role="alert" aria-live="assertive" aria-atomic="true">
-                      <div class="toast-header bg-success">
-                        <i class="fa-regular fa-thumbs-up"></i>
-                        <small>Operación exitosa</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                      </div>
-                      <div class="toast-body">
-                        <span class="text-success">Se han guardado los cambios</span>
-                      </div>
+                        <div class="toast-header bg-success">
+                            <i class="fa-regular fa-thumbs-up"></i>
+                            <small>Operación exitosa</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            <span class="text-success">Se han guardado los cambios</span>
+                        </div>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>
@@ -545,7 +557,9 @@
                                         <div id="registration_address_1" class="tab-pane active">
                                             <div class="mb-3 d-flex form-line">
                                                 <label for="registration_address_state" class="form-label registration-label">Estado</label>
-                                                <input placeholder="Estado" id="registration_address_state_1" class="form-control" type="text">
+                                                <select id="registration_address_state_1" class="form-select" aria-label="Estado">
+                                                    <option value=""></option>
+                                                </select>
                                             </div>
                                             <div class="mb-3 d-flex form-line">
                                                 <label for="registration_address_city" class="form-label registration-label">Ciudad</label>
@@ -555,6 +569,7 @@
                                             <div class="mb-3 d-flex form-line">
                                                 <label for="registration_address_block" class="form-label registration-label">Colonia</label>
                                                 <input placeholder="Colonia" id="registration_address_block_1" class="form-control" type="text">
+                                                <input placeholder="Código Postal" id="registration_address_zipcode_1" class="form-control" type="text">
                                             </div>
                                             <div class="mb-3 d-flex form-line">
                                                 <label for="registration_address_street" class="form-label registration-label">Calle y número</label>
@@ -568,7 +583,9 @@
                                         <div id="registration_address_2" class="tab-pane">
                                             <div class="mb-3 d-flex form-line">
                                                 <label for="registration_address_state" class="form-label registration-label">Estado</label>
-                                                <input placeholder="Estado" id="registration_address_state_2" class="form-control" type="text">
+                                                <select id="registration_address_state_2" class="form-select" aria-label="Estado">    
+                                                    <option value=""></option>                                                
+                                                </select>
                                             </div>
                                             <div class="mb-3 d-flex form-line">
                                                 <label for="registration_address_city" class="form-label registration-label">Ciudad</label>
@@ -594,7 +611,7 @@
                             <div id="Registration_Certificates" step="3" class="carousel-item">
                                 <div class="container">
                                     <ul id="tabListCertificates" class="nav nav-tabs" role="tablist">
-                                        <li class="nav-item">
+                                        <li name="registration_certificate" data-id="1" class="nav-item">
                                             <a href="#registration_certificate_1" class="nav-link active" data-bs-toggle="tab" aria-selected="true" ><span id="registration_certificate_id_1">*</span></a>
                                         </li>    
                                         <li class="nav-item" id="tab-certificates-add-item">
@@ -604,26 +621,26 @@
                                     <div id="registration_certificate_panes" class="tab-content">
                                         <div id="registration_certificate_1" class="tab-pane active">
                                             <div class="d-flex form-line">
-                                                <label for="registration_certificate_name" class="form-label registration-label">Nombre</label>
-                                                <input placeholder="Nombre" id="registration_certificate_name" class="form-control" type="text">
+                                                <label for="registration_certificate_name_1" class="form-label registration-label">Nombre</label>
+                                                <input placeholder="Nombre" id="registration_certificate_name_1" class="form-control" type="text">
                                             </div>
                                             <div class="d-flex form-line">
-                                                <label for="registration_certificate_emiter" class="form-label registration-label">Emisor</label>
-                                                <input placeholder="Empresa emisora" id="registration_certificate_emiter" class="form-control" type="text">
+                                                <label for="registration_certificate_emiter_1" class="form-label registration-label">Emisor</label>
+                                                <input placeholder="Empresa emisora" id="registration_certificate_emiter_1" class="form-control" type="text">
                                             </div>
                                             <div class="d-flex form-line">
-                                                <label for="registration_certificate_expeditionDate" class="form-label registration-label">Fecha de
+                                                <label for="registration_certificate_expeditionDate_1" class="form-label registration-label">Fecha de
                                                     expedición</label>
-                                                <input placeholder="MM/YYYY" id="registration_certificate_expeditionDate" class="form-control" type="text">
+                                                <input placeholder="MM/YYYY" id="registration_certificate_expeditionDate_1" class="form-control" type="text">
                                             </div>
                                             <div class="d-flex form-line">
                                                 <label for="registration_certificate_dueDate" class="form-label registration-label">Fecha de
                                                     caducidad</label>
-                                                <input placeholder="Año/Mes" id="registration_certificate_dueDate" class="form-control" type="text">
+                                                <input placeholder="MM/YYYY" id="registration_certificate_dueDate_1" class="form-control" type="text">
                                             </div>
                                             <div class="d-flex form-line">
                                                 <label for="registration_certificate_url" class="form-label registration-label">URL del certificado</label>
-                                                <input placeholder="url" id="registration_certificate_url" class="form-control" type="text">
+                                                <input placeholder="url" id="registration_certificate_url_1" class="form-control" type="text">
                                             </div>
                                         </div>
                                     </div>                                       
@@ -634,7 +651,7 @@
                                     <h3>Cuéntanos sobre tí</h3>
                                 </div>
                                 <div class="d-flex form-line">                                    
-                                    <textarea class="form-control" id="registration_aboutYou" rows="6"></textarea>
+                                    <textarea class="form-control form-area" id="registration_aboutYou" rows="6"></textarea>
                                   </div>
                             </div>
                         </div>
@@ -647,6 +664,16 @@
                 </div>
             </div>
             
+        </div>
+    </div>
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="toast_newAppointment" class="toast hide " role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success">                                
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <span class="text-success">Usted tiene una nueva cita</span>
+            </div>
         </div>
     </div>
 </body>

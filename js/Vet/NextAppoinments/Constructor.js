@@ -91,31 +91,34 @@ export const Init = () => {
     let Appointments = LocalStorage.Get('Appointments') //Obtiene la agenda de citas    
 
     Appointments.forEach((appointment) => { //Aquí se llena el calendario
-        let slots = (appointment.endTime - appointment.startTime) / 50        
-        let time = appointment.startTime               
-            let time_start = fill_availability_day_helper(time)  
-            let appDate = new Date(appointment.fullDate)
-            appDate = add_day(appDate,1)            
-            let idParent = `slot_${get_date_as_string_short(appDate)}_${time_start}`                             
+        let slots = (appointment.endTime - appointment.startTime) / 50   
+        
+        let time = appointment.startTime
+            let time_start = fill_availability_day_helper_appmnt(time)  
+            let appDate = new Date(appointment.fullDate)            
+            //appDate = add_day(appDate,1)            
+            let idParent = `slot_${get_date_as_string_short(appDate)}_${time_start}`                
             let parentControl = document.getElementById(idParent)
-            let appointment_item = create_div_appointment(appointment,time,appointment.endTime,0)
-                                    
-            parentControl.append(appointment_item.elemento())  
+            let appointment_item = create_div_appointment(appointment,time,appointment.endTime,0)            
+            if(parentControl != null){
             
-            let control = document.getElementById(`appId_${appointment.idTransaction}`).parentElement       
+                parentControl.append(appointment_item.elemento())  
+                
+                let control = document.getElementById(`appId_${appointment.idTransaction}`).parentElement       
+                
+                appointments_tooltip.append(create_div_appointment_tooltip(appointment).elemento())
             
-            appointments_tooltip.append(create_div_appointment_tooltip(appointment).elemento())
-
-            let appointment_tooltip = document.getElementById(`tooltip-${appointment.idTransaction}`)
-            let timer            
-            appointment_item.elemento().addEventListener('mouseleave', () => {
-                timer = setTimeout(() => {
-                    appointment_tooltip.classList.remove('activo')
-                },500)
-            })
-
+                let appointment_tooltip = document.getElementById(`tooltip-${appointment.idTransaction}`)
+                let timer            
+                appointment_item.elemento().addEventListener('mouseleave', () => {
+                    timer = setTimeout(() => {
+                        appointment_tooltip.classList.remove('activo')
+                    },500)
+                })
+            
             appointment_tooltip.addEventListener('mouseenter',() => clearTimeout(timer))
             appointment_tooltip.addEventListener('mouseleave',() => appointment_tooltip.classList.remove('activo'))
+        }
     })        
     
 }
@@ -179,8 +182,27 @@ const fill_availability_day_helper = (start) => {
             break
         default:
             let onlyHour = parseInt((start / 100)) * 100
-            let onlyMinutes = start - (parseInt((start / 100)) * 100)
-            timeId = onlyHour + ((onlyMinutes < 50)? 0 : 30)
+            let onlyMinutes = start - parseFloat((parseInt((start / 100)) * 100))                    
+            timeId = onlyHour + ((onlyMinutes < 50)? 0 : 30)                        
+            //timeId = onlyHour + onlyMinutes
+            
+            break            
+    }
+
+    return timeId
+}
+const fill_availability_day_helper_appmnt = (start) => {    
+    let timeId = ''
+    switch(start){
+        case start < 30:
+            timeId = '0'
+            break
+        case start <= 100:
+            timeId= '30'
+            break
+        default:                       
+            timeId = start  
+            
             break            
     }
 
@@ -188,11 +210,13 @@ const fill_availability_day_helper = (start) => {
 }
 
 //Construcción de los controles
-const create_div_appointment = (appointment,timeStart, timeEnd,slot) => {        
-    let div_row_a = crearElemento("a",`appId_${appointment.idTransaction}`,["btn","btn-warning","appoinments"])    
+const create_div_appointment = (appointment,timeStart, timeEnd,slot) => {    
+    try
+    {    
+    let div_row_a = crearElemento("a",`appId_${appointment.idTransaction}`,["btn",(appointment.status == 'N')? 'btn-warning-pending' : 'appointment-accepted','appoinments-slot'])    
     let parametersArray = [appointment.idTransaction]    
 
-    let div_row = crearElemento("div","row",["row","w-100"])
+    let div_row = crearElemento("div","row",["row","w-100","row-appointment"])
 
     let div_row_col_2 = crearElemento("div","",["col-auto","text-start"])
     if(slot == 0)div_row_col_2.addBelow(i_type_appointment(appointment.type).elemento())
@@ -207,9 +231,12 @@ const create_div_appointment = (appointment,timeStart, timeEnd,slot) => {
         
         div_row_a.addEvent('mouseenter',Events.appointments_onmouseenter,parametersArray)        
 
-        div_row_a.addBelow(div_row.elemento())
-
+        div_row_a.addBelow(div_row.elemento())    
     return div_row_a
+    }
+    catch(error){
+        console.log(`Error create_div_appointment: ${error}`)
+    }
 }
 const create_slot_hour = (time) => {
     let td = crearElemento("td",`slot_${time}`,["appointments-hour-block"])
@@ -236,15 +263,16 @@ const create_div_appointment_tooltip = (appointment) => {
     let div_appointment_tooltip = crearElemento("div",`tooltip-${appointment.idTransaction}`,["appointment-tooltip"])
     let div_appointment_tooltip_img = crearElemento("img","",["img-fluid","rounded-circle","mb-3","img-thumbnail-smaller","shadow-sm"])
     div_appointment_tooltip_img.addAttributes([{"src":appointment.pet.image}])
-    let div_appointment_tooltip_section = crearElemento("section","",["tooltip-section"])
+    let div_appointment_tooltip_section = crearElemento("section","",["tooltip-section","d-flex"])
     let div_appointment_tooltip_section_tooltip_species = crearElemento("p","",["tooltip-species"])    
     let div_appointment_tooltip_section_tooltip_species_i = crearElemento("i","",["fa-solid",appointment.pet.species.icon])
     let div_appointment_tooltip_section_tooltip_species_span = crearElemento("span","",["tooltip-name"],` ${appointment.pet.name}`)
     let div_appointment_tooltip_section_tooltip_synthom = crearElemento("p","",["tooltip-synthom"])
     let div_appointment_tooltip_section_tooltip_synthom_i = crearElemento("i","",["fa-solid",appointment.Synthom.icon])
     let div_appointment_tooltip_section_tooltip_synthom_span = crearElemento("span","",["tooltip-name"],` ${appointment.subject}`)
+    let div_appointment_tooltip_section_tooltip_buttons = crearElemento("div","",["d-flex","appointment-buttons"])
 
-    let div_appointment_tooltip_section_tooltip_button = crearElemento("button","",[],"Abrir cita")
+    let div_appointment_tooltip_section_tooltip_button = crearElemento("button","",["btn", "btn-warning"],"Abrir cita")    
 
     div_appointment_tooltip_section_tooltip_species.addBelow(div_appointment_tooltip_section_tooltip_species_i.elemento())
     div_appointment_tooltip_section_tooltip_species.addBelow(div_appointment_tooltip_section_tooltip_species_span.elemento())
@@ -254,7 +282,16 @@ const create_div_appointment_tooltip = (appointment) => {
 
     div_appointment_tooltip_section.addBelow(div_appointment_tooltip_section_tooltip_species.elemento())
     div_appointment_tooltip_section.addBelow(div_appointment_tooltip_section_tooltip_synthom.elemento())
-    div_appointment_tooltip_section.addBelow(div_appointment_tooltip_section_tooltip_button.elemento())
+
+    div_appointment_tooltip_section_tooltip_buttons.addBelow(div_appointment_tooltip_section_tooltip_button.elemento())
+    if(appointment.status == 'N') {
+        let div_appointment_tooltip_section_tooltip_accept_button = crearElemento("button","",["btn","btn-success"],"Aceptar cita")
+        let parametersArray = [appointment.idTransaction]
+        div_appointment_tooltip_section_tooltip_accept_button.addEvent('click',Events.appointments_acceptance,parametersArray)
+        div_appointment_tooltip_section_tooltip_buttons.addBelow(div_appointment_tooltip_section_tooltip_accept_button.elemento())    
+    }    
+    
+    div_appointment_tooltip_section.addBelow(div_appointment_tooltip_section_tooltip_buttons.elemento())
 
     div_appointment_tooltip.addBelow(div_appointment_tooltip_img.elemento())
     div_appointment_tooltip.addBelow(div_appointment_tooltip_section.elemento())

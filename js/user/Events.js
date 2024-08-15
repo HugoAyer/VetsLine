@@ -15,17 +15,17 @@ const credit_free_calls = document.getElementById('credit_free_calls')
 const booking_appointment_type_videocall = document.getElementById("booking_appointment_type_videocall")
 const booking_appointment_type_present = document.getElementById("booking_appointment_type_present")
 
-
 const videocall_layer = document.getElementById("videocall-layer")
 const present_layer = document.getElementById('present-layer')
 
+const user_add_pet = document.getElementById("user-add-pet")
+const carousel_prev = document.getElementById("carousel_prev")
+const carousel_next = document.getElementById("carousel_next")
+const VetFileModal = document.getElementById('VetFileModal');
+
 //Eventos de controles ya creados
 export const general_events = () => {
-    let carousel_prev = document.getElementById("carousel_prev")
-    let carousel_next = document.getElementById("carousel_next")
-    
-    let VetFileModal = document.getElementById('VetFileModal');
-
+        
     booking_appointment_type_videocall.addEventListener('click',function(){
         booking_appointment_type_present.classList.remove('active')
         booking_appointment_type_videocall.classList.add('active')
@@ -37,14 +37,7 @@ export const general_events = () => {
         booking_appointment_type_present.classList.add('active')
         videocall_layer.classList.remove('active')
         present_layer.classList.add('active')
-    })
-
-    carousel_prev.addEventListener('click',() => {    //Evento cuando se presiona el botón de "previo" en el carrusel
-        load_available_slots()
-    })
-    carousel_next.addEventListener('click',() => {    //Evento cuando se presiona el botón de "previo" en el carrusel
-        load_available_slots()
-    })
+    })    
 
     VetFileModal.addEventListener('shown.bs.modal',function() {
         booking_steps.style.display='none'
@@ -64,6 +57,10 @@ export const general_events = () => {
 
     book_appointment_to_step4.addEventListener('click',function() {
         ModalVetEvents.event_book_appointment_toPayment()
+    })
+
+    user_add_pet.addEventListener('click',function(){
+        $('#AsistantPet').modal('show');
     })
 }
 

@@ -13,6 +13,7 @@
     <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="../css/calendar.css" rel="stylesheet">
     <link href="../css/Modals.css" rel="stylesheet">
+    <link href="../css/navbar.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -555,10 +556,10 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="d-block">
-                                        <span class="pet-file-data"> De: 12:30 PM</span>
+                                        <span class="pet-file-data text-danger"> De: 12:30 PM</span>
                                     </div>
                                     <div class="d-block">
-                                        <span class="pet-file-data">a: 2:00 PM</span>
+                                        <span class="pet-file-data text-danger">a: 2:00 PM</span>
                                     </div>
                                 </div>
                             </div>
@@ -567,8 +568,7 @@
                                 <li class="nav-item pet-file-li" role="presentation">
                                     <a id="tab-link-generalcita" class="pet-file-menu-item" data-bs-toggle="tab"
                                         data-bs-target="#TabGeneralCita" role="tab" aria-controls="TabGeneralCita"
-                                        aria-selected="true"><i class="fa-solid fa-house-user"></i> Información general
-                                        de la cita</a>
+                                        aria-selected="true"><i class="fa-solid fa-house-user"></i> Información general</a>
                                 </li>
                                 <li class="nav-item pet-file-li" role="presentation">
                                     <a id="tab-link-notes" class="pet-file-menu-item" data-bs-toggle="tab"
@@ -603,13 +603,13 @@
                                     <div class="candidate-list-box card mt-4">
                                         <div class="p-4 card-body">
                                             <div class="align-items-center mt-2 row">
-                                                <div class="col-3">
+                                                <div class="col-3 big-presentation-picture">
                                                     <img src="../img/lucke.jpg"
                                                         class="img-fluid rounded-circle mb-3 img-thumbnail-bigger shadow-sm">
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="d-block">
-                                                        <span class="pet-file-data">Lucke</span>
+                                                        <i class="fa-solid fa-dog"> </i><span class="pet-file-data"> Lucke</span>
                                                     </div>
                                                     <div class="d-block">
                                                         <span class="pet-file-value">8 años</span>
@@ -627,7 +627,7 @@
                                                     <span class="pet-file-data">Motivo de la cita:</span>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <span class="pet-file-value">Revisión de rutina</span>
+                                                    <i class="fa-solid fa-head-side-cough" title="Tos o dificultad para respirar"></i><span class="pet-file-value"> Revisión de rutina</span>
                                                 </div>
                                                 <div class="col-lg-1">
                                                     <a href="#">></a>
@@ -648,35 +648,75 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="candidate-list-box card mt-4">
-                                        <div class="p-4 card-body">
-                                            <div class="align-items-center mt-2 row">
-                                                <div class="col-3">
-                                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                                                        class="img-fluid rounded-circle mb-3 img-thumbnail-bigger shadow-sm">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="candidate-list-box card mt-4">
+                                                <div class="p-4 card-body">
+                                                    <div class="align-items-center mt-2 row">
+                                                        <div class="col-3">
+                                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                                class="img-fluid rounded-circle mb-3 img-thumbnail-bigger shadow-sm">
+                                                        </div>
+                                                        <div class="col-lg-9">
+                                                            <div class="d-block">
+                                                                <span class="pet-file-data">Med. Vet. Orlando Ramirez</span>
+                                                            </div>
+                                                            <div class="d-block">
+                                                                <span class="pet-file-value">Med.Vet</span>
+                                                            </div>
+                                                            <div class="d-block">
+                                                                <span class="pet-file-value">Ranking actual: 4.7 </span>
+                                                            </div>
+                                                            <div class="d-block">
+                                                                <i class="fa-solid fa-star"></i><i
+                                                                    class="fa-solid fa-star"></i><i
+                                                                    class="fa-solid fa-star"></i><i
+                                                                    class="fa-solid fa-star"></i><i
+                                                                    class="fa-regular fa-star"></i>
+                                                            </div>
+                                                            <div class="d-block">
+                                                                <a href="#" pet-id="1" data-bs-toggle="modal"
+                                                                    data-bs-target="#VetFileModal" class="text-primary"
+                                                                    title="Expediente">Ver expediente</a>
+                                                            </div>
+                                                        </div>                                                        
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="d-block">
-                                                        <span class="pet-file-data">Med. Vet. Orlando Ramirez</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="candidate-list-box card mt-4">
+                                                <div class="p-4 card-body">
+                                                    <div class="align-items-center mt-2 row">
+                                                        <div class="col-3">
+                                                            <img src="http://127.0.0.1:5500/img/user.jpg"
+                                                                class="img-fluid rounded-circle mb-3 img-thumbnail-bigger shadow-sm">
+                                                        </div>
+                                                        <div class="col-lg-9">
+                                                            <div class="d-block">
+                                                                <span class="pet-file-data">Hugo Chávez</span>
+                                                            </div>
+                                                            <div class="d-block">
+                                                                <span class="pet-file-value">hugo@conocido.com</span>
+                                                            </div>
+                                                            <div class="d-block">
+                                                                <span class="pet-file-value">Ranking actual: 4.7 </span>
+                                                            </div>
+                                                            <div class="d-block">
+                                                                <i class="fa-solid fa-star"></i><i
+                                                                    class="fa-solid fa-star"></i><i
+                                                                    class="fa-solid fa-star"></i><i
+                                                                    class="fa-solid fa-star"></i><i
+                                                                    class="fa-regular fa-star"></i>
+                                                            </div>
+                                                            <div class="d-block">
+                                                                <a href="#" pet-id="1" data-bs-toggle="modal"
+                                                                    data-bs-target="#VetFileModal" class="text-primary"
+                                                                    title="Expediente">Ver expediente</a>
+                                                            </div>
+                                                        </div>
+                                                        
                                                     </div>
-                                                    <div class="d-block">
-                                                        <span class="pet-file-value">Med.Vet</span>
-                                                    </div>
-                                                    <div class="d-block">
-                                                        <span class="pet-file-value">Ranking actual: 4.7 </span>
-                                                    </div>
-                                                    <div class="d-block">
-                                                        <i class="fa-solid fa-star"></i><i
-                                                            class="fa-solid fa-star"></i><i
-                                                            class="fa-solid fa-star"></i><i
-                                                            class="fa-solid fa-star"></i><i
-                                                            class="fa-regular fa-star"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-auto">
-                                                    <a href="#" pet-id="1" data-bs-toggle="modal"
-                                                        data-bs-target="#VetFileModal" class="text-primary"
-                                                        title="Expediente">Ver expediente</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1412,24 +1452,117 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="AsistantPet" tabindex="-1"
+        aria-labelledby="AsistantModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PetModalLabel">
+                    <span id="title_AsistantPet"> Nueva mascota - Generales</span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-content">
+                <div class="container">
+                    <h5 class="modal-title">
+                        <a id="AsistantPet_carousel_prev" type="button" ><i class="fa-solid fa-arrow-left"></i></a>
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="content">
+                        <section id="newPet_steps" class="step-wizard container" style="display: block;">
+                            <ul class="step-wizard-list">
+                                <li id="newPet_step_1" class="step-wizard-item current-item">
+                                    <a id="newPet_step_1_link" class="registration-step-link" href="#">
+                                    <h5 class="progress-count"><small class="progress-number">1</small></h5>                                    
+                                        <span id="newPet_step_1_span" class="position-relative nav-asistant-regis">
+                                            Especie
+                                            <span id="newPet_step_1_redBall" class="position-absolute start-100 translate-end p-1 bg-danger border border-light rounded-circle">
+                                                <span class="visually-hidden">step 1</span>
+                                            </span>                                            
+                                        </span>
+                                    </a>
+                                </li>
+                                <li id="newPet_step_2" class="step-wizard-item">
+                                    <a id="newPet_step_2_link" class="registration-step-link" href="#">
+                                        <h5 class="progress-count"><small class="progress-number">2</small></h5>                                    
+                                            <span id="newPet_step_2_span" class="position-relative nav-asistant-regis">
+                                                Generales
+                                                <span id="newPet_step_2_redBall" class="position-absolute start-100 translate-end p-1 bg-danger border border-light rounded-circle">
+                                                    <span class="visually-hidden">step 2</span>
+                                                </span>                                            
+                                            </span>
+                                    </a>
+                                </li>
+                                <li id="newPet_step_3" class="step-wizard-item">
+                                    <a id="newPet_step_3_link" class="registration-step-link" href="#">
+                                        <h5 class="progress-count"><small class="progress-number">3</small></h5>                                    
+                                            <span id="newPet_step_3_span" class="position-relative nav-asistant-regis">
+                                                Domicilio
+                                                <span id="newPet_step_3_redBall" class="position-absolute start-100 translate-end p-1 bg-danger border border-light rounded-circle">
+                                                    <span class="visually-hidden">step 3</span>
+                                                </span>                                            
+                                            </span>
+                                    </a>
+                                </li>
+                                <li id="newPet_step_4" class="step-wizard-item">
+                                    <a id="newPet_step_4_link" class="registration-step-link" href="#">
+                                        <h5 class="progress-count"><small class="progress-number">4</small></h5>                                    
+                                            <span id="newPet_step_4_span" class="position-relative nav-asistant-regis">
+                                                Certificados
+                                                <span id="newPet_step_4_redBall" class="position-absolute start-100 translate-end p-1 bg-danger border border-light rounded-circle">
+                                                    <span class="visually-hidden">step 4</span>
+                                                </span>                                            
+                                            </span>
+                                    </a>
+                                </li>
+                                <li id="newPet_step_5" class="step-wizard-item">
+                                    <a id="newPet_step_5_link" class="registration-step-link" href="#">
+                                        <h5 class="progress-count"><small class="progress-number">5</small></h5>                                    
+                                            <span id="newPet_step_5_span" class="position-relative nav-asistant-regis">
+                                                Cuéntanos sobre ti
+                                                <span id="newPet_step_5_redBall" class="position-absolute start-100 translate-end p-1 bg-danger border border-light rounded-circle">
+                                                    <span class="visually-hidden">step 5</span>
+                                                </span>                                            
+                                            </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                        <div id="NewPet_carousel" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div id="NewPet_Species" step="0" class="carousel-item active">
+                                    <div class="container">
+                                        <div id="NewPet_species_buttons" class="container">
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="NewPet_Generals" step="0" class="carousel-item">                                    
+                                    <div class="container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-bgbrand">
         <div class="container-fluid">
-            <h1><a class="navbar-brand mb-0" href="#"><img id="image-34afac11"
-                        src="https://d1yei2z3i6k35z.cloudfront.net/8163742/666773c3018e1_vetsaly_logo.svg" width="180"
-                        loading="lazy" class="sc-jrIrqw kXjIrw"></a></h1>
+            <h1><a class="navbar-brand mb-0" href="#"><img id="image-34afac11" src="https://d1yei2z3i6k35z.cloudfront.net/8163742/666773c3018e1_vetsaly_logo.svg" width="180" loading="lazy" class="sc-jrIrqw kXjIrw"></a></h1>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-house"></i>
                             Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-book"></i> Directorio de Vets</a>
+                        <a class="nav-link" href="vets.html"><i class="fa-solid fa-book"></i> Directorio de Vets</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa-solid fa-book"></i> Directorio de clínicas Vets</a>
@@ -1443,9 +1576,7 @@
                     <li class="nav-item">
                         <a class="nav-link"><i class="fa-solid fa-users-line"></i> Acerca de nosotros</a>
                     </li>
-                </ul>
-                <ul class="px-4 navbar-nav me-auto mb-2 mb-lg-0 gap-5">
-                    <li>
+                    <li class="nav-item">
                         <h5 class="px-4">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item dropdown">
@@ -1453,24 +1584,35 @@
                                         aria-expanded="false" id="LoggedUserName">
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <h5 id="UserSpan"></h5>
-                                            <h5 id="EmailSpan"></h5>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Ver mi perfil</a></li>
+                                        <li class="profile-popup-item">
+                                            <div class="content mb-2">
+                                                <div class="row">
+                                                    <div class="col-5">
+                                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                            class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <div class="row profile-popup-row"><h5 href="#" id="UserSpan"></h5></div>
+                                                        <div class="row profile-popup-row"><a href="#" id="EmailSpan"></a></div>
+                                                        <div class="row profile-popup-row"><a id="user-add-pet" href="#">Añadir mascota</a></div>
+                                                        <div class="row profile-popup-row"><a href="#">Ver mi perfil</a></div>
+                                                        <div class="row profile-popup-row"><a href="#">Configuraciones</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>                                     
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
-                                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                        <li class="profile-popup-row">
+                                            <a class="dropdown-item" href="#">Cerrar sesión</a>
+                                        </li>                     
                                     </ul>
                                 </li>
                             </ul>
                         </h5>
-                    </li>
-                    <li class="nav-item">
-                        <h5><a class="nav-link" onclick="prompt_register()">Cerrar sesión</a></h5>
-                    </li>
-                </ul>
+                    </li>                    
+                </ul>                
             </div>
         </div>
     </nav>
@@ -1495,5 +1637,4 @@
     </section>
     <hr>
 </body>
-
 </html>

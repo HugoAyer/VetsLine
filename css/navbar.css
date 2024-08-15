@@ -1,0 +1,29 @@
+.navbar-bgbrand{
+    background-color: var(--bg-color) !important;   
+}
+
+.navbar-brand {
+    color:var(--brand-text-color) !important;   
+    font-size: 30px !important;
+}
+
+.nav-link{
+    color:var(--brand-bg-text-color) !important;
+}
+
+.navbar-nav{
+    display: flex !important;    
+    width: 100% !important;
+    justify-content: space-between;
+}
+
+/* .nav-item {    
+    margin-left: 5px; //Comentado porque descompone los tabs en "Agenda tu cita"
+} */
+
+.nav-asistant-regis{
+    border: none;
+    background: transparent;
+    color: var(--brand-bg-color);
+    width: fit-content;    
+}

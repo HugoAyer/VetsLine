@@ -1,6 +1,6 @@
 import * as LocalStorage from '../LocalStorage.js'
 import { crearElemento } from "../factory.js"
-import {save_vet_registration_specialties} from './Save.js'
+import {save_vet_registration_specialties,save_vet_registration} from './Save.js'
 import * as Constructor from './Constructor.js'
 
 const Registration_carousel = document.getElementById('Registration_carousel')
@@ -53,7 +53,7 @@ const registration_steps_onchange = () => {
         registration_validate_status_steps()
     }, 800);
 }
-const registration_validate_status_steps = () => {
+export const registration_validate_status_steps = () => {
     //Generales
     if($("#registration_Name").val() != '' && $("#registration_proTitle").val() != '-1' && $("#registration_fedRegistration").val() != '')
         {
@@ -63,8 +63,8 @@ const registration_validate_status_steps = () => {
         registration_validate_status_steps_not_validated(1)
     }
     //Especialidades
-    const specialties = LocalStorage.Get('CurrentSpecialties')    
-    if(specialties.length > 0) {
+    let specialties_cat = LocalStorage.Get('CurrentSpecialties')            
+    if(specialties_cat.length > 0) {        
         registration_validate_status_steps_validated(2)
     }
     else{
@@ -76,15 +76,30 @@ const registration_validate_status_steps = () => {
             registration_validate_status_steps_validated(3)
         }
     else{
-            registration_validate_status_steps_not_validated(2)
+            registration_validate_status_steps_not_validated(3)
         }
-    //Especialidades
-
+    //Certificados
+    if($("#registration_certificate_name_1").val() != '' && $("#registration_certificate_emiter_1").val() != '' && $("#registration_certificate_expeditionDate_1").val() != '' && $("#registration_certificate_dueDate_1").val() != '')
+        {            
+            registration_validate_status_steps_validated(4)
+        }
+    else{        
+            registration_validate_status_steps_not_validated(4)
+        }
+    if($("#registration_aboutYou").val() != '')
+        {
+            registration_validate_status_steps_validated(5)
+        }
+    else{
+            registration_validate_status_steps_not_validated(5)
+        }
 }
-const registration_validate_status_steps_validated = (id) => {
-    if(!document.getElementById(`registration_step_${id}_redBall`).classList.contains('no-show')) document.getElementById(`registration_step_${id}_redBall`).classList.add('no-show')
+const registration_validate_status_steps_validated = (id) => {    
+    if(!document.getElementById(`registration_step_${id}_redBall`).classList.contains('no-show')) {        
+        document.getElementById(`registration_step_${id}_redBall`).classList.add('no-show')
+    }
 }
-const registration_validate_status_steps_not_validated = (id) => {
+const registration_validate_status_steps_not_validated = (id) => {    
     if(document.getElementById(`registration_step_${id}_redBall`).classList.contains('no-show')) document.getElementById(`registration_step_${id}_redBall`).classList.remove('no-show')
 }
 
@@ -148,15 +163,16 @@ export const event_registration_certificate_name_oninput = (cert_id, name_id) =>
 }
 export const event_registration_certificate_new_name_oninput = (parametersArray) => {
     let cert_id = parametersArray[0]
-    let name_id = parametersArray[1]    
-    console.log(`${name_id}_${cert_id}`)
+    let name_id = parametersArray[1]        
     $(`#registration_certificate_id_${cert_id}`).text(document.getElementById(`${name_id}_${cert_id}`).value)
 }
 export const event_registration_certificate_add = () => {
     event_registration_certificate_add_helper()
 }
 const event_registration_certificate_add_helper = () => {
-    let new_tab_li = Constructor.create_registration_certificade_link()
+    let certificate_controls = document.querySelectorAll('[name="registration_certificate"]')    
+    let data_id = certificate_controls.length + 1
+    let new_tab_li = Constructor.create_registration_certificade_link(data_id)
 
     let nav_tabs = tabListCertificates.querySelectorAll(".nav-link") //Con esto, inserto el elemento justo antes del botón de "Añadir"
     nav_tabs.forEach(nav_tab => {
@@ -173,11 +189,14 @@ const event_registration_certificate_add_helper = () => {
         if(pane.classList.contains("active")) pane.classList.remove("active")
     })
     
-    let new_pane = crearElemento("div","registration_certificate_2",["tab-pane","active"]) //Creo un nuevo tab como "Activo"         
-    new_pane.addBelow(Constructor.create_registration_certificate_name().elemento()) //Añado el control para el nombre
-    new_pane.addBelow(Constructor.create_registration_certificate_emiter().elemento()) //Añado el control para el emisor
-    new_pane.addBelow(Constructor.create_registration_certificate_expeditionDate().elemento()) //Añado el control para la fecha de expedición
-    new_pane.addBelow(Constructor.create_registration_certificate_dueDate().elemento()) //Añado el control para la fecha de caducidad
-    new_pane.addBelow(Constructor.create_registration_certificate_url().elemento()) //Añado el control para la url del certificado
+    let new_pane = crearElemento("div",`registration_certificate_${data_id}`,["tab-pane","active"]) //Creo un nuevo tab como "Activo"         
+    new_pane.addBelow(Constructor.create_registration_certificate_name(data_id).elemento()) //Añado el control para el nombre
+    new_pane.addBelow(Constructor.create_registration_certificate_emiter(data_id).elemento()) //Añado el control para el emisor
+    new_pane.addBelow(Constructor.create_registration_certificate_expeditionDate(data_id).elemento()) //Añado el control para la fecha de expedición
+    new_pane.addBelow(Constructor.create_registration_certificate_dueDate(data_id).elemento()) //Añado el control para la fecha de caducidad
+    new_pane.addBelow(Constructor.create_registration_certificate_url(data_id).elemento()) //Añado el control para la url del certificado
     registration_certificate_panes.appendChild(new_pane.elemento())
+}
+export const registration_saveAndExit_onClick = () => {
+    save_vet_registration()
 }

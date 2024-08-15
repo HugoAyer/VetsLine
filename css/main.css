@@ -18,28 +18,8 @@
     --height-round-buttons: 50px;
     --height-div-input: 86px;
     --bone-color: #F2EBE3;
+    --height-appoinment-slot: 25px;
 }
-
-.navbar-bgbrand{
-    background-color: var(--bg-color) !important;   
-}
-
-.navbar-brand {
-    color:var(--brand-text-color) !important;   
-    font-size: 30px !important;
-}
-
-.nav-link{
-    color:var(--brand-bg-text-color) !important;
-}
-
-/* .dropdown-menu, .nav-item li{
-    background-color: var(--brand-bg-dark-color) !important;
-}
-*/
-/* .dropdown-item a{    
-    color:var(--brand-bg-text-color) !important;
-}  */
 
 .btn-direct-access .btn-info{
     color: var(--brand-bg-text-color) !important;  
@@ -112,8 +92,48 @@
 .bootbox .modal-body{
     background-color: var(--bone-color);
 }
-.navbar-nav{
-    display: flex !important;    
-    width: 100% !important;
-    justify-content: space-between;
+
+.profile-popup-item{
+    width: 100%;        
+    padding-right: 1rem;    
+    padding-left: 1rem;    
+    box-sizing: border-box;
+}
+
+.profile-popup-row a{
+    display: flex;    
+    padding: .30rem;
+    align-items: end;
+    justify-items: end;
+    font-size: smaller;
+    justify-content: end;
+    color: var(--brand-bg-text-color);
+    /* text-decoration: underline !important; */
+}
+.profile-popup-row h5{
+    display: flex;    
+    padding: .30rem;
+    align-items: end;
+    justify-items: end;    
+    justify-content: end;
+    height: 25px !important;
+    max-width: 25px !important;
+    color: var(--brand-warning-text);
+}
+
+.btn-warning-pending {
+    width: 180px !important;        
+    /* border:1px solid var(--brand-warning) !important ; */
+    opacity: .7;
+    background-color: var(--brand-warning) !important;
+    font-size: smaller !important; 
+    overflow: visible;    
+    z-index: 100;    
+}
+
+.big-presentation-picture img {
+    height: 10rem !important;
+    max-height: 10rem !important;
+    width: 10rem !important;
+    max-width: 10rem !important;
 }

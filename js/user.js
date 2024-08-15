@@ -4,10 +4,13 @@ import {createBuildPetCard} from './pets.js';
 import * as Events from './user/Events.js'
 import * as LocalStorage from './LocalStorage.js'
 import * as Constructor from './user/Constructor.js'
+import { crearElemento } from './factory.js';
 
 const book_appointment_to_step2 = document.getElementById("book_appointment_to_step2")
 const book_appointment_pet_row = document.getElementById('book_appointment_pet_row')
 const book_appointment_to_confirm = document.getElementById('book_appointment_to_confirm')
+
+const NewPet_species_buttons = document.getElementById("NewPet_species_buttons")
 
 $(document).ready(function () {
     let LoggedUserId = getCookie('LoggedUserId');
@@ -34,6 +37,8 @@ $(document).ready(function () {
     GetMyAppointments(LoggedUserId);    
     
     Events.general_events()
+
+    fillNewPet()
 
     // book_appointment_to_step2.addEventListener('click',function() {
     //     VetModalEvents.event_book_appointment_to_step2()
@@ -100,15 +105,26 @@ function Load_Pet_Apointments(){
 //Callback
 const OnGetMyPets = (response, params) => {
     const pets_div = document.getElementById("pets_div");    
-    pets_div.innerHTML='';
-
+    pets_div.innerHTML='';    
     LocalStorage.Save('MyPetsCatalog',response)
 
-    response.forEach(element => {                
+    response.forEach(element => {   
+        try
+        {                     
         let pet_card = createBuildPetCard(element);
         pets_div.append(pet_card.elemento());    //Creo las cards de mascotas en la pantalla principal
         let book_appointment_pet_item = Constructor.create_book_appointment_pet(element)        
         book_appointment_pet_row.append(book_appointment_pet_item.elemento()) //Creo las cards de las mascotas a seleccionar en las citas        
+        }
+        catch(error){
+            console.log(error)
+        }
     });
     EventsPetButtons();        
+}
+
+//Fill New Pet
+const fillNewPet = () => {
+    let h5 = crearElemento("h5","",[],"Prueba")
+    NewPet_species_buttons.append(h5.elemento())
 }

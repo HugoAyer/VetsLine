@@ -1,11 +1,13 @@
 import {crearElemento} from './factory.js';
 
-export const service = 'http://192.168.1.10:7195'
-export const url = 'http://192.168.1.10:5500'
+export const service = 'http://localhost:7195'
+export const url = 'http://127.0.0.1:5500'
 
 export const monthName = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
 export const dayOfWeek = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"]
 export const dayOfWeekEN = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"]
+
+export const states = [{AGU:"Aguascalientes"},{BCN:"Baja California"},{BCS:"Baja California Sur"},{CAM:"Campeche"},{CHP:"Chiapas"},{CHH:"Chihuahua"},{COA:"Coahuila"},{COL:"Colima"},{CMX:"Ciudad de México"},{"DUR":"Durango"},{"GUA":"Guanajuato"},{"GRO":"Guerrero"},{"HID":"Hidalgo"},{"JAL":"Jalisco"},{"MEX":"Estado de México"},{"MIC":"Michoacán"},{"MOR":"Morelos"},{"NAY":"Nayarit"},{"NLE":"Nuevo León"},{"OAX":"Oaxaca"},{"PUE":"Puebla"},{"QUE":"Querétaro"},{"ROO":"Quintana Roo"},{"SLP":"San Luis Potosí"},{"SIN":"Sinaloa"},{"SON":"Sonora"},{"TAB":"Tabasco"},{"TAM":"Tamaulipas"},{"TLA":"Tlaxcala"},{"VER":"Veracruz"},{"YUC":"Yucatán"},{"ZAC":"Zacatecas"}]
 
 
 //Requests
@@ -44,7 +46,7 @@ export async function async_request_put(endpoint,params,extraParams,callBack,OnE
         cache: "default"
     }
 
-    fetch(`${service}/${endpoint}/${params}`,options)
+    fetch(`${service}/${endpoint}`,options)
     //.then(response => response.json())
     .then(response => callBack(response,extraParams))
     .catch(error => OnError("Error !", error));

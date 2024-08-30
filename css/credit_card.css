@@ -12,16 +12,20 @@
 }
 
 .credit-card{
-    width: 100%;
+    width: 90%;
     border: 2px solid var(--brand-bg-color);
-    border-radius: .25rem;    
-    margin: 1rem;
+    border-radius: 15px;        
+    border: 2px solid var(--brand-primary);
+    margin-bottom: 1rem;
 }
 .credit-card-plan{
-    width: 100%;
+    position: relative;
+    left: 0;
+    width: 90%;
     border: 2px solid var(--brand-warning);
-    border-radius: .25rem;    
-    margin: 1rem;
+    border-radius: 15px;    
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 .credit-card-add{
     background: var(--brand-secondary);

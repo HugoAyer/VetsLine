@@ -8,9 +8,8 @@
     <link rel="stylesheet" type="text/css" href="../css/mobile-user-day.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">        
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-        <link rel="stylesheet" type="text/css" href="../css/credit_card.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/credit_card.css" />
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="../js/bootbox.min.js"></script>    
@@ -23,23 +22,39 @@
     <section class="section-header">        
         <div class="Hi">
             <small>Lunes 26 de agosto</small>
-            <h1>Hola Hugo!</h1>
+            <div>
+                <img id="image-34afac11" src="https://d1yei2z3i6k35z.cloudfront.net/8163742/666773c3018e1_vetsaly_logo.svg" width="110" loading="lazy" class="sc-jrIrqw kXjIrw">
+                <h2 class="Hi-txt" id="UserSpan"></h2>
+            </div>
         </div>
         <div class="btn-call">
             <button id="btn-calls" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#EmergencyCallModal"><i class="fa-solid fa-phone"></i></button>
         </div>
-        <a class="link-noefect" data-bs-toggle="modal" data-bs-target="#SearchModal">
-            <div class="input-group mb-3">
-                <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;&nbsp;Busca doctores cerca de tí</span>            
-                <input type="text" class="form-control">
-            </div>
-        </a>
+        <div class="general-cards">
+            <a class="link-noefect general-cards-content" data-bs-toggle="modal" data-bs-target="#SearchModal">  
+                <div class="col-3">
+                    <img src="../img/veterinarian.png" alt="" class="img-fluid rounded-circle" width="60px" height="60px">     
+                </div>
+                <div class="general-cards-text col-7">
+                    <h6>Busca doctores cerca de tí</h6>
+                    <small>Agenda una llamada hoy mismo</small>
+                </div>
+                <div class="general-cards-goto col-2">
+                    <h1>></h1>
+                </div>
+            </a>
+    </div>
     </section>
     <section class="section-pets">
+        <div class="content strech">
+            <h3 class="title">Mis mascotas</h3>
+        </div>
+        
         <div class="main-buttons">
-            <div class="general-accordion">
-                <div class="wrapper">
-                    <div class="main-button">
+            <div class="container" id="pets_accordion"></div>
+            <!-- <div class="general-accordion">
+                <div id="pets_accordion" class="wrapper"> -->
+                    <!-- <div class="main-button">
                         <a class="main-pets-pet" data-bs-toggle="modal" data-bs-target="#PetProfile">
                             <div class="main-button-img"><img src="../img/lucke.jpg" class="img-fluid rounded-circle"></div>
                             <div class="main-button-icon"><i class="fa-solid fa-face-smile-wink text-warning"></i></div>
@@ -49,14 +64,14 @@
                     <div class="main-button">
                         <a class="main-pets-pet" data-bs-toggle="modal" data-bs-target="#PetProfile">
                             <div class="main-button-img"><img src="../img/dolores.jpg" class="img-fluid rounded-circle"></div>
-                            <div class="main-button-icon"><i class="fa-solid fa-face-sad-cry text-primary"></i></i></div>           
+                            <div class="main-button-icon"><i class="fa-solid fa-face-sad-cry text-primary"></i></div>           
                         </a>
                         <p>Dolores</p>
                     </div>
                     <div class="main-button">
                         <a class="main-pets-pet" data-bs-toggle="modal" data-bs-target="#PetProfile">
                             <div class="main-button-img"><img src="../img/canary.jpg" class="img-fluid rounded-circle"></div>
-                            <div class="main-button-icon"><i class="fa-solid fa-face-tired text-success"></i></i></i></div>           
+                            <div class="main-button-icon"><i class="fa-solid fa-face-tired text-success"></i></div>           
                         </a>
                         <p>Eddie</p>
                     </div>
@@ -66,22 +81,30 @@
                             <div class="main-button-icon"><i class="fa-solid fa-face-kiss-wink-heart text-danger"></i></div>           
                         </a>
                         <p>Ollie</p>
-                    </div>
-                </div>
-            </div>
+                    </div> -->
+                <!-- </div>
+            </div> -->
         </div>
     </section>
-    <section class="section-cards">        
+    <section class="section-cards">       
+        <div class="content strech">
+            <h3 class="title">Consejos diarios</h3>
+        </div> 
         <div class="appointments-card">
             <img src="../img/blogs.jpg" width="100%" alt="Mis citas" class="appointments-card-img">
-            <div class="appointments-title"><h5>Consejos diarios</h5>
-            <small class="appointments-notes">Tips para el cuidado de tus mascotas</small></div>            
+            <div class="appointments-title">
+                <h5>Consejos diarios</h5>
+                <small class="appointments-notes">Tips para el cuidado de tus mascotas</small>
+            </div>
         </div>       
     </section>
     <section class="section-myAppointments">
         <div class="content strech">
             <h3 class="title">Próximas citas</h3>
-            <div class="month-row">
+            <div class="myAppointments">
+
+            </div>
+            <!-- <div class="month-row">
                 <small class="month-row-title">Agosto</small>                
                 <a class="appointment-card videocall">
                     <h1 class="month-day">27</h1>
@@ -107,7 +130,7 @@
                         <small>Aplicación de vacunas</small>
                     </div>
                 </a>
-            </div>
+            </div> -->
         </div>        
     </section>
     <nav class="navbar fixed-bottom navbar-expand-lg navbar-bgbrand sticky">
@@ -135,25 +158,25 @@
         aria-labelledby="PetProfileModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">            
             <div class="modal-content">
-                <div class="container">
+                <div class="modal-header">
                     <h5 class="modal-title">
-                        <a type="button" data-bs-dismiss="modal" aria-label="Close" ><i class="fa-solid fa-arrow-left"></i></a>
-                        <div class="chart-button"><a type="button" href="#charts" ><i class="fa-solid fa-chart-simple"></i></a></div>
+                        <a type="button" data-bs-dismiss="modal" aria-label="Close" ><i class="fa-solid fa-arrow-left"></i></a>                        
                     </h5>
+                    <div class="chart-button"><a type="button" href="#charts" ><i class="fa-solid fa-chart-simple"></i></a></div>
                 </div>
                 <div class="modal-body">
                     <div class="content strech">
-                        <div class="pets-card pet-card">
+                        <div id="pet-modal-generals" class="pets-card pet-card">
                             <div class="pet-items">
-                                <div class="pet-items-img">
+                                <!-- <div class="pet-items-img">
                                     <img src="../img/lucke.jpg" class="img-fluid rounded-circle">
                                 </div>
                                 <div class="pet-items-title">
                                     <h3>Luke</h3>
-                                </div>
+                                </div> -->
                             </div>                            
                             <div class="pet-card-info">
-                                <div class="pet-card-info-sub pet-card-info-age">
+                                <!-- <div class="pet-card-info-sub pet-card-info-age">
                                     <h6>Edad</h6>
                                     <p>6 años</p>
                                 </div>
@@ -164,20 +187,25 @@
                                 <div class="pet-card-info-sub pet-card-info-age">
                                     <h6>Especie</h6>
                                     <i class="fa-solid fa-dog"></i>
-                                </div>                            
+                                </div>                             -->
                             </div>
                         </div>     
                         <div class="pets-card general-accordion">
-                            <div class="wrapper">                                                                                                    
-                                        <div class="general-accordion-card gender"><div class="general-accordion-card-bg"><img src="../img/male.png" alt=""></div><small>Macho</small></div>                                                                    
+                            <div id="pet-modal-badges" class="wrapper">                                                                                                    
+                                        <!-- <div class="general-accordion-card gender">
+                                            <div class="general-accordion-card-bg">
+                                                <img src="../img/male.png" alt="">
+                                            </div>
+                                            <small>Macho</small>
+                                        </div>                                                                    
                                         <div class="general-accordion-card character"><div class="general-accordion-card-bg"><img src="../img/brave.png" alt=""></div><small>Valiente</small></div>                                    
                                         <div class="general-accordion-card character"><div class="general-accordion-card-bg"><img src="../img/happy.png" alt=""></div><small>Saludable</small></div>                                    
                                         <div class="general-accordion-card character"><div class="general-accordion-card-bg"><img src="../img/meds.png" alt=""></div><small>Tratamientos</small></div>                                    
-                                        <div class="general-accordion-card character"><div class="general-accordion-card-bg"><img src="../img/food.png" alt=""></div><small>Comidas</small></div>                                                                                                                                                                        
+                                        <div class="general-accordion-card character"><div class="general-accordion-card-bg"><img src="../img/food.png" alt=""></div><small>Comidas</small></div>                                                                                                                                                                         -->
                             </div>
                         </div> 
                         <div class="pets-card pet-generals">
-                            <div class="pet-generals-row row">
+                            <!-- <div class="pet-generals-row row">
                                 <div class="col-2"><i class="fa-solid fa-layer-group text-primary"></i></i></div>
                                 <div class="col-10">Jack Russell</div>
                             </div>
@@ -188,7 +216,7 @@
                             <div class="pet-generals-row row">
                                 <div class="col-2"><i class="fa-solid fa-palette text-warning"></i></div>
                                 <div class="col-10">Café con blanco</div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="pets-card pets-charts">
                             <h2>Estadisticas</h2>
@@ -218,18 +246,20 @@
             </div>
         </div>
     </div>
-    <div class="modal fade modal-fullscreen right bg-dark" id="SearchModal" tabindex="-1"
-        aria-labelledby="SearchModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">            
+    <div class="modal fade modal-fullscreen right" id="SearchModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="SearchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">            
             <div class="modal-content">
-                <div class="container">
-                    <h5 class="modal-title">
-                        <a type="button" data-bs-dismiss="modal" aria-label="Close" ><i class="fa-solid fa-arrow-left"></i></a>                        
-                    </h5>
+                <div class="modal-header">
+                    <h5 class="modal-title">                        
+                        <a type="button" data-bs-dismiss="modal" aria-label="Close" >
+                            <h3>
+                                <i class="fa-solid fa-arrow-left"></i>                                
+                            </h3>   
+                        </a>                                                  
+                    </h5>                    
                 </div>
-                <div class="modal-body">
-                    <div class="content strech search-section">  
-                        <section class="search-header">
+                <div class="modal-body">                    
+                        <div class="card">
                             <div class="current-address">
                                 <small>Estoy en</small>
                                 <span class="dropdown-toggle">Av. Cuahutemoc</span>
@@ -244,29 +274,31 @@
                                     <option value="">Online</option>
                                 </select>
                             </div>
-                        </section>
-                        <section class="search-input">
+                        </div>
+                        <div class="card">
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;&nbsp;Buscar</span>            
                                 <input type="text" class="form-control">
                             </div>
-                        </section>
-                        <section class="search-filters">
-                            <div class="search-filters-options">
-                                <a class="search-filter-option dropdown-toggle">Especialidad </a>
+                        </div>
+                        <div class="card">
+                            <div class="search-filters">
+                                <div class="search-filters-options">
+                                    <a class="search-filter-option dropdown-toggle">Especialidad </a>
+                                </div>
+                                <div class="search-filters-options">
+                                    <a class="search-filter-option dropdown-toggle">Ranking </a>
+                                </div>
+                                <div class="search-filters-options">
+                                    <a class="search-filter-option dropdown-toggle">Ubicación </a>
+                                </div>
+                                <div class="search-filters-options">
+                                    <a class="search-filter-option dropdown-toggle">Razas </a>
+                                </div>
                             </div>
-                            <div class="search-filters-options">
-                                <a class="search-filter-option dropdown-toggle">Ranking </a>
-                            </div>
-                            <div class="search-filters-options">
-                                <a class="search-filter-option dropdown-toggle">Ubicación </a>
-                            </div>
-                            <div class="search-filters-options">
-                                <a class="search-filter-option dropdown-toggle">Razas </a>
-                            </div>
-                        </section>
-                        <section class="search-vets">
-                            <div class="search-vets-vet">
+                        </div>
+                        <div id="search-vets-div" class="search-vets">
+                            <!-- <div class="search-vets-vet">
                                 <a type="button" data-bs-toggle="modal" data-bs-target="#VetModal">
                                     <div class="description col-8">
                                         <span class="name">Orlando Ramirez</span>
@@ -357,165 +389,168 @@
                                         57 opiniones
                                     </small>
                                 </div>
-                            </div>
-                        </section>
-                    </div>
+                            </div> -->
+                        </div>                    
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade modal-fullscreen right bg-dark" id="VetModal" tabindex="-1"
-        aria-labelledby="VetModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">            
+    <div class="modal fade modal-fullscreen right" id="VetModal" tabindex="-1" aria-labelledby="VetModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">            
             <div class="modal-content">
-                <div class="container">
+                <div class="modal-header">
                     <h5 class="modal-title">
-                        <a type="button" data-bs-toggle="modal" data-bs-target="#SearchModal" ><i class="fa-solid fa-arrow-left"></i></a>                        
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#VetModal" ><i class="fa-solid fa-arrow-left"></i></a>                        
                     </h5>
                 </div>
-                <div class="modal-body">                    
-                    <section class="vet-main">
-                        <div class="vet-main-image">
-                            <div class="vet-main-back">
-                                <img src="../img/vet-back.jpeg" alt="">
-                            </div>
-                            <div class="vet-main-pick">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
-                            </div>
-                        </div>
-                        <div class="vet-main-name">
-                            <h2>Orlando Ramirez</h1>
-                            <h5>Medico Veterniario Zootecnísta</h5>
-                            <h6>Médico general | Especies pequeñas</h6>
-                        </div>
-                    </section>
-                    <section class="vet-buttons">
-                        <div class="buttons">
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#VetScheduleModal"><i class="fa-solid fa-calendar-days"></i> Ver disponibilidad</button>
-                            <button class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Seguir</button>
-                        </div>
-                    </section>
-                    <section class="vet-content">
-                        <div class="vet-content-tabs">
-                            <a id="vet-content-tab-about" class="vet-content-link"><small class="content-tab">Acerca de</small><div id="vet-content-tab-about-bar" class="bar active"></div></a>
-                            <a id="vet-content-tab-address" class="vet-content-link"><small class="content-tab">Direcciones</small><div id="vet-content-tab-address-bar" class="bar"></div></a>
-                            <a id="vet-content-tab-opinions" class="vet-content-link"><small class="content-tab">Opiniones</small><div id="vet-content-tab-opinions-bar" class="bar"></div></a></a>
-                            <a id="vet-content-tab-blog" class="vet-content-link"><small class="content-tab">Respuestas</small><div id="vet-content-tab-blog-bar" class="bar"></div></a></a>
-                        </div>
-                    </section>
-                    <section class="vet-contents">
-                        <div id="vet-content-abouts" class="vet-contents-info active">
-                            <small class="vet-content-about">Tipazo en toda la extensión de la palabra. La modestia me caracteriza.</small>
-                        </div>
-                        <div id="vet-content-addresses" class="vet-contents-info inactive">
-                            <div class="vet-content-address">
-                                <span>Consultorio personal</span>
-                                <small>Av. Conocida #1151 Col. La escondida. C.P. 64000</small>
-                                <small>Monterrey, Nuevo León</small>
-                                <small class="address-phone"><i class="fa-solid fa-phone"></i> 33-1042-6859</small>
-                            </div>
-                            <div class="vet-content-address">
-                                <span>Veterinaria comunal</span>
-                                <small>Av. conocida #1151 Col. Prolongación de frente. C.P. 64000</small>
-                                <small>Monterrey, Nuevo León</small>
-                                <small class="address-phone"><i class="fa-solid fa-phone"></i> 33-1042-6859</small>
-                            </div>
-                        </div>
-                        <div id="vet-content-reviews" class="vet-contents-info inactive">
-                            <div class="vet-content-header">
-                                <div class="ranking">
-                                    <h3><i class="fa-solid fa-star"></i> 4.8 | 10 opiniones</h3>   
-                                    <div class="content">
-                                        <div class="row vet-content-review">
-                                            <div class="col-5">Atención</div>
-                                            <div class="col-5"><div class="vet-content-review-bar" data="5.0"></div></div>
-                                            <div class="col-1 text-right">5.0</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-5">Amabilidad</div>
-                                            <div class="col-5"><div class="vet-content-review-bar" data="4.7"></div></div>
-                                            <div class="col-1 text-right">4.7</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-5">Conocimiento</div>
-                                            <div class="col-5"><div class="vet-content-review-bar" data="5.0"></div></div>
-                                            <div class="col-1 text-right">5.0</div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-5">Comunicación</div>
-                                            <div class="col-5"><div class="vet-content-review-bar" data="4.5"></div></div>
-                                            <div class="col-1 text-right">4.5</div>
-                                        </div>
-                                    </div>                                 
+                <div class="modal-body bg-color">                    
+                    <div class="container">
+                        <div class="vet-main">
+                            <div class="vet-main-image">
+                                <div class="vet-main-back">
+                                    <img id="vetModal_background" src="../img/vet-back.jpeg" alt="">
+                                </div>
+                                <div class="vet-main-pick">
+                                    <img id="vetModal_smallPic" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
                                 </div>
                             </div>
-                            <div class="content-opinions">
-                                <div class="content-opinion">
-                                    <div class="user">
-                                        <div class="img">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
-                                        </div>
-                                        <div class="name">
-                                            <h6>Hugo Pollo</h6>
-                                            <small>Abril 2026</small>
-                                        </div>
-                                    </div>
-                                    <div class="text">
-                                        <p>En verdad es una bendición tener una herramienta tan útil como Vetsaly. Se pasaron de lanza con esto.</p>
-                                    </div>
+                            <div class="vet-main-name">
+                                <h2 id="vetModal_name">Orlando Ramirez</h1>
+                                <h5 id="vetModal_title">Medico Veterniario Zootecnísta</h5>
+                                <h6 id="vetModal_specialties">Médico general | Especies pequeñas</h6>
+                            </div>
+                        </div>
+                        <div class="vet-buttons">
+                            <div class="buttons">
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#VetScheduleModal"><i class="fa-solid fa-calendar-days"></i> Ver disponibilidad</button>
+                                <button class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Seguir</button>
+                            </div>
+                        </div>
+                        <div class="vet-content">
+                            <div class="vet-content-tabs">
+                                <a id="vet-content-tab-about" class="vet-content-link"><small class="content-tab">Acerca de</small><div id="vet-content-tab-about-bar" class="bar active"></div></a>
+                                <a id="vet-content-tab-address" class="vet-content-link"><small class="content-tab">Direcciones</small><div id="vet-content-tab-address-bar" class="bar"></div></a>
+                                <a id="vet-content-tab-opinions" class="vet-content-link"><small class="content-tab">Opiniones</small><div id="vet-content-tab-opinions-bar" class="bar"></div></a></a>
+                                <a id="vet-content-tab-blog" class="vet-content-link"><small class="content-tab">Respuestas</small><div id="vet-content-tab-blog-bar" class="bar"></div></a></a>
+                            </div>
+                        </div>
+                        <div class="vet-contents">
+                            <div id="vet-content-abouts" class="vet-contents-info active">
+                                <small id="vetModal_aboutMe" class="vet-content-about">
+                                    <!-- Tipazo en toda la extensión de la palabra. La modestia me caracteriza. -->
+                                </small>
+                            </div>
+                            <div id="vet-content-addresses" class="vet-contents-info inactive">
+                                <!-- <div class="vet-content-address">
+                                    <span>Consultorio personal</span>
+                                    <small>Av. Conocida #1151 Col. La escondida. C.P. 64000</small>
+                                    <small>Monterrey, Nuevo León</small>
+                                    <small class="address-phone"><i class="fa-solid fa-phone"></i> 33-1042-6859</small>
+                                </div>
+                                <div class="vet-content-address">
+                                    <span>Veterinaria comunal</span>
+                                    <small>Av. conocida #1151 Col. Prolongación de frente. C.P. 64000</small>
+                                    <small>Monterrey, Nuevo León</small>
+                                    <small class="address-phone"><i class="fa-solid fa-phone"></i> 33-1042-6859</small>
+                                </div> -->
+                            </div>
+                            <div id="vet-content-reviews" class="vet-contents-info inactive">
+                                <div class="vet-content-header">
                                     <div class="ranking">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                        <h3><i class="fa-solid fa-star"></i> 
+                                            <span id="vet-ranking-value"></span> | <span id="vet-ranking-numOpinions"></span> opiniones</h3>   
+                                        <div id="vet-content-reviews-general" class="content">
+                                            <!-- <div class="row vet-content-review">
+                                                <div class="col-5">Atención</div>
+                                                <div class="col-5"><div class="vet-content-review-bar" data="5.0"></div></div>
+                                                <div class="col-1 text-right">5.0</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-5">Amabilidad</div>
+                                                <div class="col-5"><div class="vet-content-review-bar" data="4.7"></div></div>
+                                                <div class="col-1 text-right">4.7</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-5">Conocimiento</div>
+                                                <div class="col-5"><div class="vet-content-review-bar" data="5.0"></div></div>
+                                                <div class="col-1 text-right">5.0</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-5">Comunicación</div>
+                                                <div class="col-5"><div class="vet-content-review-bar" data="4.5"></div></div>
+                                                <div class="col-1 text-right">4.5</div>
+                                            </div> -->
+                                        </div>                                 
                                     </div>
                                 </div>
-                                <div class="content-opinion">
-                                    <div class="user">
-                                        <div class="img">
-                                            <img src="../img/avatar3.jpg" alt="">
+                                <div class="content-opinions">
+                                    <!-- <div class="content-opinion">
+                                        <div class="user">
+                                            <div class="img">
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                                            </div>
+                                            <div class="name">
+                                                <h6>Hugo Pollo</h6>
+                                                <small>Abril 2026</small>
+                                            </div>
                                         </div>
-                                        <div class="name">
-                                            <h6>Joan Doe</h6>
-                                            <small>Abril 2026</small>
+                                        <div class="text">
+                                            <p>En verdad es una bendición tener una herramienta tan útil como Vetsaly. Se pasaron de lanza con esto.</p>
+                                        </div>
+                                        <div class="ranking">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
                                         </div>
                                     </div>
-                                    <div class="text">
-                                        <p>El doctor es buena onda, sabe mucho, pero podría mejorar en su trato con los animales</p>
+                                    <div class="content-opinion">
+                                        <div class="user">
+                                            <div class="img">
+                                                <img src="../img/avatar3.jpg" alt="">
+                                            </div>
+                                            <div class="name">
+                                                <h6>Joan Doe</h6>
+                                                <small>Abril 2026</small>
+                                            </div>
+                                        </div>
+                                        <div class="text">
+                                            <p>El doctor es buena onda, sabe mucho, pero podría mejorar en su trato con los animales</p>
+                                        </div>
+                                        <div class="ranking">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                    </div> -->
+                                    <div class="content-see-all">
+                                        <button class="btn btn-primary">Ver todas las opiniones</button>
                                     </div>
-                                    <div class="ranking">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                    </div>
-                                </div>
-                                <div class="content-see-all">
-                                    <button class="btn btn-primary">Ver las 10 opiniones</button>
                                 </div>
                             </div>
+                            <div id="vet-content-answers" class="vet-contents-info inactive">                            
+                                    <!-- <a class="vet-content-answer">
+                                        <div class="question">
+                                            <small class="col-9">¿Debo preocuparme sí mi Pitbull está dejando gotas de pipí luego de ir al baño?</small>
+                                        </div>
+                                        <div class="publish-date col-3">
+                                            <small>Agosto 23 2024</small>
+                                        </div>    
+                                    </a>
+                                    <a class="vet-content-answer">
+                                        <div class="question">
+                                            <small class="col-9">¿Qué puedo hacer para calmar a mi perro durante los truenos?...</small>
+                                        </div>
+                                        <div class="publish-date col-3">
+                                            <small>Agosto 22 2024</small>
+                                        </div>    
+                                    </a> -->
+                            </div>
                         </div>
-                        <div id="vet-content-answers" class="vet-contents-info inactive">                            
-                                <a class="vet-content-answer">
-                                    <div class="question">
-                                        <small class="col-9">¿Debo preocuparme sí mi Pitbull está dejando gotas de pipí luego de ir al baño?...</small>
-                                    </div>
-                                    <div class="publish-date col-3">
-                                        <small>Agosto 23 2024</small>
-                                    </div>    
-                                </a>
-                                <a class="vet-content-answer">
-                                    <div class="question">
-                                        <small class="col-9">¿Qué puedo hacer para calmar a mi perro durante los truenos?...</small>
-                                    </div>
-                                    <div class="publish-date col-3">
-                                        <small>Agosto 22 2024</small>
-                                    </div>    
-                                </a>
-                        </div>
-                    </section>
+                    </div>
                 </div>
             </div>
         </div>
@@ -650,665 +685,688 @@
             </div>
         </div>
     </div>
-    <div class="modal fade modal-fullscreen right bg-dark" id="VetScheduleModal" tabindex="-1"
+    <div class="modal fade modal-fullscreen right" id="VetScheduleModal" tabindex="-1"
         aria-labelledby="VetScheduleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">            
-            <section class="schedule-footer">
-                <div id="scheduler-footer" class="vet-content-tabs invisible">
-                    <a class="vet-steps-link"><div id="vet-step-tab-pet-bar" class="footer-bar active"></div><small class="content-tab">Mascota</small></a>
-                    <a class="vet-steps-link"><div id="vet-step-tab-reason-bar" class="footer-bar"></div><small class="content-tab">Motivo</small></a>
-                    <a class="vet-steps-link"><div id="vet-step-tab-desc-bar" class="footer-bar"></div><small class="content-tab">Descripción</small></a>
-                    <a class="vet-steps-link"><div id="vet-step-tab-confirm-bar" class="footer-bar"></div><small class="content-tab">Confirmar</small></a>
-                    <a class="vet-steps-link"><div id="vet-step-tab-payment-bar" class="footer-bar"></div><small class="content-tab">Pago</small></a>
-                </div>
-            </section>
-            <div class="modal-content">   
-                <div class="container">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">                        
+            <div class="modal-content">   <!--modal-content -->       
+                <div class="modal-header">
                     <h5 class="modal-title">
                         <a id="vet-schedule-back" type="button" ><i class="fa-solid fa-arrow-left"></i></a>                        
                     </h5>
-                </div>                                        
-                <div id="VetScheduleContent" class="active-div">                    
-                        <section class="schedule-days">
-                            <div class="vet-content-tabs">
-                                <a id="vet-schedule-tab-monday" class="vet-content-link content-tab"><small class="content-tab">Lunes 26 de agosto</small><div id="vet-schedule-tab-monday-bar" class="bar active"></div></a>
-                                <a id="vet-schedule-tab-tuesday" class="vet-content-link"><small class="content-tab">Martes 27 de agosto</small><div id="vet-schedule-tab-tuesday-bar" class="bar"></div></a>
-                                <a id="vet-schedule-tab-wednesday" class="vet-content-link"><small class="content-tab">Miércoles 28 de agosto</small><div id="vet-schedule-tab-wednesday-bar" class="bar"></div></a></a>
-                                <a id="vet-schedule-tab-thursday" class="vet-content-link"><small class="content-tab">Jueves 29 de agosto</small><div id="vet-schedule-tab-thursday-bar" class="bar"></div></a></a>
-                                <a id="vet-schedule-tab-friday" class="vet-content-link"><small class="content-tab">Viernes 30 de agosto</small><div id="vet-schedule-tab-friday-bar" class="bar"></div></a></a>
-                                <a id="vet-schedule-tab-saturday" class="vet-content-link"><small class="content-tab">Sábado 31 de agosto</small><div id="vet-schedule-tab-saturday-bar" class="bar"></div></a></a>
-                                <a id="vet-schedule-tab-sunday" class="vet-content-link"><small class="content-tab">Domingo 1 de septiembre</small><div id="vet-schedule-tab-sunday-bar" class="bar"></div></a></a>
-                            </div>
-                        </section>
-                        <section class="vet-contents">
-                            <div id="vet-content-monday" class="vet-contents-info active">
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
-                                    </button>
+                </div>                                                    
+                <div class="modal-body bg-color">
+                    <div id="VetScheduleContent" class="active-div VetScheduleSteps">                    
+                            <section class="schedule-days">
+                                <div class="vet-content-tabs accordion-days">
+                                    <!-- <a id="vet-schedule-tab-monday" class="vet-content-link content-tab"><small class="content-tab">Lunes 26 de agosto</small><div id="vet-schedule-tab-monday-bar" class="bar active"></div></a>
+                                    <a id="vet-schedule-tab-tuesday" class="vet-content-link"><small class="content-tab">Martes 27 de agosto</small><div id="vet-schedule-tab-tuesday-bar" class="bar"></div></a>
+                                    <a id="vet-schedule-tab-wednesday" class="vet-content-link"><small class="content-tab">Miércoles 28 de agosto</small><div id="vet-schedule-tab-wednesday-bar" class="bar"></div></a></a>
+                                    <a id="vet-schedule-tab-thursday" class="vet-content-link"><small class="content-tab">Jueves 29 de agosto</small><div id="vet-schedule-tab-thursday-bar" class="bar"></div></a></a>
+                                    <a id="vet-schedule-tab-friday" class="vet-content-link"><small class="content-tab">Viernes 30 de agosto</small><div id="vet-schedule-tab-friday-bar" class="bar"></div></a></a>
+                                    <a id="vet-schedule-tab-saturday" class="vet-content-link"><small class="content-tab">Sábado 31 de agosto</small><div id="vet-schedule-tab-saturday-bar" class="bar"></div></a></a>
+                                    <a id="vet-schedule-tab-sunday" class="vet-content-link"><small class="content-tab">Domingo 1 de septiembre</small><div id="vet-schedule-tab-sunday-bar" class="bar"></div></a></a> -->
                                 </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="vet-content-tuesday" class="vet-contents-info inactive">
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                            </div>                            
-                            <div id="vet-content-wednesday" class="vet-contents-info inactive">
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                            </div>                            
-                            <div id="vet-content-thursday" class="vet-contents-info inactive">
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="vet-content-friday" class="vet-contents-info inactive">
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="vet-content-saturday" class="vet-contents-info inactive">
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="vet-content-sunday" class="vet-contents-info inactive">
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box">
-                                        <i class="fa-solid fa-video"></i>
-                                        <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
-                                    </button>
-                                </div>                                
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                                <div class="schedule-row">
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
-                                    </button>
-                                    <button class="schedule-box inperson">
-                                        <i class="fa-solid fa-house"></i>
-                                        <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
-                                    </button>
-                                </div>
-                            </div>
-                        </section>                    
-                </div>     
-                <div id="VetScheduleStep1" class="inactive-div VetScheduleSteps">
-                    <div class="strech">                        
-                        <h3>Selecciona tu mascota</h3>
-                        <div class="SchedulePets">
-                            <div class="schedule-pet">
-                                <a class="Appointment-pet">
-                                    <img src="../img/lucke.jpg">
-                                    <div class="Appointment-pet-text">
-                                        <span>Luke | Jack Rusell</span>                                
+                            </section>
+                            <section id="vet-content-slots-days" class="vet-contents">
+                                <!-- <div id="vet-content-monday" class="vet-contents-info schedule active">
+                                     <div class="schedule-row">
+                                        <button class="schedule-box" date="2024-08-26" from="900" to="930" appType="1">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box" date="2024-08-26" from="930" to="1000" appType="1">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box" date="2024-08-26" from="1000" to="1030" appType="1">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box" date="2024-08-26" from="1030" to="1100" appType="1">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
+                                        </button>
                                     </div>
-                                </a>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box" date="2024-08-26" from="1100" to="1130" appType="1">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box" date="2024-08-26" from="1130" to="1200" appType="1">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row"> 
+                                        <button class="schedule-box" date="2024-08-26" from="1200" to="1230" appType="1">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box" date="2024-08-26" from="1230" to="1300" appType="1">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row"> 
+                                        <button class="schedule-box inperson" date="2024-08-26" from="900" to="930" appType="2">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson" date="2024-08-26" from="1530" to="1600" appType="2">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row"> 
+                                        <button class="schedule-box inperson" date="2024-08-26" from="1600" to="1630" appType="2">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson" date="2024-08-26" from="1630" to="1700" appType="2">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson" date="2024-08-26" from="1700" to="1730" appType="2">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson" date="2024-08-26" from="1730" to="1800" appType="2">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="vet-content-tuesday" class="vet-contents-info schedule inactive">
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                </div>                            
+                                <div id="vet-content-wednesday" class="vet-contents-info schedule inactive">
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                </div>                            
+                                <div id="vet-content-thursday" class="vet-contents-info schedule inactive">
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="vet-content-friday" class="vet-contents-info schedule inactive">
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="vet-content-saturday" class="vet-contents-info schedule inactive">
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="vet-content-sunday" class="vet-contents-info schedule inactive">
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:00 am - 9:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 9:30 am - 10:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:00 am - 10:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 10:30 am - 11:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:00 am - 11:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 11:30 am - 12:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:00 am - 12:30 am MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box">
+                                            <i class="fa-solid fa-video"></i>
+                                            <small> 12:30 am - 13:00 am MXN 310.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:00 pm - 15:30 pm MXN 310.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 15:30 pm - 16:00 pm MXN 310.00</small>                                        
+                                        </button>
+                                    </div>                                
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:00 pm - 16:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 16:30 pm - 17:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                    <div class="schedule-row">
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:00 pm - 17:30 pm MXN 400.00</small>                                        
+                                        </button>
+                                        <button class="schedule-box inperson">
+                                            <i class="fa-solid fa-house"></i>
+                                            <small> 17:30 pm - 18:00 pm MXN 400.00</small>                                        
+                                        </button>
+                                    </div>
+                                </div> -->
+                            </section>                    
+                    </div>     
+                    <div id="VetScheduleStep1" class="inactive-div VetScheduleSteps">
+                        <div class="strech">                        
+                            <h3>Selecciona tu mascota</h3>
+                            <div class="SchedulePets">
+                                <!-- <div class="schedule-pet">
+                                    <a class="Appointment-pet">
+                                        <img src="../img/lucke.jpg">
+                                        <div class="Appointment-pet-text">
+                                            <span>Luke | Jack Rusell</span>                                
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="schedule-pet">
+                                    <a class="Appointment-pet">
+                                        <img src="../img/dolores.jpg">
+                                        <div class="Appointment-pet-text">
+                                            <span>Dolores | Pitbull</span>                                
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="schedule-pet">
+                                    <a class="Appointment-pet">
+                                        <img src="../img/canary.jpg">
+                                        <div class="Appointment-pet-text">
+                                            <span>Eddie | Canario</span>                                
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="schedule-pet">
+                                    <a class="Appointment-pet">
+                                        <img src="../img/ollie.jpg">
+                                        <div class="Appointment-pet-text">
+                                            <span>Ollie | Conejo</span>                                
+                                        </div>
+                                    </a>
+                                </div> -->
                             </div>
-                            <div class="schedule-pet">
-                                <a class="Appointment-pet">
+                        </div>                    
+                    </div>
+                    <div id="VetScheduleStep2" class="inactive-div VetScheduleSteps">
+                        <div class="fullheight strech">
+                            <h3>Motivo de la consulta</h3>
+                            <div class="vet-appointment-reazon">
+                                <!-- <a class="reazon-box following">
+                                    <i class="fa-solid fa-arrows-rotate"></i>
+                                    <small>Seguimiento</small>
+                                </a>
+                                <a class="reazon-box virus">
+                                    <i class="fa-solid fa-virus"></i>
+                                    <small>Diarrea/vómito</small>
+                                </a>                                             
+                                <a class="reazon-box cough">
+                                    <i class="fa-solid fa-virus"></i>
+                                    <small>Tos o estornudos</small>
+                                </a>
+                                <a class="reazon-box tears">
+                                    <i class="fa-solid fa-face-sad-tear"></i>
+                                    <small>Lagrimas constantes</small>
+                                </a>                                  
+                                <a class="reazon-box sad">
+                                    <i class="fa-solid fa-face-frown"></i>
+                                    <small>Ánimo bajo</small>
+                                </a>
+                                <a class="reazon-box unknown">
+                                    <i class="fa-solid fa-question"></i>
+                                    <small>Otro</small>
+                                </a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div id="VetScheduleStep3" class="inactive-div VetScheduleSteps">
+                        <div class="content">
+                            <h3>Descripción adicional</h3>
+                            <textarea id="additional-desc-txt" class="schedule-description" rows="8"></textarea>
+                            <small id="additional-desc-validation" class="text-danger inactive">*Debe ingresar una descripción</small>
+                        </div>
+                        <div class="footer-div">
+                            <button id="schedule-confirm-button" class="btn btn-primary">Confirmar</button>
+                        </div>
+                    </div>
+                    <div id="VetScheduleStep4" class="inactive-div VetScheduleSteps">
+                        <div class="content">
+                            <h3>Confirmar</h3>
+                            <div class="confirm-date">
+                                <h3 id="confirm-date-control">
+                                <!-- <i class="fa-solid fa-video"></i> <span id="confirm-date-text"> Viernes 30 de agosto</span> -->
+                                </h3>
+                            </div>
+                            <div class="confirm-time">
+                                <h4 id="confirm-time-control" class="text-danger">
+                                <!-- <i class="fa-solid fa-clock"></i> de 9:00am - 9:30am -->
+                                </h4>
+                            </div>
+                            <div class="confirm-pet">
+                                <!-- <a class="Appointment-pet">
                                     <img src="../img/dolores.jpg">
                                     <div class="Appointment-pet-text">
                                         <span>Dolores | Pitbull</span>                                
                                     </div>
-                                </a>
+                                </a> -->
                             </div>
-                            <div class="schedule-pet">
-                                <a class="Appointment-pet">
-                                    <img src="../img/canary.jpg">
-                                    <div class="Appointment-pet-text">
-                                        <span>Eddie | Canario</span>                                
+                            <div class="confirm-vet">                            
+                                <!-- <div class="Appointment-vet">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                                    <div class="Appointment-vet-text">
+                                        <span>Dr Orlando Ramirez</span>
+                                        <small>Medico Veterniario Zootecnísta</small>
                                     </div>
-                                </a>
+                                </div> -->
                             </div>
-                            <div class="schedule-pet">
-                                <a class="Appointment-pet">
-                                    <img src="../img/ollie.jpg">
-                                    <div class="Appointment-pet-text">
-                                        <span>Ollie | Conejo</span>                                
+                            <div class="confirm-synthom">
+                                <!-- <div class="Appointment-vet">
+                                    <i class="fa-solid fa-arrows-rotate"></i>
+                                    <div class="Appointment-vet-text">                                    
+                                        <small>Seguimiento</small>
+                                        <span id="confirm-desc"></span>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>                    
-                </div>
-                <div id="VetScheduleStep2" class="inactive-div VetScheduleSteps">
-                    <div class="fullheight strech">
-                        <h3>Motivo de la consulta</h3>
-                        <div class="vet-appointment-reazon">
-                            <a class="reazon-box following">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                                <small>Seguimiento</small>
-                            </a>
-                            <a class="reazon-box virus">
-                                <i class="fa-solid fa-virus"></i>
-                                <small>Diarrea/vómito</small>
-                            </a>                  
-                        </div>
-                        <div class="vet-appointment-reazon">
-                            <a class="reazon-box cough">
-                                <i class="fa-solid fa-virus"></i>
-                                <small>Tos o estornudos</small>
-                            </a>
-                            <a class="reazon-box tears">
-                                <i class="fa-solid fa-face-sad-tear"></i>
-                                <small>Lagrimas constantes</small>
-                            </a>       
-                        </div>
-                        <div class="vet-appointment-reazon">
-                            <a class="reazon-box sad">
-                                <i class="fa-solid fa-face-frown"></i>
-                                <small>Ánimo bajo</small>
-                            </a>
-                            <a class="reazon-box unknown">
-                                <i class="fa-solid fa-question"></i>
-                                <small>Otro</small>
-                            </a>
+                                </div>       -->
+                            </div>     
+                            <div class="footer-div">
+                                <button id="schedule-toPay-button" class="btn btn-primary">Ir al pago</button>
+                            </div>                                            
                         </div>
                     </div>
-                </div>
-                <div id="VetScheduleStep3" class="inactive-div VetScheduleSteps">
-                    <div class="strech">
-                        <h3>Descripción adicional</h3>
-                        <textarea class="schedule-description" rows="8"></textarea>
-                        <button id="schedule-confirm-button" class="btn btn-primary">Confirmar</button>
+                    <div id="VetScheduleStep5" class="inactive-div VetScheduleSteps">     
+                        <div class="schedule-payment-methods">
+                                <!-- <div class="credit-card-plan">
+                                    <a class="credit-card-link">
+                                        <h3 class="credit-card-title"><span>Plan premium</span><i class="fa-solid fa-crown"></i></h3>
+                                        <h5 class="credit-card-description"><span>Disponibles</span><span class="text-danger"> 5 </span><span>llamadas</span></h5>
+                                    </a>
+                                </div>
+                                <div class="credit-card">
+                                    <a class="credit-card-link">
+                                        <h3 class="credit-card-title">Mastercard</h3>
+                                        <h5 class="credit-card-title">Tarjeta de crédito "Por ti" con terminación 1234</h5>
+                                    </a>
+                                </div>
+                                <div class="credit-card"><a class="credit-card-link"><h3 class="credit-card-title">Mastercard</h3><h5 class="credit-card-title">Tarjeta de débito "débito" con terminación 5555</h5></a>
+                                </div> -->
+                            </div>
                     </div>
                 </div>
-                <div id="VetScheduleStep4" class="inactive-div VetScheduleSteps">
-                    <div class="strech">
-                        <h3>Confirmar</h3>
-                        <div class="confirm-date"><h3><i class="fa-solid fa-video"></i> Viernes 30 de agosto</h3></div>
-                        <div class="confirm-time"><h4 class="text-danger"><i class="fa-solid fa-clock"></i> de 9:00am - 9:30am</h4></div>
-                        <a class="Appointment-pet">
-                            <img src="../img/dolores.jpg">
-                            <div class="Appointment-pet-text">
-                                <span>Dolores | Pitbull</span>                                
-                            </div>
-                        </a>
-                        <div class="Appointment-vet">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
-                            <div class="Appointment-vet-text">
-                                <span>Dr Orlando Ramirez</span>
-                                <small>Medico Veterniario Zootecnísta</small>
-                            </div>
-                        </div>
-                        <a class="reazon-box following">
-                            <i class="fa-solid fa-arrows-rotate"></i>
-                            <small>Seguimiento</small>
-                        </a>
-                        <button id="schedule-toPay-button" class="btn btn-primary">Ir al pago</button>
+                <div class="modal-footer"> <!--schedule-footer -->
+                    <div id="scheduler-footer" class="vet-content-tabs invisible">
+                        <a class="vet-steps-link"><div id="vet-step-tab-pet-bar" class="footer-bar active"></div><small class="content-tab">Mascota</small></a>
+                        <a class="vet-steps-link"><div id="vet-step-tab-reason-bar" class="footer-bar"></div><small class="content-tab">Motivo</small></a>
+                        <a class="vet-steps-link"><div id="vet-step-tab-desc-bar" class="footer-bar"></div><small class="content-tab">Descripción</small></a>
+                        <a class="vet-steps-link"><div id="vet-step-tab-confirm-bar" class="footer-bar"></div><small class="content-tab">Confirmar</small></a>
+                        <a class="vet-steps-link"><div id="vet-step-tab-payment-bar" class="footer-bar"></div><small class="content-tab">Pago</small></a>
                     </div>
                 </div>
-                <div id="VetScheduleStep5" class="inactive-div VetScheduleSteps">                    
-                        <div class="credit-card-plan">
-                            <a class="credit-card-link">
-                                <h3 class="credit-card-title"><span>Plan premium</span><i class="fa-solid fa-crown"></i></h3>
-                                <h5 class="credit-card-description"><span>Disponibles</span><span class="text-danger"> 5 </span><span>llamadas</span></h5>
-                            </a>
-                        </div>
-                        <div class="credit-card">
-                            <a class="credit-card-link">
-                                <h3 class="credit-card-title">Mastercard</h3>
-                                <h5 class="credit-card-title">Tarjeta de crédito "Por ti" con terminación 1234</h5>
-                            </a>
-                        </div>
-                        <div class="credit-card"><a class="credit-card-link"><h3 class="credit-card-title">Mastercard</h3><h5 class="credit-card-title">Tarjeta de débito "débito" con terminación 5555</h5></a></div>
-                </div>
-            </div>            
+            </div>                        
         </div>
     </div>
     <div class="modal fade modal-fullscreen right bg-dark" id="AppointmentsListModal" tabindex="-1"
@@ -1327,32 +1385,139 @@
             </div>
         </div>
     </div>
-    <div id="AppointmentModal" class="Appointment-Modal">
+    <div id="AppointmentSmallModal" class="Appointment-small-Modal">
         <div class="my-modal-header">
             <a class="modal-close"><div class="close-btn-div"><i class="fa-solid fa-xmark"></i></div></a>
         </div>
         <div class="my-modal-body">
-            <span class="Appointment-following"><i class="fa-solid fa-clock"></i> 9:00am - 9:30am | Seguimiento</span>
-            <h3>Viernes 30 de agosto</h3>
+            <span id="Appointment-small-modal-time" class="Appointment-following"><i class="fa-solid fa-clock"></i> 9:00am - 9:30am | Seguimiento</span>
+            <h3 id="Appointment-small-modal-date">Viernes 30 de agosto</h3>
             <small class="Appointment-pet-label">Mascota</small>
-            <div class="Appointment-pet">
-                <img src="../img/dolores.jpg">
+            <div id="Appointment-small-pet" >
+                <!-- <img src="../img/dolores.jpg">
                 <div class="Appointment-pet-text">
                     <span>Dolores | Pitbull</span>
                     <small>Seguimiento 1er semana de tratamiento</small>
-                </div>
+                </div> -->
             </div>
             <small class="Appointment-vet-label">Doctor</small>
-            <div class="Appointment-vet">
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
-                <div class="Appointment-vet-text">
-                    <span>Dr Orlando Ramirez</span>
-                    <small>Medico Veterniario Zootecnísta</small>
-                </div>
+            <div id="Appointment-small-vet">
+                <!-- <div class="Appointment-vet">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                    <div class="Appointment-vet-text">
+                        <span>Dr Orlando Ramirez</span>
+                        <small>Medico Veterniario Zootecnísta</small>
+                    </div>
+                </div> -->
             </div>
             <div class="Appointment-buttons">
                 <button class="goTo"><i class="fa-solid fa-share"></i> Ir a la cita</button>
                 <button class="chat"><i class="fa-solid fa-share"></i> Enviar mensaje</button>
+            </div>
+        </div>
+    </div>
+    <div id="AppointmentModal" class="modal fade modal-fullscreen right" tabindex="-1" aria-labelledby="AppointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">                        
+                        <a id="vet-schedule-back" type="button" data-bs-dismiss="modal" aria-label="Close" >
+                            <h3>
+                                <i class="fa-solid fa-arrow-left"></i>                                
+                            </h3>   
+                        </a>                                                  
+                    </h5>
+                </div>  
+                <div class="modal-body">                                          
+                    <div class="appointment-modal-card vet">
+                        <!-- <div class="picture col-4">
+                            <div class="img">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                                <span class="dot"></span>
+                            </div>                            
+                        </div> 
+                        <div class="description col-8">
+                            <span class="name">Orlando Ramirez</span>
+                            <small class="specialty">Medico Veterniario Zootecnísta</small>
+                            <small class="others">Médico general | Especies pequeñas</small>
+                            <div class="ranking">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <small>20 opiniones</small>
+                            </div>
+                        </div> -->
+                    </div>    
+                    <div class="appointment-modal-card">
+                        <div class="container">                        
+                            <h3>                            
+                                Tu cita
+                            </h3>
+                            <div class="appointment-content appointment">
+                                <!-- <h5>
+                                    <div class="row">
+                                        <div class="col-2"><small><i class="fa-solid fa-video"></i></small></div>
+                                        <div class="col-9"><small> Viernes 30 de agosto</small></div>
+                                        <div class="col-1 d-flex flex-row-reverse"><a href=""><small>></small></a></div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-2"><small><i class="fa-solid fa-clock"></i></small></div>
+                                        <div class="col-10"><small class="text-danger"> de 9:00 am - 9:30 am</small></div>
+                                    </div>
+                                </h5> -->
+                            </div>
+                        </div>
+                    </div>    
+                    <div class="appointment-modal-card">
+                        <div class="container">                        
+                            <h3>                            
+                                Tu mascota
+                            </h3>
+                            <div class="appointment-content pet">
+                                <!-- <h5>
+                                    <div class="row">
+                                        <div class="col-2"><small><i class="fa-solid fa-dog"></i></small></div>
+                                        <div class="col-10"><small> Dolores</small></div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-2"><small><i class="fa-solid fa-arrows-rotate"></i></small></div>
+                                        <div class="col-10"><small> seguimiento</small></div>
+                                    </div>
+                                </h5> -->
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="appointment-modal-card d-block">
+                        <div class="container">
+                            <h3>Medios de pago</h3>
+                        </div>         
+                        <div class="container appointment-content payment">
+                            <h5>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <small><i class="fa-regular fa-credit-card"></i></small>
+                                    </div>
+                                    <div class="col-10">
+                                        <small> Tarjeta ***1234</small>
+                                    </div>
+                                </div>                            
+                                    <hr>                            
+                                <div class="row">
+                                    <div class="col-6">
+                                        <small class="text-start">Precio regular</small>
+                                    </div>
+                                    <div class="col-6 d-flex flex-row-reverse">
+                                        <small>520.00 MXN</small>
+                                    </div>
+                                </div>
+                            </h5>
+                        </div>
+                    </div>
+                </div> 
             </div>
         </div>
     </div>

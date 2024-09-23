@@ -10,7 +10,7 @@
     --mobile-txt-color-3: #807f7e;
     --mobile-primary: #0d6efd;
     --mobile-danger: #dc3545;    
-    --brand-bg-dark-color: darkblue;
+    --brand-bg-dark-color: rgb(2, 2, 104);
     --brand-primary: #2cc7e1;
     --brand-virus: #ff6961;
     --brand-following: #ffe4e1;
@@ -18,7 +18,9 @@
     --brand-onSite: #fdf9c4;
     --brand-tears: #ffda9e;
     --brand-sad: #c5c6c8;
+    --brand-pet-pressed: #c5c6c8;
     --brand-warning: rgb(246, 192, 104);
+    --brand-warning-pressed: rgb(209, 131, 5);
     --margin-left: .5rem;
     --margin-right: .5rem;
     --border-radius: 15%;
@@ -95,7 +97,23 @@
 /* Generals */
 .strech{
     padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-right: 1rem !important;    
+    height: 100%;
+}
+.footer-div {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;    
+}
+.footer-div button{
+    width: 100%;
+    height: 50px;
+}
+.text-danger.active {
+    display: block;
+}
+.text-danger.inactive {
+    display: none;
 }
 html {
     scroll-behavior: smooth;
@@ -103,14 +121,51 @@ html {
 body{
     background-color: var(--mobile-bg-color) !important;
 }
+small{
+    color: var(--mobile-bg-color-3);      
+}
+.bg-color {
+    background-color: var(--mobile-bg-color) !important;
+}
 .btn-primary {
     background-color: var(--brand-primary) !important;
     border: 0 !important;
     box-shadow: 0px 5px 5px lightgray;
 }
+.card {
+    display: flex;           
+    background: var(--mobile-bg-color);        /*123456*/
+    padding: .5rem;
+    padding-left: 1rem !important;    
+    border-radius: 10px;
+    margin-bottom: .5rem;
+    width: 100%; /*123456*/
+    box-shadow: 0px 5px 5px lightgray;
+}
+/* Modal */
+.modal {
+    z-index: 2001 !important;       
+}
+.modal-dialog {
+    width: 100% !important;
+    margin: 0 !important;
+}
+.modal-content {
+    /* background-color: var(--mobile-bg-color) !important; */
+    z-index: 999;    
+}
+.modal-title {
+    display: flex;
+    width: 100%;
+    color: var(--mobile-txt-color);
+}
 .modal-body {    
     padding-left: 0 !important;
     padding-right: 0 !important;
+    background-color: var(--mobile-bg-color-2-flat); /*12356*/
+}
+.modal-dialog.modal-xl {
+    height: 100% !important;
 }
 a {
     text-decoration: none !important;
@@ -119,8 +174,13 @@ h1 {
     font-size: 2em !important;
     color: var(--mobile-txt-color);
 }
+h6{
+    font-size: .9em !important;
+}
 .fullheight {
+    display: block;    
     height: 100% !important;
+
 }
 .text-right {
     text-align: end;
@@ -129,8 +189,7 @@ h1 {
     color: var(--mobile-txt-color);
 }
 .link-noefect {
-    text-decoration: none !important;
-    width: 100%;
+    text-decoration: none !important;    
 }
 .active-div{
     position: absolute;
@@ -139,7 +198,7 @@ h1 {
     transition: .5s;
 }
 .inactive-div{
-    position: relative !important;
+    position: absolute;
     left: -100rem !important;                
     transform: translate3d(100%,0,0);
     transition: 1s;
@@ -155,20 +214,28 @@ nav{
     z-index: 999;
 }
 section{
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
     box-sizing: border-box;
     display: block;        
 }
 .section-header{
     z-index: 1;
     display: block !important;           
+    position: relative;
+    background-color: var(--brand-bg-dark-color);
+    color: var(--mobile-bg-color-2-flat);
+    border-radius: 0px 0px 10px 10px;
 }
 .section-pets {
+    padding-top: 4rem;
     z-index: 2;        
 }
 .section-cards {
     z-index: 3;    
     padding-bottom: 1rem;
+}
+.Hi-txt{
+    color: var(--mobile-bg-color);
 }
 /* Call button */
 .btn-call {
@@ -279,20 +346,28 @@ section{
 }
 /* Search bar */
 .input-group {
+    position: relative;
     padding-left: var(--margin-left) !important;    
     padding-right: var(--margin-right) !important;
     height: 50px;    
+    border-radius: 10px;  
+    border: solid 1px;
 }
 .input-group-text{
-    background-color: var(--mobile-bg-color-2-flat) !important;
-    color: var(--mobile-txt-color-3) !important;    
+    /* background-color: var(--mobile-bg-color-2-flat) !important; */
+    /* color: var(--mobile-txt-color-3) !important;     */
+    background-color: transparent !important;    
     border: 0 !important;
 }
 .form-control {
-    background-color: var(--mobile-bg-color-2-flat) !important;
+    /* background-color: var(--mobile-bg-color-2-flat) !important; */
+    position: absolute;
+    padding: 0;
+    top: 0;
     color: var(--mobile-txt-color) !important;
     border: 0 !important;
     height: 50px;
+    background-color: transparent !important;
 }
 .footer-nav {
     color: var(--mobile-txt-color);
@@ -316,6 +391,41 @@ section{
 }
 .Hi small {
     color: var(--mobile-txt-color-3)
+}
+/* General cards */
+.general-cards{
+    display: flex;
+    position: relative;
+    bottom: -2rem;
+    left: 1rem;    
+    width: 90%;        
+    background-color: var(--mobile-bg-color);  
+    border-radius: 10px;  
+    box-shadow: 0px 0px 15px 0px gray;
+    align-items: center;
+    vertical-align: middle;
+}
+.general-cards-content {
+    display: flex;
+    width: 100%;
+    min-height: 2rem;
+    height: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.general-cards-text {
+    display: block;
+    height: auto;
+    align-items: center;    
+    color: var(--mobile-txt-color);
+}
+.general-cards-goto{
+    display: flex;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;    
+    color: var(--mobile-txt-color);
 }
 /* Main buttons */
 .main-buttons {
@@ -378,6 +488,7 @@ section{
     vertical-align: middle;
     margin-left: var(--margin-left);
     margin-right: var(--margin-right);    
+    padding-top: 1rem;
     box-shadow: 0px 0px 5px 0px lightgray;
 }
 .appointments-card img{
@@ -445,23 +556,10 @@ section{
 .appointment-card-text i{
     margin-left: .5rem;
 }
-/* Modal */
-.modal {
-    z-index: 2001 !important;    
-}
-.modal-content {
-    background-color: var(--mobile-bg-color) !important;
-    z-index: 999;
-}
-.modal-title {
-    display: flex;
-    width: 100%;
-    color: var(--mobile-txt-color);
-}
 .chart-button {
     position: absolute;
-    top: 0;
-    right: 1rem;
+    top: auto;
+    right: 1rem;    
 }
 /* Modal - pet-card */
 .pet-card{                
@@ -470,12 +568,12 @@ section{
     width: 100%;
     box-sizing: border-box;
     margin-top: 2rem;
-    margin-bottom: 2rem;    
+    /* margin-bottom: 2rem;     */
     justify-content: center;
     align-items: center;
-    align-content: center;
+    align-content: center;    
+    background: var(--mobile-bg-color);
     border-radius: 5%;
-    background: var(--mobile-bg-color-2);
     box-shadow: 0px 5px 5px lightgray;
 }
 .pet-items {
@@ -545,21 +643,23 @@ hr {
 
 }
 .pets-card {
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+    margin-bottom: 1rem;    
     padding-left: 1rem;
     padding-right: 1rem;
 }
 /* General */
 .general-accordion{
     /* display: flex; */    
-    padding: 1rem;
+    padding: 1rem;    
     width: 100%;
     height: 120px;
     vertical-align: middle;
     min-height: 120px;
     justify-content: space-between;
     padding-bottom: 4rem;
+    background: var(--mobile-bg-color);
+    border-radius: 5%;
+    box-shadow: 0px 5px 5px lightgray;
 }
 
 .general-accordion-card {
@@ -601,9 +701,9 @@ hr {
     display: flex;
     vertical-align: middle;
     height: 100%;    
-    background: var(--mobile-bg-color-2);
+    background: var(--mobile-bg-color);
     border-radius: 10px;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem;    
     box-shadow: 0px 5px 5px lightgray;
 }
 .pet-generals-row .col-2{
@@ -640,8 +740,7 @@ hr {
 .wrapper {
     display: flex;    
     position: relative;
-    grid-gap: 1rem;
-    max-width: 390px; /* esta medida es temporal*/
+    grid-gap: 1.5rem;
     width: 100%;
     height: 120px;
     min-height: 120px;
@@ -722,10 +821,10 @@ hr {
     /* Vets */
     .search-vets-vet {     
         display: flex;   
-        background: var(--mobile-bg-color-2);        
-        padding: .5rem;
+        background: var(--mobile-bg-color);        
+        padding: .5rem;        
         border-radius: 10px;
-        margin-bottom: 1rem;
+        margin-bottom: 1rem;        
         box-shadow: 0px 5px 5px lightgray;
     }
     .search-vets-vet a{
@@ -768,8 +867,7 @@ hr {
         vertical-align: middle;        
         background-color: var(--mobile-bg-color);
         border-radius: 50%;
-        margin: auto !important; /* Esto es lo que de verdad hace que se centren! */
-        
+        margin: auto !important; /* Esto es lo que de verdad hace que se centren! */    
         border: 6px solid var(--mobile-primary);      
     }
     .search-vets-vet .picture-text {
@@ -804,6 +902,7 @@ hr {
         width: 100vw;
         margin-left: 0 !important;
         padding-left: 0 !important;
+        background-color: var(--mobile-bg-color);
     }
     .vet-main-image {
         height: 10rem !important;        
@@ -841,7 +940,7 @@ hr {
     .vet-buttons{
         margin-top: 2rem;
         padding-left: 1rem;
-        padding-right: 1rem;
+        padding-right: 1rem;        
     }
         /* Vet Content tabs */
     .vet-content {
@@ -855,21 +954,21 @@ hr {
         overflow-x: scroll;        
         scroll-snap-align: center;
         overscroll-behavior-x: contain;
-        scroll-snap-type: x proximity;
-        padding-top: 2rem;
+        scroll-snap-type: x proximity;        
         padding-right: 1rem;
-        height: 100%;
-        width: 100vw;
+        height: 4.5rem;
+        width: 100%;
         }
     .vet-content-tabs {        
         display: flex;        
-        flex: 0 0 auto;
-        width: 100vw;        
+        flex: 0 0 auto;                     
         height: 4.5rem;            
         justify-content: space-between !important;        
         padding-right: 1rem;               
         z-index: 1000;
-        white-space: break-spaces ;
+        white-space: break-spaces;
+        overflow-x: auto;    
+        scroll-snap-type: x;
     }
     .vet-content-link {        
         display: inline-block;                        
@@ -912,7 +1011,7 @@ hr {
     /* Vet content */
     .vet-content-address {
         display: grid;   
-        margin-top: 1rem;            
+        margin-bottom: 1rem;            
     }
     .vet-content-address span{
         color: var(--mobile-txt-color);
@@ -920,23 +1019,22 @@ hr {
     .vet-content-address small{
         color: var(--mobile-txt-color-3);
     }    
-    .vet-contents{
-        margin-top: 1rem;
+    .vet-contents{        
         position: relative;
         width: 100%;
-        padding-left: 1rem !important;
-        padding-right: 1rem;
+        
     }
     .vet-contents-info{
         position: relative;
-        display: block;
-        left: 0;
-        width: 100%;
-        top: 0;
+        display: grid;        
+        width: 100%;        
         overflow-x: hidden;
         float: none;
+        /* padding-left: 1rem;*/
+        padding-right: 1rem; 
+        /* padding: 1rem; */
         padding-left: 1rem;
-        padding-right: 1rem;
+        justify-content: space-between;
     }
     .vet-contents-info.active{
         position: absolute;
@@ -951,7 +1049,7 @@ hr {
         transition: 1s;
     }
     .vet-content-header{
-        padding: 1rem;
+        padding-bottom: 1rem;
         color: var(--mobile-txt-color);
     }        
     .vet-content-header .content{
@@ -974,7 +1072,13 @@ hr {
         width: 90%;
         border-bottom: solid 2px var(--brand-warning);
         animation: w90 2s ease;
-    }    
+    }
+    .vet-content-review-bar.r4-0{
+        height: 50%;
+        width: 80%;
+        border-bottom: solid 2px var(--brand-warning);
+        animation: w90 2s ease;
+    }
         /* Opinions */
         .content-opinions{
             padding-bottom: 1rem;            
@@ -1136,10 +1240,19 @@ hr {
     margin: 0 !important;
     padding: 0 !important;
 }
-.schedule-row button{
+.vet-contents-info.schedule{
+    display:flex;    
+    width: 100vw;
+    max-width: 100vw;
+    overflow: auto;    
+    flex-wrap: wrap; /*Esto hace que los elementos Flex se distribuyan en el largo y alto de una div y no se queden todos en una sola fila*/
+}
+.schedule-box{
     display: flex;
     text-align: right;
-    width: 50%;    
+    width: 9.7rem;    
+    min-width: 9rem;  
+    height: 3rem;  
     align-items: center;    
     border: 0;
     background-color: var(--brand-warning);
@@ -1147,6 +1260,9 @@ hr {
     border-radius: 10px;
     margin-right: .5rem;
     margin-bottom: .5rem;
+}
+.schedule-box-pressed {
+    background-color: var(--brand-warning-pressed) !important;
 }
 .schedule-box i{
     margin-right: 4px;
@@ -1158,22 +1274,22 @@ hr {
     background-color: var(--brand-onSite);
 }
 /* Appointment Modal */
-.Appointment-Modal {
+.Appointment-small-Modal {
     position: fixed;
     height: 0;
     bottom: 0;
-    width: 100vw;
+    width: 100vw;    
     background-color: var(--mobile-bg-color);
     max-height: 60vh;
-    border-radius: 10px;    
+    border-radius: 20px;    
+    box-shadow: 0px 0px 0px 10px lightgray;
 }
-.Appointment-Modal.show{  
-    height: 60vh;  
-    width: 100vw;
+.Appointment-small-Modal.show{  
+    height: 60vh;      
     transition: height .4s;
     z-index: 2000;
 }
-.Appointment-Modal.hidding{  
+.Appointment-small-Modal.hidding{  
     height: 0vh;  
     width: 100vw;
     transition: height .4s;
@@ -1188,8 +1304,10 @@ hr {
 }
 .my-modal-body {
     position: relative;
-    top: 1rem;
-    padding: 1rem;
+    top: 2rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 .my-modal-body h3{
     color: var(--mobile-bg-color-3);
@@ -1201,6 +1319,9 @@ hr {
 .Appointment-following{
     background-color: var(--brand-following);
 }
+.Appointment-videocall{
+    background-color: var(--brand-videocall);
+}
 .Appointment-pet {
     display: flex;
     width: 100%;
@@ -1210,6 +1331,9 @@ hr {
     border-radius: 30px;
     align-items: center;
     vertical-align: middle;
+}
+.Appointment-pet.pressed {
+    background-color: var(--brand-pet-pressed);
 }
 .Appointment-pet img{
     height: 3rem;
@@ -1255,6 +1379,11 @@ hr {
 .Appointment-vet-text small{
     color: var(--mobile-bg-color-3);
 }
+.Appointment-vet i{
+    font-size: xx-large;
+    margin: .5rem;
+    margin-left: .5rem;
+}
 .Appointment-buttons{
     display: flex;
     width: 100%;
@@ -1273,8 +1402,7 @@ hr {
 .Appointment-buttons .chat{
     background-color: var(--brand-primary);
 }
-.VetScheduleSteps {
-    margin-top: 2rem !important;
+.VetScheduleSteps {    
     /* margin-left: 1rem !important; */
     height: 100% !important;
     width: 100% !important;
@@ -1295,6 +1423,9 @@ hr {
 }
 .vet-appointment-reazon {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .vet-appointment-reazon a{
     text-decoration: none !important;    
@@ -1304,6 +1435,7 @@ hr {
     position: relative;
     height: 7rem;
     width: 7rem;
+    min-width: 7rem;
     align-items: center;
     vertical-align: middle;
     text-align: center;    
@@ -1313,11 +1445,14 @@ hr {
     margin: 1rem;
     color: var(--mobile-txt-color-2);
 }
+.reazon-box.pressed {
+    box-shadow: 0px 0px 10px 10px gray !important;
+}
 .reazon-box.following {
     background-color: var(--brand-following) !important;
 }
 .reazon-box.virus {
-    background-color: var(--brand-virus) !important;    
+    background-color: var(--brand-virus) !important;            
 }
 .reazon-box.virus small{
     color: var(--mobile-bg-color) !important;
@@ -1444,4 +1579,51 @@ hr {
 }    
 .bottom-0-s {
     bottom: 5rem !important;
+}
+
+/*appointment-modal*/
+.appointment-modal-card {
+    display: flex;           
+    background: var(--mobile-bg-color);        /*123456*/
+    padding: .5rem;
+    padding-left: 1rem !important;    
+    border-radius: 10px;
+    margin-bottom: .5rem;
+    width: 100%; /*123456*/
+    box-shadow: 0px 5px 5px lightgray;
+}
+.appointment-card-vet {
+    display: flex;           
+}
+.appointment-card-vet .picture {
+    display: inline-block;        
+    width: 30%;
+    height: 100%;
+}
+.appointment-card-vet .img{
+    position: relative;
+    display: flex;
+    width: 4.5rem;
+    height: 4.5rem;
+    vertical-align: middle;
+    background-color: var(--mobile-bg-color);
+    border-radius: 50%;
+    margin: auto !important; /* Esto es lo que de verdad hace que se centren! */    
+    border: 6px solid var(--mobile-primary);      
+}
+.appointment-card-vet .picture {
+    display: flex;
+    align-items: center;
+    
+}
+.appointment-card-vet .description {
+    display: grid;
+    width: 70%;
+}
+.appointment-card-vet .name{
+    font-weight: bold;
+}
+.appointment-content {
+    margin-left: 1rem;
+    margin-top: 2rem;
 }

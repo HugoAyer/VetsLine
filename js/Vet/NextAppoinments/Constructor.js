@@ -1,5 +1,5 @@
 import { crearElemento } from '../../factory.js';
-import { async_request_put, getCookie,get_date_as_string_short,convert_time_string_fromInt, i_type_appointment } from '../../functions.js';
+import { async_request_put, getCookie,get_date_as_string_short,convert_time_string_fromInt, i_type_appointment,next_day_date } from '../../functions.js';
 import * as LocalStorage from '../../LocalStorage.js'
 import * as Events  from './Events.js'
 
@@ -138,15 +138,7 @@ const get_today = (d) => {
     let dateControl = crearElemento("h1","",[],strDate)
     return dateControl
 }
-const add_day = (actual,days) => {
-    let newDate = new Date(actual)    
-    newDate.setDate(actual.getDate() + days)
-    return newDate
-}
-const next_day_date = (actual,days) => {
-    let newDate = add_day(actual,days)    
-    return newDate
-}
+
 const next_day_control = (actual) => {    
     let strDate = get_day_as_string_short(actual)
     let dateControl = crearElemento("span","",["text-secondary"],strDate)    

@@ -51,8 +51,21 @@ export function crearElemento(tipo, id, clases, innerHTML, type, role, tittle,va
         addEvent: function(action,callBack,paramsArray) {
             element.addEventListener(action,function(event) {
                 event.preventDefault()
-                callBack(paramsArray,event)
+                callBack(paramsArray,event,this)
             })
+        },
+        addText: function(text){
+            let t = document.createTextNode(text)
+            element.appendChild(t)
         }
     }
+}
+
+export function startsDiv(rate){
+    let ranking = crearElemento('div','',["ranking"])
+    for(let i = 1; i <= 5; i++){
+        if(rate >= i) ranking.addBelow(crearElemento('i','',["fa-solid","fa-star"]).elemento())
+        else ranking.addBelow(crearElemento('i','',["fa-regular","fa-star"]).elemento())
+    }
+    return ranking
 }

@@ -1,0 +1,76 @@
+:root {
+    --mobile-bg-color: white;
+    --mobile-bg-color-4: #2cc7e1;
+}
+
+body {
+    background: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+    height: 100vh;
+}
+.container{
+    position: absolute;
+    height: 100vh !important;
+    top:50%;
+    align-content: stretch;
+    transform: translate(0,-35%);    
+}
+.row{
+    max-width: 100%;
+    margin-left: .5rem !important;
+    margin-right: .5rem !important;
+}
+.login-logo{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+}
+.leyend{
+    position: absolute;
+    display: grid;        
+    align-items: center;    
+    box-sizing: border-box;
+}
+.main-login h6{
+    display: flex;    
+    flex-wrap: nowrap;    
+    text-align: center;    
+}
+.login-logo{
+    position: relative;    
+    width: 100vw !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+.center-text {
+    display: flex;
+    text-align: center;
+}
+.login-text{
+    position: relative;
+    display: grid;    
+    font-size: larger;
+    border: 0;
+    height: 50px;        
+}
+.login-user{
+    border-radius: 10px 10px 0px 0px;
+}
+.login-pass{
+    border-radius: 0px 0px 10px 10px;
+}
+.login-btn{
+    width: 100%;
+    border: 0;
+    height: 40px;
+    border-radius: 20px;
+    background-color: var(--mobile-bg-color-4);
+    color: var(--mobile-bg-color);
+}
+.register-btn {
+    width: 100%;
+    border: 0;
+    height: 40px;
+    border-radius: 20px;
+    background-color: transparent;
+}

@@ -1,7 +1,7 @@
 import {crearElemento} from './factory.js';
 
-export const service = 'http://localhost:7195'
-export const url = 'http://127.0.0.1:5500'
+export const service = 'http://192.168.1.7:7195'
+export const url = 'http://192.168.1.7:5500'
 
 export const monthName = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
 export const dayOfWeek = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"]
@@ -65,7 +65,6 @@ export async function requestPromise(endpoint,params){
         .catch(error => reject("Error !", error));
     });
 }
-
 export function getVetById(id){
     let callBack = function(response,params){                
         if(response.length > 0)
@@ -85,7 +84,6 @@ export function getCookie(cookieName) {
     })
     return cookie[cookieName];
 }
-
 export const i_type_appointment = (type) => {
     let ico = ''
     switch (type){
@@ -114,6 +112,18 @@ export const get_date_as_string_short = (d) => {
     
     return `${year}-${month}-${day}`
 }
+export const get_year_month_from_date = (d) => {
+    let year = d.getUTCFullYear()
+    let month = d.getUTCMonth()
+    month = `${(month + 1 < 10)? '0' : ''}${month + 1}`
+    return `${year}-${month}`
+}
+export const get_month_as_desc_from_date = (d) => {
+    return monthName[d.getMonth()]
+}
+export const get_dayOfWeek_from_date = (d) => {
+    return dayOfWeek[d.getDay()]
+}
 export function convert_time_int_fromString(num) {
     let time_span = parseFloat(num.replace(':', ''))
     return time_span
@@ -132,6 +142,28 @@ export const get_date_as_description = (d) => {
 export const get_am_pm = (time) => {    
     return (time < 1200) ? 'am':'pm'
 }
+export const convert_time_string_ampm_fromInt = (num) => {
+    return `${convert_time_string_fromInt(num)} ${get_am_pm(num)}`
+}
+export const get_date_as_short_desc = (d) => {    
+    let month = monthName[d.getMonth()]
+    let year = d.getUTCFullYear()
+    return `${month} ${year}`
+}
+export const get_date_as_day_month = (d) => {    
+    let month = monthName[d.getMonth()]
+    let dayOfMonth = d.getDate()
+    return `${dayOfMonth}/${month}`
+}
+export const next_day_date = (actual,days) => {
+    let newDate = add_day(actual,days)    
+    return newDate
+}
+const add_day = (actual,days) => {
+    let newDate = new Date(actual)    
+    newDate.setDate(actual.getDate() + days)
+    return newDate
+}
 
 //Otras funciones
 export function uuidv4() {
@@ -144,5 +176,8 @@ export function uuidv4() {
 }
 export const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'MXN',
 });
+export const capitalLetter = (word) => { //Coloca mayúscula la primer letra de la palabra
+ return word.charAt(0).toUpperCase() + word.slice(1);
+}

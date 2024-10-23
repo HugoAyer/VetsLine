@@ -1,7 +1,7 @@
 import {crearElemento} from './factory.js';
 
-export const service = 'http://192.168.1.7:7195'
-export const url = 'http://192.168.1.7:5500'
+export const service = 'http://192.168.1.10:7195'
+export const url = 'http://192.168.1.10:5500'
 
 export const monthName = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
 export const dayOfWeek = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"]

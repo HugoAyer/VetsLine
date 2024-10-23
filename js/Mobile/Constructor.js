@@ -9,8 +9,8 @@ const vet_content_slots_days = document.getElementById('vet-content-slots-days')
 
 export const CreateVetCard = (vet) => {
     let search_vets_vet = crearElemento('div','',["search-vets-vet"])
-    let a = crearElemento('a','',[],'','button')
-    //a.addAttributes([{"data-bs-toggle":"modal"},{"data-bs-target":"#VetModal"}])    
+    search_vets_vet.addAttributes([{"data-name":vet.name}])    
+    let a = crearElemento('a','',[],'','button')    
     let parametersArray = [vet]
     a.addEvent('click',VetCard_OnClick,parametersArray)
     let a_description = crearElemento('div','',["description","col-8"])
@@ -109,9 +109,12 @@ export const schedule_days_accordion = () => { //Obtiene las siguientes fechas p
     vet_schedule_tabs_accrodion_days.innerHTML = ''
     vet_content_slots_days.innerHTML=''
     const today = new Date()
+    if(VetAvailableSlots.length == 0) {        
+        return
+    }    
     for(let d = 0; d < 7; d++){        
-        let data_date = next_day_date(today,d) //Obtiene el siguiente día en formato de fecha, sumando lo que tenga la variable d            
-        let slotsByDay = VetAvailableSlots.filter(element => element.date == get_date_as_string_short(data_date))    //Filtra los slots disponibles por día        
+        let data_date = next_day_date(today,d) //Obtiene el siguiente día en formato de fecha, sumando lo que tenga la variable d                            
+        let slotsByDay = VetAvailableSlots.filter(element => element.date == get_date_as_string_short(data_date))    //Filtra los slots disponibles por día                        
         let control = vet_schedule_tab_day(data_date,d)    
         vet_schedule_tabs_accrodion_days.append(control.elemento())
         if(slotsByDay.length > 0) vet_schedule_tab_day_slots(slotsByDay[0],get_date_as_string_short(data_date))
@@ -302,3 +305,21 @@ export const myAppointments_cards_appointment = (appointment) => {
 //     if(appointment.type == 2) return 'following'
 //     if(appointment.type == 3) return 'onSite'
 // }
+//Crear sección de chats
+export const appointment_chat_control = (chat) => {
+    let row = crearElemento('div','',["row","message-owner"])
+    let a = crearElemento('a','',["btn","btn-warning","message"])
+    let small = crearElemento('small','',[],chat.message)
+    a.addBelow(small.elemento())
+    let time_div = crearElemento('div','',["message","text-secondary"])
+    row.addBelow(a.elemento())
+    return row
+}
+export const appointment_chat_control_reverse = (chat) => {
+    let row = crearElemento('div','',["row","message-vet","d-flex","flex-row-reverse"])
+    let a = crearElemento('a','',["btn","btn-primary","message"])
+    let small = crearElemento('small','',["text-align"],chat.message)
+    a.addBelow(small.elemento())
+    row.addBelow(a.elemento())
+    return row
+}

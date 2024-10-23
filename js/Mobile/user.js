@@ -3,7 +3,7 @@ import {request,getVetById,requestPromise,getCookie} from '../functions.js';
 import * as LocalStorage from '../LocalStorage.js'
 import {createGeneralCard} from '../pets.js'
 import {CreateVetCard} from './Constructor.js'
-import {User_VetModal_Load,appointment_steps_onClick,schedule_confirm_onClick,schedule_toPay_button_onClick,myPets_onClick,LoadAppointments} from './Events.js'
+import * as Events from './Events.js'
 import { crearElemento } from '../factory.js';
 
 const btn_activities = document.getElementById("btn-activities")
@@ -89,11 +89,16 @@ const vet_step_tab_payment_bar = document.getElementById('vet-step-tab-payment-b
 
 const AppointmentModal = document.getElementById('AppointmentModal')
 const goTo = document.querySelector('.goTo')
+const appointment_modal_link_attachments = document.getElementById('appointment-modal-link-attachments')
+const appointment_modal_link_chat = document.getElementById('appointment-modal-link-chat')
+const appointment_modal_link_following = document.getElementById('appointment-modal-link-following')
+
+const inpVetFilter = document.getElementById("inpVetFilter")
 
 $(document).ready(function () {
 
     let LoggedUserId = getCookie('LoggedUserId');
-    let LoggedUserName = getCookie('LoggedUserName');
+    let LoggedUserName = getCookie('LoggedUserName');    
     // let LoggedUserMail = getCookie('LoggedUserMail');
     let UserSpan = document.getElementById('UserSpan');
     UserSpan.innerHTML = `Hola ${LoggedUserName}`;
@@ -119,17 +124,13 @@ $(document).ready(function () {
     let promiseAppointments = getAppointmentsByOwner(LoggedUserId)
     promiseAppointments.then(data => {
         data.sort((a ,b) => new Date(a.fullDate) - new Date(b.fullDate)) //Esta chulada hace el ordenamiento en descendiente        
-        LocalStorage.Save('MyAppointments',data)
-        LoadAppointments(data)
+        LocalStorage.Save('MyAppointments',data)           
+        Events.LoadAppointments(data)
     })
 
     VetModal.addEventListener('shown.bs.modal',function(){
-        User_VetModal_Load()        
+        Events.User_VetModal_Load()        
     })
-
-    // PetProfile.addEventListener('shown.bs.modal',function(){
-
-    // })
 
     btn_activities.addEventListener('click',function(){
         activities_div.classList.remove('btn-invisible')
@@ -138,11 +139,25 @@ $(document).ready(function () {
 
     goTo.addEventListener('click',function(){
         $('#AppointmentModal').modal('show')
-        // AppointmentSmallModal.classList.remove('show')
-        //         AppointmentSmallModal.classList.add('hidding')
-        //         setTimeout(() => {
-        //             AppointmentSmallModal.classList.remove('hidding')
-        //         }, 500);
+        Events.appointment_modal_activate(false)      
+    })
+
+    inpVetFilter.addEventListener('keydown',function(event){
+        let keyValue = event.key;
+        if (keyValue = "Enter")
+        {            
+            Events.search_vets_keyDown()
+        }
+    })
+
+    appointment_modal_link_attachments.addEventListener('click',function(){
+        Events.appointment_modal_link_attachments_click()
+    })
+    appointment_modal_link_chat.addEventListener('click',function(){
+        Events.appointment_modal_link_chat_click()
+    })
+    appointment_modal_link_following.addEventListener('click',function(){
+        Events.appointment_modal_link_following_click()
     })
 
     $(document).click(function(event) {          
@@ -202,7 +217,7 @@ $(document).ready(function () {
       vet_schedule_back.addEventListener('click',function(){        
         VetScheduleSteps.forEach(element => {
             if(element.classList.contains('active-div') && !element.classList.contains('inactive-div')){                
-                appointment_steps_onClick(element)
+                Events.appointment_steps_onClick(element)
                 return
             }
         })
@@ -359,11 +374,11 @@ $(document).ready(function () {
       })
 
       schedule_confirm_button.addEventListener('click',function(){
-        schedule_confirm_onClick()        
+        Events.schedule_confirm_onClick()        
       })
 
       schedule_toPay_button.addEventListener('click',function(){
-        schedule_toPay_button_onClick()
+        Events.schedule_toPay_button_onClick()
       })
 
       credit_card_link.forEach(element => {
@@ -431,7 +446,7 @@ const OnGetMyPets = (response, params) => {
         {               
             let pet_card = createGeneralCard(element);           
             let parametersArray = [element]
-            pet_card.addEvent('click',myPets_onClick,parametersArray)
+            pet_card.addEvent('click',Events.myPets_onClick,parametersArray)
             pets_accordion.append(pet_card.elemento());    //Creo las cards de mascotas en la pantalla principal
             // let book_appointment_pet_item = Constructor.create_book_appointment_pet(element)        
             // book_appointment_pet_row.append(book_appointment_pet_item.elemento()) //Creo las cards de las mascotas a seleccionar en las citas        

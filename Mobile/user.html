@@ -278,7 +278,7 @@
                         <div class="card">
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i>&nbsp;&nbsp;Buscar</span>            
-                                <input type="text" class="form-control">
+                                <input id="inpVetFilter" type="text" class="form-control">
                             </div>
                         </div>
                         <div class="card">
@@ -601,7 +601,7 @@
                             </div>
                         </section>
                         <section class="search-vets">
-                            <div class="search-vets-vet">
+                            <!-- <div class="search-vets-vet">
                                 <a type="button" class="search-vets-vet-link">
                                     <div class="description col-8">
                                         <span class="name">Orlando Ramirez</span>
@@ -650,7 +650,7 @@
                                         </p>
                                     </div>
                                 </a>
-                            </div>                         
+                            </div>                          -->
                         </section>
                     </div>
                 </div>
@@ -1358,12 +1358,19 @@
                     </div>
                 </div>
                 <div class="modal-footer"> <!--schedule-footer -->
-                    <div id="scheduler-footer" class="vet-content-tabs invisible">
-                        <a class="vet-steps-link"><div id="vet-step-tab-pet-bar" class="footer-bar active"></div><small class="content-tab">Mascota</small></a>
-                        <a class="vet-steps-link"><div id="vet-step-tab-reason-bar" class="footer-bar"></div><small class="content-tab">Motivo</small></a>
-                        <a class="vet-steps-link"><div id="vet-step-tab-desc-bar" class="footer-bar"></div><small class="content-tab">Descripción</small></a>
-                        <a class="vet-steps-link"><div id="vet-step-tab-confirm-bar" class="footer-bar"></div><small class="content-tab">Confirmar</small></a>
-                        <a class="vet-steps-link"><div id="vet-step-tab-payment-bar" class="footer-bar"></div><small class="content-tab">Pago</small></a>
+                    <div id="scheduler-footer" class="vet-content-tabs ">
+                        <a class="vet-steps-link"><div id="vet-step-tab-schedule-bar" class="footer-bar active"></div><small class="content-tab">Horario</small>
+                        <div class="vet-step-content-div" id="vet-step-tab-schedule-content">Contenido</div></a>
+                        <a class="vet-steps-link"><div id="vet-step-tab-pet-bar" class="footer-bar"></div><small class="content-tab">Mascota</small>
+                            <div class="vet-step-content-div" id="vet-step-tab-pet-content">&nbsp;<br/></div></a>
+                        <a class="vet-steps-link"><div id="vet-step-tab-reason-bar" class="footer-bar"></div><small class="content-tab">Motivo</small>
+                            <div class="vet-step-content-div" id="vet-step-tab-reazon-content">&nbsp;<br/></div></a>
+                        <a class="vet-steps-link"><div id="vet-step-tab-desc-bar" class="footer-bar"></div><small class="content-tab">Descripción</small>
+                            <div class="vet-step-content-div" id="vet-step-tab-desc-content">&nbsp;<br/></div></a>
+                        <a class="vet-steps-link"><div id="vet-step-tab-confirm-bar" class="footer-bar"></div><small class="content-tab">Confirmar</small>
+                            <div class="vet-step-content-div" id="vet-step-tab-confirm-content">&nbsp;<br/></div></a>
+                        <a class="vet-steps-link"><div id="vet-step-tab-payment-bar" class="footer-bar"></div><small class="content-tab">Pago</small>
+                            <div class="vet-step-content-div" id="vet-step-tab-payment-content">&nbsp;<br/></div></a>
                     </div>
                 </div>
             </div>                        
@@ -1471,7 +1478,7 @@
                             </div>
                         </div>
                     </div>    
-                    <div class="appointment-modal-card">
+                    <div class="appointment-modal-card pet">
                         <div class="container">                        
                             <h3>                            
                                 Tu mascota
@@ -1491,12 +1498,12 @@
                             </div>
                         </div>
                     </div>  
-                    <div class="appointment-modal-card d-block">
+                    <div class="appointment-modal-card payment d-block">
                         <div class="container">
                             <h3>Medios de pago</h3>
                         </div>         
                         <div class="container appointment-content payment">
-                            <h5>
+                            <!-- <h5>
                                 <div class="row">
                                     <div class="col-2">
                                         <small><i class="fa-regular fa-credit-card"></i></small>
@@ -1514,10 +1521,44 @@
                                         <small>520.00 MXN</small>
                                     </div>
                                 </div>
-                            </h5>
+                            </h5> -->
                         </div>
                     </div>
+                    <div class="appointment-modal-card accordion inactive">
+                        <ul class="nav justify-content-between">
+                            <li class="nav-item">
+                              <a id="appointment-modal-link-chat" class="nav-link active" aria-current="page" href="#">Chat</a>
+                            </li>
+                            <li class="nav-item">
+                              <a id="appointment-modal-link-attachments" class="nav-link" href="#">Adjuntos</a>
+                            </li>
+                            <li class="nav-item">
+                              <a id="appointment-modal-link-following" class="nav-link" href="#">Seguimiento</a>
+                            </li>                            
+                          </ul>
+                    </div>
+                    <div class="appointment-modal-card chat inactive">
+                        <div class="chat-panel container">
+                            <small>Último mensaje a: 2024-09-24 9:31 am</small>
+                            <!-- <div class="row message-vet d-flex flex-row-reverse">
+                                <a class="btn btn-primary message"><small>Favor de confirmar la edad y peso de la mascota</small></a>
+                                <div class="message text-secondary">9:00 am</div>                                
+                            </div>
+                            <div class="row message-owner">
+                                <a class="btn btn-warning message"><small>Tiene 8 años y pesa 9 kilos</small></a>
+                                <div class="message text-secondary">11:00 am</div>
+                            </div> -->
+                        </div>
+                        <!-- <div class="footer">
+                            
+                        </div>                         -->
+                    </div>
                 </div> 
+                <div class="modal-footer appointment-modal inactive">
+                        <div class="chat container">
+                        <input type="text" class="chat-messenger">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

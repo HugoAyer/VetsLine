@@ -26,13 +26,12 @@ const PostShowUser = (response,params) =>{
     }    
     else {
         let user = response;
-        if (user.password === params.password) {         
-         console.log(user)
+        if (user.password === params.password) {                 
          document.cookie = 'LoggedUserName = ' + user.username;         
          document.cookie = 'LoggedUserMail = ' + user.email;
          document.cookie = 'LoggedUserId = ' + user.id;
          LocalStorage.Save('LoggedUser',user)
-            window.location.href = `${url}/Mobile/user.html`;
+            window.location.href = `user.html`;
         }
         else bootbox.alert('La contraseña no coincide');
 

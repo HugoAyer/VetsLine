@@ -3,6 +3,7 @@ import {AppointmentTypeResults} from './Models/AppointmentTypeProperties.js'
 import * as MobileConstructor from './Mobile/Constructor.js'
 import { get_date_as_description,convert_time_string_fromInt,get_am_pm } from './functions.js';
 import * as Pets from './pets.js'
+import * as MobileEvents from './Mobile/Events.js'
 
 export function createCardAppointment(appointment){
     let a = crearElemento("a","",["text-decoration-none"],"","","","");
@@ -383,7 +384,9 @@ const appointment_card_content_date = (appointment) => {
 
     let appointment_content_h5_row_col_1 = crearElemento('div','',["col-1","d-flex","flex-row-reverse"])
     let appointment_content_h5_row_col_1_a = crearElemento('a','',[]) //Pendiente asignarle una función onClick
-    let appointment_content_h5_row_col_1_a_small = crearElemento('small','',[],`>`)
+    let appointment_content_h5_row_col_1_a_small = crearElemento('a','',[],`>`)
+    let parametersArray = [appointment]
+    appointment_content_h5_row_col_1_a_small.addEvent('click',MobileEvents.appointment_modal_date_click,parametersArray)
     appointment_content_h5_row_col_1_a.addBelow(appointment_content_h5_row_col_1_a_small.elemento())
     appointment_content_h5_row_col_1.addBelow(appointment_content_h5_row_col_1_a.elemento())
     
@@ -524,4 +527,15 @@ const appointment_price_get_idPrice = (appointment) => {
             return appointment.availability.idPrice_onSite
             break
     }
+}
+export const appointment_load_chat = (appointment) => {
+    let chat_panel = document.querySelector('.appointment-modal-card.chat .chat-panel')
+    chat_panel.innerHTML = ''
+    if(appointment.chat.length = 0) return
+    let chats = appointment.chat.chat.sort((a ,b) => new Date(a.date) + new Date(b.date)) //Esta chulada hace el ordenamiento en ascendente
+    chats.forEach(chat => {
+        let control = (chat.sender === 'V') ? MobileConstructor.appointment_chat_control_reverse(chat) : MobileConstructor.appointment_chat_control(chat)        
+        chat_panel.append(control.elemento())
+    })
+
 }

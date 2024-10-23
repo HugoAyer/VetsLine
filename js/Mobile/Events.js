@@ -9,6 +9,7 @@ import {pet_items,pet_card_info,pet_card_badges,pets_card_pet_race,pets_card_pet
 import * as AppFunctions from '../appointments.js'
 import {Appointment_vet} from '../vets.js'
 
+const vet_step_tab_schedule_bar = document.getElementById('vet-step-tab-schedule-bar')
 const vet_step_tab_pet_bar = document.getElementById('vet-step-tab-pet-bar')
 const vet_step_tab_reason_bar = document.getElementById('vet-step-tab-reason-bar')
 const vet_step_tab_desc_bar = document.getElementById('vet-step-tab-desc-bar')
@@ -28,6 +29,12 @@ const additional_desc_validation = document.getElementById('additional-desc-vali
 // const confirm_desc = document.getElementById('confirm-desc')
 const pet_modal_generals = document.getElementById('pet-modal-generals')
 const pet_modal_badges = document.getElementById('pet-modal-badges')
+
+const appointment_modal_link_attachments = document.getElementById('appointment-modal-link-attachments')
+const appointment_modal_link_chat = document.getElementById('appointment-modal-link-chat')
+const appointment_modal_link_following = document.getElementById('appointment-modal-link-following')
+
+const inpVetFilter = document.getElementById("inpVetFilter")
 
 export const User_VetModal_Load = () => {
     const vet = LocalStorage.Get('CurrentVet')
@@ -106,13 +113,14 @@ const vet_schedule_content_day_activate = (date) => {
         }
     })
 }
-export const schedule_box_onClick = (parametersArray,event,element) => {    
+export const schedule_box_onClick = (parametersArray,event,element) => {        
     let currentVet = LocalStorage.Get('CurrentVet') //Obtengo al vet seleccionado
     let active_button = document.querySelector('.vet-contents-info.schedule.active').querySelectorAll('.schedule-box.schedule-box-pressed')  //Obtiene todos los botones para luego quitar la clase Pressed           
                 active_button.forEach(button => {
                     button.classList.remove('schedule-box-pressed')
                 }) 
     element.classList.add('schedule-box-pressed')        
+    
     let appointment_date = new Appointment_date(element.attributes.getNamedItem('apptype').value,element.attributes.getNamedItem('data').value,element.attributes.getNamedItem('from').value,element.attributes.getNamedItem('to').value) 
     let newAppointment = new Appointment(
         getCookie('LoggedUserId'),
@@ -130,10 +138,14 @@ export const schedule_box_onClick = (parametersArray,event,element) => {
         null,
         null
     )
+    let leyend = `${get_date_as_description(new Date(element.attributes.getNamedItem('data').value))} de ${convert_time_string_fromInt(element.attributes.getNamedItem('from').value)} ${get_am_pm(element.attributes.getNamedItem('from').value)} a ${convert_time_string_fromInt(element.attributes.getNamedItem('to').value)} ${get_am_pm(element.attributes.getNamedItem('to').value)}`
+    let vet_step_tab_schedule_content = document.getElementById("vet-step-tab-schedule-content")    
+    console.log(leyend)
+    vet_step_tab_schedule_content.innerHTML = leyend
     LocalStorage.Save('NewAppointment',newAppointment) //Guardo la nueva cita en el LocalStorage
     Appointment_confirming_date(element.childNodes[0].cloneNode(true),appointment_date) //Clono el ícono de la cita y lo mando al control de confirmación
-    setTimeout(() => {
-        inactive_div(VetScheduleContent,vet_step_tab_pet_bar) //Desactiva la vista actual
+    setTimeout(() => {                
+        inactive_div(VetScheduleContent,vet_step_tab_schedule_bar) //Desactiva la vista actual        
         active_div(VetScheduleStep1,vet_step_tab_pet_bar)     //Activa la nueva vista
         scheduler_footer.classList.remove('invisible')  //Remueve la clase que ejecutó la animación de salida
     }, 200);   
@@ -146,8 +158,8 @@ export const appointment_steps_onClick = (node) => {
             break
         case "VetScheduleStep1":            
             inactive_div(VetScheduleStep1,vet_step_tab_pet_bar)     
-            active_div(VetScheduleContent,vet_step_tab_pet_bar)
-            scheduler_footer.classList.add('invisible')
+            active_div(VetScheduleContent,vet_step_tab_schedule_bar)
+            //scheduler_footer.classList.add('invisible')
             break
         case "VetScheduleStep2":            
             inactive_div(VetScheduleStep2,vet_step_tab_reason_bar)     
@@ -174,7 +186,10 @@ export const Appointment_pet_onClick = (parametersArray,event,element) => {
                 button.classList.remove('pressed')
             })            
             Appointment_confirming_pet(element.cloneNode(true))
-            element.classList.add('pressed') //Marco como presionado el control            
+            element.classList.add('pressed') //Marco como presionado el control  
+            
+            let vet_step_tab_pet_content = document.getElementById("vet-step-tab-pet-content")    
+            
             setTimeout(()=> {
                 inactive_div(VetScheduleStep1,vet_step_tab_pet_bar)
                 active_div(VetScheduleStep2,vet_step_tab_reason_bar)                
@@ -234,6 +249,8 @@ export const myPets_onClick = (parametersArray) => {
 }
 export const LoadAppointments = (appointments) => {
     let myAppointments_div = document.querySelector('.myAppointments')
+    
+    if(myAppointments_div == null) return
     myAppointments_div.innerHTML = ''
     let currentMonth = 0
     let month_row
@@ -252,7 +269,47 @@ export const myAppointments_cards_appointment_onClick = (parametersArray) => {
     myAppointment_load(idTransaction)
     document.getElementById('AppointmentSmallModal').classList.add('show')
 }
-
+export const appointment_modal_date_click = (parametersArray) => {
+    let appointment = parametersArray[0]    
+    
+    appointment_modal_activate(true)
+            
+}
+export const appointment_modal_link_attachments_click = () => {            
+    if(!appointment_modal_link_attachments.classList.contains('active')) appointment_modal_link_attachments.classList.add('active')
+    if(appointment_modal_link_chat.classList.contains('active')) inactivate(appointment_modal_link_chat)
+    if(appointment_modal_link_following.classList.contains('active')) inactivate(appointment_modal_link_following)
+}
+export const appointment_modal_link_chat_click = () => {            
+    if(!appointment_modal_link_chat.classList.contains('active')) appointment_modal_link_chat.classList.add('active')
+    if(appointment_modal_link_attachments.classList.contains('active')) inactivate(appointment_modal_link_attachments)
+    if(appointment_modal_link_following.classList.contains('active')) inactivate(appointment_modal_link_following)
+}
+export const appointment_modal_link_following_click = () => {        
+    if(!appointment_modal_link_following.classList.contains('active')) appointment_modal_link_following.classList.add('active')
+    if(appointment_modal_link_chat.classList.contains('active')) inactivate(appointment_modal_link_chat)
+    if(appointment_modal_link_attachments.classList.contains('active')) inactivate(appointment_modal_link_attachments)
+}
+export const search_vets_keyDown = () => {
+    let search_vets_vets = document.querySelectorAll('.search-vets-vet')
+    search_vets_vets.forEach(element => {
+        if(inpVetFilter.value != '')
+        {            
+            if(!element.attributes.getNamedItem('data-name').value.toUpperCase().includes(inpVetFilter.value.toUpperCase()))
+            {
+                element.classList.add('invisible-div')
+            }
+            else 
+            {
+                element.classList.remove('invisible-div')
+            }
+        }
+        else 
+            {
+                element.classList.remove('invisible-div')
+            }
+    })
+}
 //Confirm process
 const Appointment_confirming_vet = () => {
     let currentVet = LocalStorage.Get('CurrentVet')    
@@ -341,6 +398,41 @@ const active_div = (content,tab) => {
     tab.classList.remove('inactive')
     tab.classList.add('active')
 }
+export const appointment_modal_activate = (active) => {
+    let appointment_content_appointment_vet = document.querySelector('.appointment-modal-card.vet') //Sección de la cita
+    let appointment_content_appointment_pet = document.querySelector('.appointment-modal-card.pet') //Sección de la cita
+    let appointment_content_appointment_payment = document.querySelector('.appointment-modal-card.payment') //Sección de la cita
+    let appointment_modal_card_inactive = document.querySelectorAll('.appointment-modal-card.inactive')
+    
+    if(active == true) {
+        appointment_content_appointment_vet.classList.add('appointment-modal-card-hidding')
+        appointment_content_appointment_pet.classList.add('appointment-modal-card-hidding')
+        appointment_content_appointment_payment.classList.add('appointment-modal-card-hidding')
+        appointment_modal_card_inactive.forEach(element => {
+            element.classList.remove('inactive')
+        })
+        let modal_footer_inactive = document.querySelector('.modal-footer.inactive')
+        modal_footer_inactive.classList.remove('inactive')
+    }
+    else {
+        appointment_content_appointment_vet.classList.remove('appointment-modal-card-hidding')
+        appointment_content_appointment_pet.classList.remove('appointment-modal-card-hidding')
+        appointment_content_appointment_payment.classList.remove('appointment-modal-card-hidding')
+        let appointment_modal_card_accordion = document.querySelector('.appointment-modal-card.accordion')
+        let appointment_modal_card_chat = document.querySelector('.appointment-modal-card.chat')
+        appointment_modal_card_accordion.classList.add('inactive')
+        appointment_modal_card_chat.classList.add('inactive')
+        let modal_footer_inactive = document.querySelector('.modal-footer.appointment-modal')
+        modal_footer_inactive.classList.add('inactive')
+    }
+}
+const inactivate = (control) => {
+    control.classList.remove('active')
+    control.classList.add('inactive')
+        setTimeout(() => {
+            control.classList.remove('inactive')
+        }, 300);
+}
 
 //Load
 const myAppointment_load = (idTransaction) => {
@@ -387,8 +479,10 @@ const appointment_modal_load = (appointment) => { //Reemplaza la información en
     let appointment_card_content_pet_card = AppFunctions.appointment_card_content_pet(appointment)    
     appointment_content_pet.append(appointment_card_content_pet_card.elemento())
 
-    let appointment_content_payment = document.querySelector('.appointment-content.payment')
+    let appointment_content_payment = document.querySelector('.appointment-content.payment') //Sección del método de pago
     appointment_content_payment.innerHTML = ''
     let appointment_card_content_payment_card = AppFunctions.appointment_card_content_payment(appointment)
     appointment_content_payment.append(appointment_card_content_payment_card.elemento())
+
+    AppFunctions.appointment_load_chat(appointment)//Carga el chat
 }
